@@ -29,6 +29,8 @@ Créer la base de données avec Symfony
 
  - php bin/console doctrine:database:create
 
+nom de la base de données : 1000_moustaches
+
 Créer un utilisateur et lui donner les droits d'accès à la base de données,
 Modifier le fichier .env.local en conséquence
 
