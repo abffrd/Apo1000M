@@ -13,7 +13,23 @@ https://www.1000moustaches.fr/
 
 ## Commande pour le projet
 
-Après avoir récupéré un projet existant, on réinstalle les composants
+Avant de cloner le projet sur sa machine, il est nécessaire de mettre à jour node pour le bon fonctionnement du framework front TailwindCSS
+
+Mise à jour de node sur la VM
+
+1. Installation d'un outil de gestion de versions de node
+
+-  sudo npm install -g n
+
+2. Installation de la version stable de node
+
+- sudo n lts
+
+3. Vérifier que la version installée est bien la 16.14.2 via la commande
+
+- node --version
+
+Après avoir cloné le projet depuis le repository github, on réinstalle les composants
 
  - composer install
 
@@ -24,6 +40,10 @@ Créer un fichier .env.local avec la ligne suivante
 Penser à vérifier la version de mariadb :
 
 - mysql --version
+
+Vérifier que le pack encore de Symfony est bien installé en tapant la commande suivante
+
+- composer require symfony/webpack-encore-bundle
 
 Créer la base de données avec Symfony
 
@@ -43,22 +63,3 @@ Charger les fixtures si besoin
  - bin/console doctrine:fixtures:load
 
 ## Commande pour installer Tailwind CSS
-
-Mise à jour de node sur la VM
-
-1. Installation d'un outil de gestion de versions de node
-
--  sudo npm install -g n
-
-2. Installation de la version stable de node
-
-- sudo n lts
-
-3. Vérifier que la version installée est bien la 16.14.2 via la commande
-
-- node --version
-
-Installation du pack encore de Symfony
-
-- composer require symfony/webpack-encore-bundle
-I
