@@ -11,7 +11,7 @@ Face à l’ampleur des abandons, des négligences, du manque d’estime dont so
 En effet, les animaux sont des individus sensibles, qui méritent amour, respect et bienveillance.
 https://www.1000moustaches.fr/
 
-## Commande pour le projet
+## Commande pour installer le projet
 
 Avant de cloner le projet sur sa machine, il est nécessaire de mettre à jour node pour le bon fonctionnement du framework front TailwindCSS
 
@@ -33,6 +33,22 @@ Après avoir cloné le projet depuis le repository github, on réinstalle les co
 
  - composer install
 
+Installation du framework TailwindCSS 3
+
+ - npm install -D tailwindcss postcss autoprefixer
+  
+Finalisation de l'installation 
+
+ - npm i
+
+Vérifier que le pack encore de Symfony est bien installé en tapant la commande suivante
+
+ - composer require symfony/webpack-encore-bundle
+
+compilation automatique des fichiers CSS à chaque enregistrement
+
+ - npm run dev --watch
+
 Créer un fichier .env.local avec la ligne suivante
 
  - DATABASE_URL="mysql://utilisateur:utilisateur_password@127.0.0.1:3306/nom_de_la_base?serverVersion=mariadb-10.3.32&charset=utf8mb4"
@@ -40,10 +56,6 @@ Créer un fichier .env.local avec la ligne suivante
 Penser à vérifier la version de mariadb :
 
 - mysql --version
-
-Vérifier que le pack encore de Symfony est bien installé en tapant la commande suivante
-
-- composer require symfony/webpack-encore-bundle
 
 Créer la base de données avec Symfony
 
@@ -62,4 +74,3 @@ Charger les fixtures si besoin
 
  - bin/console doctrine:fixtures:load
 
-## Commande pour installer Tailwind CSS
