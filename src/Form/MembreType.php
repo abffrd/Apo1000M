@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Membre;
+use App\Entity\Role;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +19,12 @@ class MembreType extends AbstractType
             ->add('mot_de_passe')
             ->add('identifiant')
             ->add('actif')
-            ->add('roles')
+            ->add('roles'/* , EntityType::class, [
+                'class'=>Role::class,
+                'choice_label' => 'role',
+                'multiple' => false,
+                'expanded' => false,
+            ] */)
             ->add('adoptions')
         ;
     }
