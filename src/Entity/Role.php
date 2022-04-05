@@ -24,15 +24,6 @@ class Role
      */
     private $role;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="roles")
-     */
-    private $membres;
-
-    public function __construct()
-    {
-        $this->membres = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
