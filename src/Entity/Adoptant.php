@@ -182,4 +182,9 @@ class Adoptant
 
         return $this;
     }
+
+    public function getFullname()
+    {
+        return $this->prenom . ' ' . $this->nom;
+    }
 }

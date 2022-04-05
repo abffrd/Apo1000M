@@ -177,4 +177,9 @@ class Membre
 
         return $this;
     }
+
+    public function getFullname()
+    {
+        return $this->prenom . ' ' . $this->nom;
+    }
 }

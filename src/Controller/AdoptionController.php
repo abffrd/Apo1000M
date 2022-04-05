@@ -75,15 +75,15 @@ class AdoptionController extends AbstractController
     }
 
     // TODO Gérer l'archivage
-    // /**
-    //  * @Route("/{id}/archivage", name="app_adoption_delete", methods={"POST"})
-    //  */
-    // public function delete(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
-    // {
-    //     if ($this->isCsrfTokenValid('delete'.$adoption->getId(), $request->request->get('_token'))) {
-    //         $adoptionRepository->remove($adoption);
-    //     }
+     /**
+      * @Route("/{id}/archivage", name="app_adoption_delete", methods={"POST"})
+      */
+    /* public function delete(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
+     {
+         if ($this->isCsrfTokenValid('delete'.$adoption->getId(), $request->request->get('_token'))) {
+             $adoptionRepository->remove($adoption);
+         }
 
-    //     return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
-    // }
+         return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+     }*/
 }
