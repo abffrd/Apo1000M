@@ -54,6 +54,11 @@ class Membre
      */
     private $adoptions;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="membre", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function __construct()
     {
         $this->roles = new ArrayCollection();
@@ -176,5 +181,27 @@ class Membre
     public function getFullname()
     {
         return $this->prenom . ' ' . $this->nom;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setMembre(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getMembre() !== $this) {
+            $user->setMembre($this);
+        }
+
+        $this->user = $user;
+
+        return $this;
     }
 }
