@@ -60,6 +60,11 @@ class Membre
         $this->adoptions = new ArrayCollection();
     }
 
+    public function getFullName()
+    {
+        return $this->prenom . ' ' . $this->nom;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
