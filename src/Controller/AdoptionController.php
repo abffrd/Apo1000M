@@ -26,7 +26,7 @@ class AdoptionController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_adoption_new", methods={"GET", "POST"})
+     * @Route("/ajout", name="app_adoption_new", methods={"GET", "POST"})
      */
     public function new(Request $request, AdoptionRepository $adoptionRepository): Response
     {
@@ -56,7 +56,7 @@ class AdoptionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_adoption_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modification", name="app_adoption_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
     {
@@ -74,15 +74,16 @@ class AdoptionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_adoption_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$adoption->getId(), $request->request->get('_token'))) {
-            $adoptionRepository->remove($adoption);
-        }
+    // TODO Gérer l'archivage
+    // /**
+    //  * @Route("/{id}/archivage", name="app_adoption_delete", methods={"POST"})
+    //  */
+    // public function delete(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$adoption->getId(), $request->request->get('_token'))) {
+    //         $adoptionRepository->remove($adoption);
+    //     }
 
-        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }
