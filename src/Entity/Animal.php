@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnimalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -76,6 +78,16 @@ class Animal
      * @ORM\ManyToOne(targetEntity=Espece::class, inversedBy="animaux")
      */
     private $espece;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Adoption::class, inversedBy="animals")
+     */
+    private $adoption;
+
+    public function __construct()
+    {
+        $this->adoption = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -222,6 +234,30 @@ class Animal
     public function setEspece(?Espece $espece): self
     {
         $this->espece = $espece;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Adoption>
+     */
+    public function getAdoption(): Collection
+    {
+        return $this->adoption;
+    }
+
+    public function addAdoption(Adoption $adoption): self
+    {
+        if (!$this->adoption->contains($adoption)) {
+            $this->adoption[] = $adoption;
+        }
+
+        return $this;
+    }
+
+    public function removeAdoption(Adoption $adoption): self
+    {
+        $this->adoption->removeElement($adoption);
 
         return $this;
     }
