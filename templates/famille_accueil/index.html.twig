@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilleAccueil index{% endblock %}
+
+{% block body %}
+    <h1>FamilleAccueil index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Code_postal</th>
+                <th>Ville</th>
+                <th>Commentaire</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for famille_accueil in famille_accueils %}
+            <tr>
+                <td>{{ famille_accueil.id }}</td>
+                <td>{{ famille_accueil.nom }}</td>
+                <td>{{ famille_accueil.prenom }}</td>
+                <td>{{ famille_accueil.adresse }}</td>
+                <td>{{ famille_accueil.codePostal }}</td>
+                <td>{{ famille_accueil.ville }}</td>
+                <td>{{ famille_accueil.commentaire }}</td>
+                <td>{{ famille_accueil.email }}</td>
+                <td>{{ famille_accueil.telephone }}</td>
+                <td>
+                    <a href="{{ path('app_famille_accueil_show', {'id': famille_accueil.id}) }}">show</a>
+                    <a href="{{ path('app_famille_accueil_edit', {'id': famille_accueil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_famille_accueil_new') }}">Create new</a>
+{% endblock %}
