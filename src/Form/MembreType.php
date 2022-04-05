@@ -23,25 +23,30 @@ class MembreType extends AbstractType
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom'])
             ->add('mot_de_passe', PasswordType::class)
-            ->add('identifiant', TextType::class)
+            ->add('identifiant', TextType::class, [
+                'label' => 'E-mail',
+                'attr' => ['placeholder' => 'mail@example.com'],
+            ])
             ->add('actif', CheckboxType::class)
-            
-            //TODO ajout possibilité de sélectionner plusieurs roles
             ->add('roles', EntityType::class, [
                 'class'=>Role::class,
                 'label' => 'Rôles',
                 'choice_label' => 'role',
-                'multiple' => false,
-                'expanded' => false,
+                'multiple' => true,
+                'expanded' => true,
                 'mapped' => false,
             ])
-            ->add('adoptions', EntityType::class, [
+
+
+            //le lien adoption-membre sera modifié depuis le formulaire adoption
+
+            /* ->add('adoptions', EntityType::class, [
                 'class'=>Adoption::class,
                 'choice_label' => 'id',
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => false,
                 'mapped' => false,
-            ]);
+            ]) */;
         
     }
 
