@@ -95,15 +95,9 @@ class Adoption
      */
     private $animaux_proposes;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Animal::class, mappedBy="adoption")
-     */
-    private $animals;
-
     public function __construct()
     {
         $this->membres = new ArrayCollection();
-        $this->animals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -302,33 +296,6 @@ class Adoption
     public function setAnimauxProposes(?string $animaux_proposes): self
     {
         $this->animaux_proposes = $animaux_proposes;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Animal>
-     */
-    public function getAnimals(): Collection
-    {
-        return $this->animals;
-    }
-
-    public function addAnimal(Animal $animal): self
-    {
-        if (!$this->animals->contains($animal)) {
-            $this->animals[] = $animal;
-            $animal->addAdoption($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnimal(Animal $animal): self
-    {
-        if ($this->animals->removeElement($animal)) {
-            $animal->removeAdoption($this);
-        }
 
         return $this;
     }
