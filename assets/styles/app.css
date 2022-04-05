@@ -28,4 +28,8 @@ body {
     .form-checkbox {
         @apply rounded border-2 border-gray-200;
     }
+
+    .teal-400{
+        @apply bg-green-blue ;
+    }
 }
