@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
-use App\Form\Animal1Type;
+use App\Form\AnimalType;
 use App\Repository\AnimalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class AnimalController extends AbstractController
     public function new(Request $request, AnimalRepository $animalRepository): Response
     {
         $animal = new Animal();
-        $form = $this->createForm(Animal1Type::class, $animal);
+        $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Espece;
+use App\Entity\FamilleAccueil;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,8 +15,16 @@ class EspeceType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('familleAccueils')
-        ;
+            ->add('familleAccueils', EntityType::class, [
+                // looks for choices from this entity
+                'class' => FamilleAccueil::class,
+                'choice_label' => 'nom',
+                'label' => 'Acceptée par',
+                // used to render a select box, check boxes or radios
+                'multiple' => false,
+                'expanded' => false,
+                'mapped' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
