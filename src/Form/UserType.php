@@ -2,8 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Role;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bridge\Doctrine\Form\Type\BooleanType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,11 +17,25 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles')
+            ->add('roles', EntityType::class, [
+                'class'=>Role::class,
+                'choice_label' => 'role',
+                'multiple' => false,
+                'expanded' => false,
+                'mapped' => false
+            ] )
             ->add('password')
             ->add('nom')
             ->add('prenom')
-            ->add('Actif')
+            ->add('Actif',ChoiceType::class, [
+                'label' => 'Statut du compte',
+                'choices'  => [
+                    'actif '  => '1',
+                    'non actif'  => '0',
+                ],
+                'multiple' => false,
+                'expanded' => false,
+            ])
         ;
     }
 

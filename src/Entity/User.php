@@ -48,9 +48,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="boolean")
+     *@ORM\Column(type="boolean")
      */
-    private $Actif;
+    private $actif;
 
     public function getId(): ?int
     {
@@ -168,12 +168,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getActif(): ?bool
     {
-        return $this->Actif;
+        return $this->actif;
     }
 
-    public function setActif(bool $Actif): self
+    public function setActif(bool $actif): self
     {
-        $this->Actif = $Actif;
+        $this->actif = $actif;
 
         return $this;
     }

@@ -31,11 +31,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setActif('0');
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+            //TODO rediriger vers la route d'accueil
             return $this->redirectToRoute('app_adoption_index');
         }
 

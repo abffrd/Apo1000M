@@ -19,13 +19,14 @@ class MembreType extends AbstractType
             ->add('mot_de_passe')
             ->add('identifiant')
             ->add('actif')
-            ->add('roles'/* , EntityType::class, [
+            ->add('roles' , EntityType::class, [
                 'class'=>Role::class,
                 'choice_label' => 'role',
                 'multiple' => false,
                 'expanded' => false,
-            ] */)
-            ->add('adoptions')
+                'mapped' => false
+            ] )
+            //->add('adoptions')
         ;
     }
 

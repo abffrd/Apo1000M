@@ -40,7 +40,7 @@ class Membre
     private $identifiant;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean" )
      */
     private $actif;
 
