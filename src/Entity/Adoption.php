@@ -85,10 +85,7 @@ class Adoption
      */
     private $adoptant;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="adoptions")
-     */
-    private $membres;
+    
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -100,10 +97,15 @@ class Adoption
      */
     private $animals;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="adoptions")
+     */
+    private $users;
+
     public function __construct()
     {
-        $this->membres = new ArrayCollection();
         $this->animals = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -267,32 +269,6 @@ class Adoption
         return $this;
     }
 
-    /**
-     * @return Collection<int, Membre>
-     */
-    public function getMembres(): Collection
-    {
-        return $this->membres;
-    }
-
-    public function addMembre(Membre $membre): self
-    {
-        if (!$this->membres->contains($membre)) {
-            $this->membres[] = $membre;
-            $membre->addAdoption($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMembre(Membre $membre): self
-    {
-        if ($this->membres->removeElement($membre)) {
-            $membre->removeAdoption($this);
-        }
-
-        return $this;
-    }
 
     public function getAnimauxProposes(): ?string
     {
@@ -328,6 +304,33 @@ class Adoption
     {
         if ($this->animals->removeElement($animal)) {
             $animal->removeAdoption($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAdoption($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAdoption($this);
         }
 
         return $this;

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -51,6 +53,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *@ORM\Column(type="boolean")
      */
     private $actif;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Adoption::class, inversedBy="users")
+     */
+    private $adoptions;
+
+    public function __construct()
+    {
+        $this->adoptions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -176,5 +188,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->actif = $actif;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Adoption>
+     */
+    public function getAdoptions(): Collection
+    {
+        return $this->adoptions;
+    }
+
+    public function addAdoption(Adoption $adoption): self
+    {
+        if (!$this->adoptions->contains($adoption)) {
+            $this->adoptions[] = $adoption;
+        }
+
+        return $this;
+    }
+
+    public function removeAdoption(Adoption $adoption): self
+    {
+        $this->adoptions->removeElement($adoption);
+
+        return $this;
+    }
+
+    public function getFullname()
+    {
+        return $this->prenom . ' ' . $this->nom;
     }
 }

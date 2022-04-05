@@ -50,31 +50,4 @@ class Role
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Membre>
-     */
-    public function getMembres(): Collection
-    {
-        return $this->membres;
-    }
-
-    public function addMembre(Membre $membre): self
-    {
-        if (!$this->membres->contains($membre)) {
-            $this->membres[] = $membre;
-            $membre->addRole($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMembre(Membre $membre): self
-    {
-        if ($this->membres->removeElement($membre)) {
-            $membre->removeRole($this);
-        }
-
-        return $this;
-    }
 }
