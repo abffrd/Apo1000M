@@ -26,5 +26,14 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+/**
+     * @Route("/list", name="app_list")
+     */
+    public function list(): Response
+    {
+        return $this->render('integration/list.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 
 }
