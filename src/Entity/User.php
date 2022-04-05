@@ -36,9 +36,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity=Membre::class, inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $membre;
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $Actif;
 
     public function getId(): ?int
     {
@@ -129,14 +139,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getMembre(): ?Membre
+
+    public function getNom(): ?string
     {
-        return $this->membre;
+        return $this->nom;
     }
 
-    public function setMembre(?Membre $membre): self
+    public function setNom(?string $nom): self
     {
-        $this->membre = $membre;
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(?string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getActif(): ?bool
+    {
+        return $this->Actif;
+    }
+
+    public function setActif(bool $Actif): self
+    {
+        $this->Actif = $Actif;
 
         return $this;
     }
