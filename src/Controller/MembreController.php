@@ -26,7 +26,7 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_membre_new", methods={"GET", "POST"})
+     * @Route("/ajout", name="app_membre_new", methods={"GET", "POST"})
      */
     public function new(Request $request, MembreRepository $membreRepository): Response
     {
@@ -56,7 +56,7 @@ class MembreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_membre_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modification", name="app_membre_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Membre $membre, MembreRepository $membreRepository): Response
     {
@@ -74,15 +74,16 @@ class MembreController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_membre_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Membre $membre, MembreRepository $membreRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$membre->getId(), $request->request->get('_token'))) {
-            $membreRepository->remove($membre);
-        }
+    // TODO Gérer l'archivage
+    // /**
+    //  * @Route("/{id}/archivage", name="app_membre_delete", methods={"POST"})
+    //  */
+    // public function delete(Request $request, Membre $membre, MembreRepository $membreRepository): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete' . $membre->getId(), $request->request->get('_token'))) {
+    //         $membreRepository->remove($membre);
+    //     }
 
-        return $this->redirectToRoute('app_membre_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_membre_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }
