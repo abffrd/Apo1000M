@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoption index{% endblock %}
+
+{% block body %}
+    <h1>Adoption index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_appel</th>
+                <th>Compte_rendu</th>
+                <th>Retour_animaux_proposes</th>
+                <th>Date_rencontre</th>
+                <th>Retour_rencontre_adoptant</th>
+                <th>Retour_rencontre_fa</th>
+                <th>Date_visite</th>
+                <th>Retour_visite</th>
+                <th>Date_adoption</th>
+                <th>Date_depart</th>
+                <th>Remarque</th>
+                <th>Statut</th>
+                <th>Animaux_proposes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adoption in adoptions %}
+            <tr>
+                <td>{{ adoption.id }}</td>
+                <td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+                <td>{{ adoption.compteRendu }}</td>
+                <td>{{ adoption.retourAnimauxProposes }}</td>
+                <td>{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
+                <td>{{ adoption.retourRencontreAdoptant }}</td>
+                <td>{{ adoption.retourRencontreFa }}</td>
+                <td>{{ adoption.dateVisite ? adoption.dateVisite|date('Y-m-d') : '' }}</td>
+                <td>{{ adoption.retourVisite }}</td>
+                <td>{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
+                <td>{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td>
+                <td>{{ adoption.remarque }}</td>
+                <td>{{ adoption.statut }}</td>
+                <td>{{ adoption.animauxProposes }}</td>
+                <td>
+                    <a href="{{ path('app_adoption_show', {'id': adoption.id}) }}">show</a>
+                    <a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adoption_new') }}">Create new</a>
+{% endblock %}

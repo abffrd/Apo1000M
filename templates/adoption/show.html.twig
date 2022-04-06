@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoption{% endblock %}
+
+{% block body %}
+    <h1>Adoption</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ adoption.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_appel</th>
+                <td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Compte_rendu</th>
+                <td>{{ adoption.compteRendu }}</td>
+            </tr>
+            <tr>
+                <th>Retour_animaux_proposes</th>
+                <td>{{ adoption.retourAnimauxProposes }}</td>
+            </tr>
+            <tr>
+                <th>Date_rencontre</th>
+                <td>{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Retour_rencontre_adoptant</th>
+                <td>{{ adoption.retourRencontreAdoptant }}</td>
+            </tr>
+            <tr>
+                <th>Retour_rencontre_fa</th>
+                <td>{{ adoption.retourRencontreFa }}</td>
+            </tr>
+            <tr>
+                <th>Date_visite</th>
+                <td>{{ adoption.dateVisite ? adoption.dateVisite|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Retour_visite</th>
+                <td>{{ adoption.retourVisite }}</td>
+            </tr>
+            <tr>
+                <th>Date_adoption</th>
+                <td>{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_depart</th>
+                <td>{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Remarque</th>
+                <td>{{ adoption.remarque }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ adoption.statut }}</td>
+            </tr>
+            <tr>
+                <th>Animaux_proposes</th>
+                <td>{{ adoption.animauxProposes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adoption_index') }}">back to list</a>
+
+    <a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">edit</a>
+
+    {#{ include('adoption/_delete_form.html.twig') }#}
+{% endblock %}

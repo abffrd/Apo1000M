@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    
+
     /**
      * @Route("/accueil", name="app_home")
      */
@@ -18,7 +18,17 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
-/**
+    /**
+     * @Route("/", name="login")
+     */
+    public function login(): Response
+    {
+        return $this->render('main/login.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    /**
      * @Route("/list", name="app_list")
      */
     public function list(): Response
@@ -27,5 +37,4 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
-
 }
