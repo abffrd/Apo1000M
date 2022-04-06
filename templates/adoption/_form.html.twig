@@ -1,4 +1,38 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.statut) }}
+        <p>Le statut ne sera pas modifiable, il se met à jour automatiquement en fonction des étapes</p>
+        {{ form_row(form.users) }}
+         <button class="btn">M'affecter le dossier</button>
+        {{ form_row(form.date_appel) }}
+        {{ form_row(form.adoptant) }}
+        {{ form_row(form.compte_rendu) }}
+        <button class="btn">CR complet</button>
+        <button class="btn">toggle -> CR validé</button>
+        {{ form_row(form.animaux_proposes) }}
+        <button class="btn">Proposition complete</button>
+        <button class="btn">toggle -> proposition validée</button>
+        {{ form_row(form.retour_animaux_proposes) }}
+        {{ form_row(form.animals) }}
+        <button class="btn">Réserver l'animal</button>
+        {{ form_row(form.date_rencontre) }}
+        <button class="btn">Valider la date de rencontre</button>
+        {{ form_row(form.retour_rencontre_adoptant) }}
+        {{ form_row(form.retour_rencontre_fa) }}
+        <button class="btn">CR rencontre complet</button>
+        <button class="btn">toggle -> CR validé</button>
+        {{ form_row(form.date_visite) }}
+        {{ form_row(form.retour_visite) }}
+         <button class="btn">CR visite complet</button>
+        <button class="btn">toggle -> CR validé</button>
+        {{ form_row(form.date_adoption) }}
+         <button class="btn">Date adoption renseignée</button>
+        {{ form_row(form.date_depart) }}
+         <button class="btn">Date départ renseignée</button>
+        {{ form_row(form.remarque) }}
+         <button class="btn">Dossier sans suite</button>
+
+   <button class="btn">{{ button_label|default('Save') }}</button>
+   
 {{ form_end(form) }}
