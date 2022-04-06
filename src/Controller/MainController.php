@@ -14,7 +14,7 @@ class MainController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('integration/accueil.html.twig', [
+        return $this->render('main/accueil.html.twig', [
             'controller_name' => 'MainController',
         ]);
     }
