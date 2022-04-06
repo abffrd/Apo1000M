@@ -19,9 +19,10 @@ class UserType extends AbstractType
             ->add('email')
             ->add('roles', EntityType::class, [
                 'class'=>Role::class,
+                'label' => 'Rôles',
                 'choice_label' => 'role',
-                'multiple' => false,
-                'expanded' => false,
+                'multiple' => true,
+                'expanded' => true,
                 'mapped' => false
             ] )
             ->add('password')
