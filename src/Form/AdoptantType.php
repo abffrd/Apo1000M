@@ -16,22 +16,28 @@ class AdoptantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class)
+            ->add('nom', TextType::class,
+            [ 'required' => false,])
             ->add('prenom', TextType::class, [
-                'label' => 'Prénom'])
-            ->add('adresse', TextType::class)
+                'label' => 'Prénom',
+                'required' => false,])
+            ->add('adresse', TextType::class,
+            [ 'required' => false,])
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone',
             ])
             ->add('email', EmailType::class, [
                 'label' => 'E-mail',
+                'required' => false,
                 'attr' => ['placeholder' => 'mail@example.com'],
                 ])
             ->add('ville', TextType::class, [
                 'attr' => ['placeholder' => 'Nom de ville'],
+                'required' => false,
             ])
             ->add('code_postal', TextType::class, [
                 'attr' => ['placeholder' => 'Code postal'],
+                'required' => false,
             ])
         ;
     }
