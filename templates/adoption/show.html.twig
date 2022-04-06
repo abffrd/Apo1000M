@@ -1,74 +1,91 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adoption{% endblock %}
+{% block title %}Adoption
+{% endblock %}
 
 {% block body %}
-    <h1>Adoption</h1>
+	<main class="flex w-full h-screen">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ adoption.id }}</td>
-            </tr>
-            <tr>
-                <th>Date_appel</th>
-                <td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Compte_rendu</th>
-                <td>{{ adoption.compteRendu }}</td>
-            </tr>
-            <tr>
-                <th>Retour_animaux_proposes</th>
-                <td>{{ adoption.retourAnimauxProposes }}</td>
-            </tr>
-            <tr>
-                <th>Date_rencontre</th>
-                <td>{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Retour_rencontre_adoptant</th>
-                <td>{{ adoption.retourRencontreAdoptant }}</td>
-            </tr>
-            <tr>
-                <th>Retour_rencontre_fa</th>
-                <td>{{ adoption.retourRencontreFa }}</td>
-            </tr>
-            <tr>
-                <th>Date_visite</th>
-                <td>{{ adoption.dateVisite ? adoption.dateVisite|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Retour_visite</th>
-                <td>{{ adoption.retourVisite }}</td>
-            </tr>
-            <tr>
-                <th>Date_adoption</th>
-                <td>{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_depart</th>
-                <td>{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Remarque</th>
-                <td>{{ adoption.remarque }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ adoption.statut }}</td>
-            </tr>
-            <tr>
-                <th>Animaux_proposes</th>
-                <td>{{ adoption.animauxProposes }}</td>
-            </tr>
-        </tbody>
-    </table>
+		<section
+			class="w-full p-4  ml-2">
+			<!-- ************************header table*********************** -->
 
-    <a href="{{ path('app_adoption_index') }}">back to list</a>
+			<div class="px-4 md:px-10 py-4 md:py-7">
 
-    <a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">edit</a>
+				<h1>Adoption</h1>
 
-    {#{ include('adoption/_delete_form.html.twig') }#}
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<td>{{ adoption.id }}</td>
+						</tr>
+						<tr>
+							<th>Date_appel</th>
+							<td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Compte_rendu</th>
+							<td>{{ adoption.compteRendu }}</td>
+						</tr>
+						<tr>
+							<th>Retour_animaux_proposes</th>
+							<td>{{ adoption.retourAnimauxProposes }}</td>
+						</tr>
+						<tr>
+							<th>Date_rencontre</th>
+							<td>{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Retour_rencontre_adoptant</th>
+							<td>{{ adoption.retourRencontreAdoptant }}</td>
+						</tr>
+						<tr>
+							<th>Retour_rencontre_fa</th>
+							<td>{{ adoption.retourRencontreFa }}</td>
+						</tr>
+						<tr>
+							<th>Date_visite</th>
+							<td>{{ adoption.dateVisite ? adoption.dateVisite|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Retour_visite</th>
+							<td>{{ adoption.retourVisite }}</td>
+						</tr>
+						<tr>
+							<th>Date_adoption</th>
+							<td>{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Date_depart</th>
+							<td>{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Remarque</th>
+							<td>{{ adoption.remarque }}</td>
+						</tr>
+						<tr>
+							<th>Statut</th>
+							<td>{{ adoption.statut }}</td>
+						</tr>
+						<tr>
+							<th>Animaux_proposes</th>
+							<td>{{ adoption.animauxProposes }}</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<button class="btn">
+					<a href="{{ path('app_adoption_index') }}">Retour à la liste des adoptions</a>
+				</button>
+
+				<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-2 px-4 border border-green-500 rounded">
+					<a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">Modifier</a>
+				</button>
+			</div>
+		</section>
+	</main>
+	{#{ include('adoption/_delete_form.html.twig') }#}
+
+
 {% endblock %}

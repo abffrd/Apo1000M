@@ -3,9 +3,18 @@
 {% block title %}New Animal{% endblock %}
 
 {% block body %}
+<main class="flex w-full h-screen">
+
+      <section class="w-full p-4  ml-2">
+       <!-- ************************header table*********************** -->
+
+        <div class="px-4 md:px-10 py-4 md:py-7">
     <h1>Create new Animal</h1>
 
     {{ include('animal/_form.html.twig') }}
 
     <a href="{{ path('app_animal_index') }}">back to list</a>
+     </div >
+</section >
+</main >
 {% endblock %}

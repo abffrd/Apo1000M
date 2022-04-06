@@ -1,53 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Animal index{% endblock %}
+{% block title %}animal index{% endblock %}
 
 {% block body %}
-    <h1>Animal index</h1>
+<main class="flex w-full h-screen">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Date_naissance</th>
-                <th>Statut</th>
-                <th>Tests</th>
-                <th>Sexe</th>
-                <th>Vaccins</th>
-                <th>Photo</th>
-                <th>Commentaire</th>
-                <th>Identification</th>
-                <th>Sterilise</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+      <section class="w-full p-4  ml-2">
+       <!-- ************************header table*********************** -->
+
+        <div class="px-4 md:px-10 py-4 md:py-7">
+            <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">List des animaux </p>
+                <div class="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+                    <p>Sort By:</p>
+                    <select aria-label="select" class="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
+                        <option class="text-sm text-indigo-800">Latest</option>
+                        <option class="text-sm text-indigo-800">Oldest</option>
+                        <option class="text-sm text-indigo-800">Latest</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class=" py-4 md:py-7 px-4 md:px-8 xl:px-10">
+            <div class="sm:flex items-center justify-between">
+ <p class="text-sm font-medium leading-none text-white"><a href="{{ path('app_adoptant_new') }}"><button class="btn">{{ button_label|default('Create New') }}</button></a></p>
+            </div>
+    <h1></h1>
+    <!--************************************** table******************************* -->
+
+        <table class="min-w-full border-collapse block md:table">
+            <thead class="block md:table-header-group">
+                <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Nom</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date_naissance</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Tests</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Sexe</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Vaccins</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Photo</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Commentaire</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Identification</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Sterilise</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
+
+
+                </tr>
+            </thead>
+{# //**************** #}
+
+        <tbody class="block md:table-row-group">
         {% for animal in animals %}
-            <tr>
-                <td>{{ animal.id }}</td>
-                <td>{{ animal.nom }}</td>
-                <td>{{ animal.dateNaissance ? animal.dateNaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ animal.statut }}</td>
-                <td>{{ animal.tests }}</td>
-                <td>{{ animal.sexe }}</td>
-                <td>{{ animal.vaccins }}</td>
-                <td>{{ animal.photo }}</td>
-                <td>{{ animal.commentaire }}</td>
-                <td>{{ animal.identification }}</td>
-                <td>{{ animal.sterilise ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_animal_show', {'id': animal.id}) }}">show</a>
-                    <a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
-                </td>
-            </tr>
+
+                <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Id</span>{{ animal.id }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Nom</span>{{ animal.nom }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Date_naissance</span>{{ animal.dateNaissance  ? animal.dateNaissance|date('Y-m-d') : ''  }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Statut</span>{{ animal.statut }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Tests</span>{{ animal.tests }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Sexe</span>{{ animal.sexe }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Vaccins</span>{{ animal.vaccins }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Photo</span>{{ animal.photo }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Commentaire</span>{{ animal.commentaire }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Identification</span>{{ animal.identification }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Sterilise</span>{{ animal.sterilise ? 'Yes' : 'No' }}</td>
+
+
+                      <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+                        <span class="inline-block w-1/3 md:hidden font-bold">Actions</span>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded"><a href="{{ path('app_animal_show', {'id': animal.id}) }}">show</a></button>
+                        <button class="bg-green-400 hover:bg-green-400 text-white font-bold py-1 px-2 border bord-bg-green-400 rounded"><a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a></button>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archive</button>
+                    </td>
+
+                </tr>
         {% else %}
             <tr>
                 <td colspan="12">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('app_animal_new') }}">Create new</a>
+        </table>
+        </section>
+     </main>
 {% endblock %}
