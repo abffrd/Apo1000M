@@ -21,6 +21,11 @@ security:
             lazy: true
             provider: app_user_provider
 
+            form_login:
+                # name of the route created previously
+                login_path: app_login # GET => affiche le form
+                check_path: app_login # POST => traite le form
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
