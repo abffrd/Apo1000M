@@ -26,7 +26,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_adoptant_new", methods={"GET", "POST"})
+     * @Route("/ajout", name="app_adoptant_new", methods={"GET", "POST"})
      */
     public function new(Request $request, AdoptantRepository $adoptantRepository): Response
     {
@@ -56,7 +56,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_adoptant_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modification", name="app_adoptant_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository): Response
     {
