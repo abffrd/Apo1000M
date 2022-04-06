@@ -1,29 +1,4 @@
-
 {{ form_start(form) }}
-
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_row(form.statut) }}
-        {{ form_row(form.users) }}
-        {{ form_row(form.date_appel) }}
-        {{ form_row(form.adoptant) }}
-
-        {{ form_row(form.compte_rendu) }}
-        {{ form_row(form.animaux_proposes) }}
-        {{ form_row(form.retour_animaux_proposes) }}
-        {{ form_row(form.animals) }}
-        {{ form_row(form.date_rencontre) }}
-        {{ form_row(form.retour_rencontre_adoptant) }}
-        {{ form_row(form.retour_rencontre_fa) }}
-        {{ form_row(form.date_visite) }}
-        {{ form_row(form.retour_visite) }}
-        {{ form_row(form.date_adoption) }}
-        {{ form_row(form.date_depart) }}
-        {{ form_row(form.remarque) }}
-
-
-
-
-
-
-   <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
