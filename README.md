@@ -35,19 +35,15 @@ Après avoir cloné le projet depuis le repository github, on réinstalle les co
 
 Installation du framework TailwindCSS 3
 
- - npm install -D tailwindcss postcss autoprefixer
+ - npm install
   
-Finalisation de l'installation 
-
- - npm i
-
 Vérifier que le pack encore de Symfony est bien installé en tapant la commande suivante
 
  - composer require symfony/webpack-encore-bundle
 
-compilation automatique des fichiers CSS à chaque enregistrement
+compilation automatique des fichiers CSS à chaque modification d'un fichier CSS ou JS ou twig
 
- - npm run dev --watch
+ - npm run watch
 
 Créer un fichier .env.local avec la ligne suivante
 
