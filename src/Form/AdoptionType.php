@@ -5,7 +5,7 @@ namespace App\Form;
 use App\Entity\Adoption;
 use App\Entity\Adoptant;
 use App\Entity\Animal;
-use App\Entity\Membre;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -92,9 +92,9 @@ class AdoptionType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('membres', EntityType::class, [
+            ->add('users', EntityType::class, [
                 // looks for choices from this entity
-                'class' => Membre::class,
+                'class' => User::class,
                 'label' => 'Bénévoles en charge du dossier',
                 'choice_label' => 'fullname',
                 // used to render a select box, check boxes or radios

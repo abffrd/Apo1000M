@@ -24,15 +24,6 @@ class Role
      */
     private $role;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="roles")
-     */
-    private $membres;
-
-    public function __construct()
-    {
-        $this->membres = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -47,33 +38,6 @@ class Role
     public function setRole(string $role): self
     {
         $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Membre>
-     */
-    public function getMembres(): Collection
-    {
-        return $this->membres;
-    }
-
-    public function addMembre(Membre $membre): self
-    {
-        if (!$this->membres->contains($membre)) {
-            $this->membres[] = $membre;
-            $membre->addRole($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMembre(Membre $membre): self
-    {
-        if ($this->membres->removeElement($membre)) {
-            $membre->removeRole($this);
-        }
 
         return $this;
     }
