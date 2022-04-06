@@ -8,15 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    /**
-     * @Route("/", name="app_login")
-     */
-    public function login(): Response
-    {
-        return $this->render('main/login.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
-    }
+   
     /**
      * @Route("/accueil", name="app_home")
      */
