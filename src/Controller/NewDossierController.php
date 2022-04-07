@@ -6,6 +6,7 @@ use App\Entity\Adoptant;
 use App\Repository\AdoptantRepository;
 use App\Entity\Adoption;
 use App\Repository\AdoptionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,7 +30,7 @@ class NewDossierController extends AbstractController
         /**
      * @Route("/{telephone}/adoption_adoptant", name="create_adoption_adoptant", methods={"GET"})
      */
-    public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository): Response
+    public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository, EntityManagerInterface $entityManager): Response
     {
         dump('ici');
         // on regarde si le n0 de téléphone est dans la table adoptant
@@ -48,15 +49,15 @@ class NewDossierController extends AbstractController
         }
 
         //sinon, l'adoptant existe, on lui crée une adoption
-        dump($adoptant->getId());
-
-        $idAdoptant = $adoptant->getId();
+        dump($adoptant);
         $adoption = new Adoption;
-        dump($idAdoptant);
-        $adoption->setAdoptant($idAdoptant);
+
+        $adoption->setAdoptant($adoptant); 
         dump($adoption);
+        $entityManager->persist($adoption);
+        $entityManager->flush();
         //new adoption avec adoptant = id --> 283
         dd("on s'arrete");
-
+        http://localhost:8000/new_dossier/03/adoption_adoptant
     }
 }
