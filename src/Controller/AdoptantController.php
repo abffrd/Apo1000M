@@ -28,7 +28,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_adoptant_new", methods={"GET", "POST"})
+     * @Route("/ajout", name="app_adoptant_new", methods={"GET", "POST"})
      */
     public function new(Request $request, AdoptantRepository $adoptantRepository): Response
     {
@@ -58,7 +58,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_adoptant_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modification", name="app_adoptant_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository): Response
     {
@@ -91,27 +91,4 @@ class AdoptantController extends AbstractController
         return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
     } */
 
-    /**
-     * @Route("/adoption_adoptant/{id}", name="create_adoption_adoptant", methods={"GET"})
-     */
-    public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository): Response
-    {
-        dump('ici');
-
-        $adoptant = $adoptantRepository->findOneByPhone($adoptant->getTelephone());
-
-        // on vérifie si l'identifiant existe dans le tableau
-        if ( is_null($adoptant))
-        {
-            // on jette une exception lorsque l'on rencontre une erreur
-            // mais que l'on ne veut pas la gérer
-            throw $this->createNotFoundException('The show does not exist');
-            dump("l'adoptant n'existe pas");
-        }
-
-        dump("l'adoptant existe, on va lui créer un dossier");
-        return $this->render('adoption/show.html.twig');
-        
-    
-    }
 }

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle adoption{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle adoption</h1>
+
+    <form action="" method="get">
+        <p>N° de téléphone : <input type="text" name="phone" /></p>
+        <p class="btn"><input type="submit" value="OK"></p>
+    </form>
+
+    <a href="{{ path('app_adoption_index') }}">back to list</a>
+{% endblock %}
