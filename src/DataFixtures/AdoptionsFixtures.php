@@ -10,7 +10,7 @@ use App\Entity\Adoptant;
 use App\Entity\Animal;
 use App\Entity\Espece;
 use App\Entity\FamilleAccueil;
-use App\Entity\Membre;
+use App\Entity\User;
 use App\Entity\Role;
 use DateTime;
 
@@ -196,16 +196,16 @@ class AdoptionsFixtures extends Fixture
         $nbMembres = 20;
         $membresObjects = [];
         for ($i = 0; $i < $nbMembres; $i++){
-            $membre = new Membre();
+            $membre = new User();
             $membre->setNom($faker->lastName());
             $membre->setPrenom($faker->firstNAme());
-            $membre->setMotDePasse($faker->password());
-            $membre->setIdentifiant($faker->word());
+            $membre->setPassword($faker->password());
+            $membre->setEmail($faker->email());
             $membre->setActif($faker->numberBetween(0, 1));
 
             //TODO relation one to many --> à améliorer en many to many
-            $randomIndex = array_rand($roleObjects);
-            $membre->addRole($roleObjects[$randomIndex]);
+            //$randomIndex = array_rand($roleObjects);
+            //$membre->setRoles($roleObjects[$randomIndex]);
 
             //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($adoptionObjects);

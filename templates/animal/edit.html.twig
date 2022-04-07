@@ -1,14 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Animal
-{% endblock %}
+{% block title %}Edit Animal{% endblock %}
 
 {% block body %}
-	<h1>Edit Animal</h1>
+<main class="flex justify-center items-center  ">
+
+      <section class=" border-2 p-10  ml-2">
+      <div class="px-10 md:px-12 py-10 md:py-7">
+      <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Edit Animal </p>
+                </div>
+       </div>
+       <!-- ************************header table*********************** -->
+    
+
+	
 
 	{{ include('animal/_form.html.twig', {'button_label': 'Update'}) }}
 
-	<a href="{{ path('app_animal_index') }}">back to list</a>
+	<a class="btn m-10" href="{{ path('app_animal_index') }}">back to list</a>
 
 	{#{ include('animal/_delete_form.html.twig') }#}
+	 </div >
+</section >
+</main >
 {% endblock %}

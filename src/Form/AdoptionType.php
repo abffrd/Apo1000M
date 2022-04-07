@@ -23,46 +23,58 @@ class AdoptionType extends AbstractType
                 'label' => 'Date d\'appel',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
                 'data' => new \DateTimeImmutable(),
             ])
             ->add('compte_rendu', TextareaType::class, [
-                'label' => 'Compte-rendu de l\'appel'])
+                'label' => 'Compte-rendu de l\'appel',
+                'required' => false,])
             ->add('retour_animaux_proposes', TextareaType::class, [
-                'label' => 'Retour de l\adoptant sur les animaux proposés'])
+                'label' => 'Retour de l\adoptant sur les animaux proposés',
+                'required' => false,])
             ->add('date_rencontre', DateType::class, [
                 'label' => 'Date de rencontre entre l\'adoptant et l\'animal',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
                 'data' => new \DateTimeImmutable(),
             ])
             ->add('retour_rencontre_adoptant', TextareaType::class, [
-                'label' => 'Retour de l\adoptant sur la rencontre de l\'animal'])
+                'label' => 'Retour de l\adoptant sur la rencontre de l\'animal',
+                'required' => false,])
             ->add('retour_rencontre_fa', TextareaType::class, [
-                'label' => 'Retour de la FA sur la rencontre de l\'animal'])
+                'label' => 'Retour de la FA sur la rencontre de l\'animal',
+                'required' => false,])
             ->add('date_visite', DateType::class, [
                 'label' => 'Date de visite du domicile de l\'adoptant',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
                 'data' => new \DateTimeImmutable(),
             ])
             ->add('retour_visite', TextareaType::class, [
-                'label' => 'Retour du bénévole sur la visite du domicile'])
+                'label' => 'Retour du bénévole sur la visite du domicile',
+                'required' => false,])
             ->add('date_adoption', DateType::class, [
                 'label' => 'Date d\'adoption',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
                 'data' => new \DateTimeImmutable(),
             ])
             ->add('date_depart', DateType::class, [
                 'label' => 'Date de départ',
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
+                'required' => false,
                 'data' => new \DateTimeImmutable(),
             ])
             ->add('remarque', TextareaType::class, [
-                'label' => 'Remarques sur le dossier'])
+                'label' => 'Remarques sur le dossier',
+                'required' => false,])
             ->add('statut', ChoiceType::class, [
                 'label' => 'Statut de l\'adoption',
+                'required' => false,
                 'choices'  => [
                     'à prendre '  => '000',
                     'CR appel à faire'  => '010',
@@ -82,7 +94,8 @@ class AdoptionType extends AbstractType
                 'expanded' => false,
             ])
             ->add('animaux_proposes', TextareaType::class, [
-                'label' => 'Animaux proposés'])
+                'label' => 'Animaux proposés',
+                'required' => false,])
             ->add('adoptant', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Adoptant::class,
@@ -91,6 +104,7 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
+                'required' => false,
             ])
             ->add('users', EntityType::class, [
                 // looks for choices from this entity
@@ -100,7 +114,8 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => false,
-                'mapped' => false
+                'mapped' => false,
+                'required' => false,
             ])
             ->add('animals', EntityType::class, [
                 // looks for choices from this entity
@@ -110,7 +125,8 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-                'mapped' => false
+                'mapped' => false,
+                'required' => false,
             ])
 
         ;
