@@ -27,7 +27,7 @@ class NewDossierController extends AbstractController
         ]);
     }
 
-        /**
+    /**
      * @Route("/{telephone}/adoption_adoptant", name="create_adoption_adoptant", methods={"GET"})
      */
     public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository, EntityManagerInterface $entityManager): Response
@@ -57,7 +57,8 @@ class NewDossierController extends AbstractController
         $entityManager->persist($adoption);
         $entityManager->flush();
         //new adoption avec adoptant = id --> 283
-        dd("on s'arrete");
-        http://localhost:8000/new_dossier/03/adoption_adoptant
+        $this->addFlash('success', 'Ajout effectué');
+        return $this->redirectToRoute('app_new_dossier', [], Response::HTTP_SEE_OTHER);
+
     }
 }
