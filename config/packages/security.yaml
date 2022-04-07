@@ -25,6 +25,7 @@ security:
                 # name of the route created previously
                 login_path: app_login # GET => affiche le form
                 check_path: app_login # POST => traite le form
+                default_target_path: app_home  #Redirige vers la page d'accueil : "app_home"
 
                 enable_csrf: true
 
