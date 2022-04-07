@@ -73,4 +73,21 @@ class AdoptantRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findOneByPhone($phone): ?Adoptant
+    {
+        dump('on est dans la fonction findOneByPhone ');
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Adoptant a
+            WHERE a.telephone = :telephone'
+        );
+        $query->setParameter('telephone', $phone);
+
+        // returns the adoptant or null if not found
+        return $query->getOneOrNullResult();
+
+    }
 }
