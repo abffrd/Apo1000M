@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}1000-Moustaches{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}1000-Moustaches
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
 
 
-    <body>
-    
-      <nav class="teal-400 border h-19  px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
-      <div class="container flex flex-wrap justify-between items-center mx-auto">
+	<body>
+		<header class="border-4 border-b-violet ">
+			<div class="relative bg-white">
 
-          <a href="{{ path('app_home') }}" class="flex items-center">
-          <img src="{{'public/images/petit-logo.pnj'}}" class="mr-3 h-6 sm:h-9" alt="" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">1000-Moustaches</span>
-          </a>
+				<div class="max-w-7xl  px-4 sm:px-6">
+					<div class="flex justify-between items-center border-b-2 py-6 md:justify-start md:space-x-10">
+						<div class="flex justify-start lg:w-0 lg:flex-1">
+							<img class="h-20 w-auto" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association">
+						</div>
+						<div class="mr-2 sm-my-2 sm-hidden">
+							<img class="h-20 w-auto justify-center" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association">
+						</div>
 
-            <div>
-              <a href="{{ path('app_logout') }}" class=" bg-gray-50 block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Déconnexion</a>
-            </div>
-          
-      </div>
-</nav>
-        {% block body %}{% endblock %}
-    </body>
+						{# {% if (app_user)%} #}
+						<div class="md:flex items-center justify-end md:flex-1 sm-flex-direction-row">
+							<p>Bienvenue User</p>
+							<a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white btn">
+								Déconnexion
+							</a>
+						</div>
+						{# {% endif %} #}
+					</div>
+				</div>
+
+			</div>
+		</header>
+		{% block body %}{% endblock %}
+		<footer>
+			<div class="">
+				<img class="translate-x-6-duration-100" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
+			</di</footer>
+		</body>
+	</body>
 </html>
