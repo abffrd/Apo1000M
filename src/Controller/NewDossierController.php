@@ -18,10 +18,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class NewDossierController extends AbstractController
 {
     /**
-     * @Route("/", name="app_new_dossier")
+     * @Route("/", name="app_new_dossier", methods={"GET", "POST"})
      */
     public function index(): Response
     {
+        
+        if ( isset( $_GET['submit'] ) ) {
+            /* récupérer les données du formulaire en utilisant 
+            la valeur des attributs name comme clé 
+            */
+            $telephone = $_GET['phone']; 
+
+          //  $telephone->create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository, EntityManagerInterface $entityManager): Response
+            
+            // dump($telephone);
+
+            return $this->redirectToRoute('app_register');
+
+        }
+
+
         return $this->render('adoption/new_dossier.html.twig', [
             'controller_name' => 'NewDossierController',
         ]);
@@ -58,7 +74,7 @@ class NewDossierController extends AbstractController
         $entityManager->flush();
         //new adoption avec adoptant = id --> 283
         $this->addFlash('success', 'Ajout effectué');
-        return $this->redirectToRoute('app_new_dossier', [], Response::HTTP_SEE_OTHER);
+        /* return $this->redirectToRoute('app_new_dossier', [], Response::HTTP_SEE_OTHER); */
 
     }
 }
