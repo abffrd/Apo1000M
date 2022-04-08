@@ -64,6 +64,13 @@ class Adoptant
         $this->adoptions = new ArrayCollection();
     }
 
+
+    public function __toString()
+    {
+        $result = $this->telephone;
+        return  (string) $result;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
