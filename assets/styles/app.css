@@ -1,15 +1,27 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(247, 241, 241);
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Fredoka One', cursive;
+    }
+}
 
 @layer components {
 
     /** button class**/
     .btn {
         @apply px-4 py-2 bg-green-blue hover:bg-teal text-white rounded;
+    }
+
+    /** scale effect**/
+    .trans {
+        @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110
     }
 
     /** Form classes **/
@@ -32,6 +44,4 @@ body {
     .teal-400{
         @apply bg-green-blue ;
     }
-
-    
 }

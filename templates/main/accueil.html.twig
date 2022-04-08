@@ -4,53 +4,65 @@
 {% endblock %}
 {% block body %}
 
- <main class="flex h-screen">
-      
-      
-      <section class="p-4 mx-auto">
+	<main class="flex h-screen flex h-screen ">
+	  <aside class="h-screen xl:w-3/4 lg:w-11/12  w-full hidden sm:block sm:w-full md:w-full h-screen">
+             <img class="max-w-full h-screen" src=" {{ asset('build/images/dog-cat.jpg') }} " alt="dog-cat-home">
+          </aside>
+		<section class="p-4 mx-auto">
 
-          <div class="flex flex-col justify-between h-screen p-4 bg-teal-800">
-            <div class="text-sm">
-              <div class="teal-400 text-white p-4  text-center 
-              rounded cursor-pointer">Pole FA</div>
+			<div class="flex flex-col justify-between h-screen p-4 bg-teal-800">
+				<div class="text-sm">
+					<div class="teal-400 text-white p-4  text-center
+																																																																																										              rounded cursor-pointer">Pole FA</div>
 
-<div class="flex flex-row justify-center  items-center p-4 bg-teal-800">
-<div class="flex flex-col p-4 ">
-              <div class="teal-400 text-white p-3 rounded mt-2  cursor-pointer  hover:text-blue-300"><a href="{{ path('app_animal_index') }}">List des Animaux</a></div>
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300"><a href="{{ path('app_adoption_index') }}">List des Adoption</a></div>
-              
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_user_index') }}">List des users</a></div>
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_adoptant_index') }}">List des Adoptant</a></div>
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_famille_accueil_index') }}">List des famille d'accueil</a></div>
+					<div class="flex flex-row justify-center  items-center p-4 bg-teal-800">
+						<div class="flex flex-col p-4 ">
+							<div class="teal-400 text-white p-3 rounded mt-2  cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_animal_index') }}">List des Animaux</a>
+							</div>
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300">
+								<a href="{{ path('app_adoption_index') }}">List des Adoption</a>
+							</div>
 
- </div>
- <div class="flex flex-col p-4 ">
-              <div class="teal-400 text-white p-3 rounded mt-2  cursor-pointer  hover:text-blue-300"><a href="{{ path('app_espece_index') }}">List des espece</a></div>
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300"><a href="{{ path('app_famille_accueil_new') }}">Ajoutez un Famille d'accueil</a></div>
-              
-              <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_animal_new') }}">Ajoutez un animal</a></div>
-              <div class="bg-blue-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300">List of family disponible</div>
-              <div class="bg-blue-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">others</div>
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_user_index') }}">List des users</a>
+							</div>
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_adoptant_index') }}">List des Adoptant</a>
+							</div>
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_famille_accueil_index') }}">List des famille d'accueil</a>
+							</div>
 
- </div>
- </div>
+						</div>
+						<div class="flex flex-col p-4 ">
+							<div class="teal-400 text-white p-3 rounded mt-2  cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_espece_index') }}">List des espece</a>
+							</div>
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300">
+								<a href="{{ path('app_famille_accueil_new') }}">Ajoutez un Famille d'accueil</a>
+							</div>
+
+							<div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">
+								<a href="{{ path('app_animal_new') }}">Ajoutez un animal</a>
+							</div>
+							<div class="bg-blue-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300">List of family disponible</div>
+							<div class="bg-blue-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300">others</div>
+
+						</div>
+					</div>
 
 
-            </div>
-            
-            
-        </div>
-         
+				</div>
 
 
-</section>
+			</div>
 
-          
 
-       
-      
-      </main>
+		</section>
 
+
+	</main>
 
 
 {% endblock body %}

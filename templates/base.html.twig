@@ -19,26 +19,27 @@
 	</head>
 
 
-	<body>
+	<body >
 		<header class="border-4 border-b-violet ">
 			<div class="relative bg-white">
 
-				<div class="max-w-7xl  px-4 sm:px-6">
+				<div class=" px-4 sm:px-6">
 					<div class="flex justify-between items-center border-b-2 py-6 md:justify-start md:space-x-10">
 						<div class="flex justify-start lg:w-0 lg:flex-1">
-							<img class="h-20 w-auto" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association">
+							<img class="h-20 w-auto trans" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association">
 						</div>
-						<div class="mr-2 sm-my-2 sm-hidden">
-							<img class="h-20 w-auto justify-center" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association">
+						<div class="mr-2 sm-my-2 hidden md:block">
+							<img class="h-20 w-auto justify-center trans" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association">
 						</div>
 
 						{# {% if (app_user)%} #}
+
 						<div class="md:flex items-center justify-end md:flex-1 sm-flex-direction-row">
-							<p>Bienvenue User</p>
-							<a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white btn">
-								Déconnexion
-							</a>
-						</div>
+    
+    <a href="{{ path('app_logout') }}" class="btn trans">
+        Déconnexion
+    </a>
+</div>
 						{# {% endif %} #}
 					</div>
 				</div>
@@ -47,9 +48,9 @@
 		</header>
 		{% block body %}{% endblock %}
 		<footer>
-			<div class="">
-				<img class="translate-x-6-duration-100" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
+			<div class="w-full">
+				<img class="animate-bounce w-full" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
 			</di</footer>
-		</body>
+		
 	</body>
 </html>
