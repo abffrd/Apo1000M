@@ -148,7 +148,6 @@ class AdoptionsFixtures extends Fixture
 
             $adoption->setAnimauxProposes('les animaux proposes sont...');
 
-            //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($animauxObjects);
             $adoption->addAnimal($animauxObjects[$randomIndex]);
 

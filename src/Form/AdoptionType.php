@@ -117,7 +117,7 @@ class AdoptionType extends AbstractType
                 'mapped' => false,
                 'required' => false,
             ])
-            ->add('animals', EntityType::class, [
+            ->add('animal', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Animal::class,
                 'choice_label' => 'nom',

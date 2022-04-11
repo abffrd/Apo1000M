@@ -30,10 +30,6 @@ class NewDossierController extends AbstractController
             la valeur des attributs name comme clé 
             */
             $telephone = $_GET['phone']; 
-            //var_dump($telephone);die();
-
-            
-        
 
             //! étape 1 on cherche si le numéro de tel est déjà dans la base
       
@@ -44,26 +40,14 @@ class NewDossierController extends AbstractController
             if(!$adoptant){
                 
                 $adoptant = new Adoptant;
-                // $adoptant->setNom('bob');
-                // $adoptant->setPrenom('garner');
                 $adoptant->setTelephone($telephone);
                 $entityManager->persist($adoptant);
                 $entityManager->flush();
-    
-
-
                 }
 
-           
-             // dd($adoptant);
-
                 //! 2b2 on lui crée un adoption --> redirige vers create_adoption_adoptant
-
-                //! etape 2b le numéro est dans la base --> redirige vers create_adoption_adoptant
-                
                 return $this->redirectToRoute('create_adoption_adoptant', ['telephone' => $telephone]);
                 
-
         }
 
 
@@ -77,23 +61,9 @@ class NewDossierController extends AbstractController
     */
      public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository, EntityManagerInterface $entityManager): Response
     {
-        //dd('ici');
         // on regarde si le n0 de téléphone est dans la table adoptant
         $adoptant = $adoptantRepository->findOneByPhone($adoptant->getTelephone());
 
-        // on vérifie si l'identifiant existe dans le tableau
-        /* if ($adoptant === null)
-        {   // s'il n'y est pas on crée un adoptant avec ce n° de telephone
-            // truc genre $adoptant = new adoptant....
-            dd("pas d'adoptant");
-            // puis on créé une adoption avec cet adoptant
-            // truc genre $adoption = new adoption....
-
-            return $this->render('main/login.html.twig');
-            //throw $this->createNotFoundException('Utilisateur non trouvé(e).');  
-        } */
-
-        //sinon, l'adoptant existe, on lui crée une adoption
         $adoption = new Adoption;
         
         $adoption->setAdoptant($adoptant); 
@@ -101,8 +71,7 @@ class NewDossierController extends AbstractController
         
         $entityManager->persist($adoption);
         $entityManager->flush();
-        //dump($adoption);die();
-        //new adoption avec adoptant = id --> 283
+
         $this->addFlash('success', 'Ajout effectué');
         return $this->redirectToRoute('app_new_dossier', [], Response::HTTP_SEE_OTHER); 
 

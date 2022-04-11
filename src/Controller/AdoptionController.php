@@ -8,6 +8,7 @@ use App\Entity\Animal;
 use App\Form\AdoptionType;
 use App\Repository\AdoptionRepository;
 use App\Repository\AnimalRepository;
+use PhpParser\Node\Expr\New_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,7 +62,7 @@ class AdoptionController extends AbstractController
     /**
      * @Route("/{id}/modification", name="app_adoption_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, Animal $animal, AnimalRepository $animalRepository): Response
+    public function edit(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
     {
         $form = $this->createForm(AdoptionType::class, $adoption);
         $form->handleRequest($request);
@@ -70,6 +71,10 @@ class AdoptionController extends AbstractController
             //dd($adoption->getAnimals());
             $adoptionRepository->add($adoption);
             //! ok pour MAJ de l'adoption, mais il faut mettre à jour l'animal adopté
+                //récupérer l'animal sélectionné dans l'adoption
+
+                //modifier sa fiche pour indiquer qu'il est réservé pour cette adoption
+
            // $animalRepository->add($animal);           
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
             

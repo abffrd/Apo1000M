@@ -92,20 +92,22 @@ class Adoption
      */
     private $animaux_proposes;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Animal::class, mappedBy="adoption")
-     */
-    private $animals;
+
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, mappedBy="adoptions")
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="adoption")
+     */
+    private $animal;
+
     public function __construct()
     {
-        $this->animals = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->animal = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -282,32 +284,7 @@ class Adoption
         return $this;
     }
 
-    /**
-     * @return Collection<int, Animal>
-     */
-    public function getAnimals(): Collection
-    {
-        return $this->animals;
-    }
-
-    public function addAnimal(Animal $animal): self
-    {
-        if (!$this->animals->contains($animal)) {
-            $this->animals[] = $animal;
-            $animal->addAdoption($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnimal(Animal $animal): self
-    {
-        if ($this->animals->removeElement($animal)) {
-            $animal->removeAdoption($this);
-        }
-
-        return $this;
-    }
+ 
 
     /**
      * @return Collection<int, User>
@@ -331,6 +308,36 @@ class Adoption
     {
         if ($this->users->removeElement($user)) {
             $user->removeAdoption($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animal>
+     */
+    public function getAnimal(): Collection
+    {
+        return $this->animal;
+    }
+
+    public function addAnimal(Animal $animal): self
+    {
+        if (!$this->animal->contains($animal)) {
+            $this->animal[] = $animal;
+            $animal->setAdoption($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimal(Animal $animal): self
+    {
+        if ($this->animal->removeElement($animal)) {
+            // set the owning side to null (unless already changed)
+            if ($animal->getAdoption() === $this) {
+                $animal->setAdoption(null);
+            }
         }
 
         return $this;
