@@ -27,7 +27,7 @@ security:
                 check_path: app_login # POST => traite le form
                 default_target_path: app_home  #Redirige vers la page d'accueil : "app_home"
 
-                enable_csrf: true
+                enable_csrf: true # enable CSRF on the form login
 
             logout:
                 path: app_logout
@@ -46,6 +46,16 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    role_hierarchy:
+        # BENEVOLE hérite du rôle USER
+        ROLE_BENEVOLE: ROLE_USER
+        # RESPONSABLE_POLE hérite du rôle BENEVOLE
+        ROLE_RESPONSABLE_POLE: ROLE_BENEVOLE
+        # MEMBRE_BUREAU hérite du rôle RESPONSABLE_POLE
+        ROLE_MEMBRE_BUREAU: ROLE_RESPONSABLE_POLE
+        # ADMIN hérite du rôle MEMBRE_BUREAU
+        ROLE_ADMIN: ROLE_MEMBRE_BUREAU
 
 when@test:
     security:
