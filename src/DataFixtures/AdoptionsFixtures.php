@@ -174,10 +174,11 @@ class AdoptionsFixtures extends Fixture
 
         //Création des fixtures pour les roles
         $roles = [
-            'ROLE_ADMIN',
-            'RESPONSABLE_POLE',
-            'ROLE_USER',
-            'DEFAULT_ROLE',
+            '["ROLE_ADMIN"]',
+            '["ROLE_MEMBRE_BUREAU"]',
+            '["ROLE_RESPONSABLE_POLE"]',
+            '["ROLE_BENEVOLE"]',
+            '["ROLE_USER"]',
         ];
 
         $roleObjects = [];
@@ -205,7 +206,8 @@ class AdoptionsFixtures extends Fixture
 
             //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($roleObjects);
-            $membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
+            $membre->addRole($roleObjects[$randomIndex]);
+            //$membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
 
 
             //TODO relation one to many --> à améliorer en many to many
