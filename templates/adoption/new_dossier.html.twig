@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle adoption{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle adoption</h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
+    <form action="" method="get">
+        <p>N° de téléphone : <input type="text" name="phone" /></p>
+        <a class="btn"> <input type="submit" name="submit" /> </a>
+    </form>
+
+    <a href="{{ path('app_adoption_index') }}">back to list</a>
+{% endblock %}

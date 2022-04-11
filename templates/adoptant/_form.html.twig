@@ -1,6 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
 
-    <button class="btn m-2">{{ button_label|default('Save') }}</button>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.prenom) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.ville) }}
+        {{ form_row(form.code_postal) }}
+        {{ form_row(form.email) }}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+  <a href="{{ path('app_adoptant_index') }}"><button class="btn ">Ajouter une adoption</button></a>
+
 {{ form_end(form) }}
 

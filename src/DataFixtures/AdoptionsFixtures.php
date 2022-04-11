@@ -10,8 +10,8 @@ use App\Entity\Adoptant;
 use App\Entity\Animal;
 use App\Entity\Espece;
 use App\Entity\FamilleAccueil;
-use App\Entity\User;
 use App\Entity\Role;
+use App\Entity\User;
 use DateTime;
 
 class AdoptionsFixtures extends Fixture
@@ -52,7 +52,7 @@ class AdoptionsFixtures extends Fixture
             $famille->setNom($faker->lastName());
             $famille->setPrenom($faker->firstName());
             $famille->setAdresse($faker->streetAddress());
-            $famille->setTelephone($faker->phoneNumber());
+            $famille->setTelephone($faker->numberBetween(600000000, 799999999));
             $famille->setEmail($faker->email());
             $famille->setVille($faker->city());
             $famille->setCodePostal($faker->numberBetween(44000,44999));
@@ -159,7 +159,7 @@ class AdoptionsFixtures extends Fixture
             $adoptant->setNom($faker->lastName());
             $adoptant->setPrenom($faker->firstName());
             $adoptant->setAdresse($faker->streetAddress());
-            $adoptant->setTelephone($faker->phoneNumber());
+            $adoptant->setTelephone(($faker->numberBetween(600000000, 799999999)));
             $adoptant->setEmail($faker->email());
             $adoptant->setVille($faker->city());
             $adoptant->setCodePostal($faker->numberBetween(44000,44999));
@@ -204,8 +204,9 @@ class AdoptionsFixtures extends Fixture
             $membre->setActif($faker->numberBetween(0, 1));
 
             //TODO relation one to many --> à améliorer en many to many
-            //$randomIndex = array_rand($roleObjects);
-            //$membre->setRoles($roleObjects[$randomIndex]);
+            $randomIndex = array_rand($roleObjects);
+            $membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
+
 
             //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($adoptionObjects);

@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
 /**
  * @Route("/adoptant")
  */
@@ -88,4 +90,5 @@ class AdoptantController extends AbstractController
 
         return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
     } */
+
 }
