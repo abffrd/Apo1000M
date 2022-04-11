@@ -59,6 +59,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $roles;
 
+    
+
     public function __construct()
     {
         $this->adoptions = new ArrayCollection();
@@ -230,4 +232,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    
 }
