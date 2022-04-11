@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $adoptions;
 
     /**
-     * @ORM\ManyToMany(targetEntity=role::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Role::class, inversedBy="users")
      */
     private $roles;
 
@@ -105,13 +105,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
+    /* public function getRoles(): string
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        //return array_unique($roles);
+        //return (array) $this->roles;
+        return json_encode($roles);
+    } */
+
+    /**
+     * @return Collection<int, Role>
+     */
+    public function getRoles(): Collection
+    {
+        return $this->roles;
     }
 
     
