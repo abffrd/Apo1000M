@@ -60,7 +60,7 @@ class AnimalController extends AbstractController
      */
     public function edit(Request $request, Animal $animal, AnimalRepository $animalRepository): Response
     {
-        $form = $this->createForm(Animal1Type::class, $animal);
+        $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

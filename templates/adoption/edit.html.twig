@@ -4,12 +4,28 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Edit Adoption</h1>
+	<main class="flex justify-center items-center  ">
 
-	{{ include('adoption/_form.html.twig', {'button_label': 'Update'}) }}
-  
-	<a href="{{ path('app_adoption_index') }}">back to list</a>
-  
-	{#{ include('adoption/_delete_form.html.twig') }#}
-  
+      <section class=" border-2 p-10  ml-2">
+      <div class="px-10 md:px-12 py-10 md:py-7">
+      <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Edit Adoption </p>
+                </div>
+       </div>
+       <!-- ************************header table*********************** -->
+
+			
+
+				
+
+				{{ include('adoption/_form.html.twig', {'button_label': 'Update'}) }}
+
+				<a class = "btn m-10" href="{{ path('app_adoption_index') }}">Retour à la liste des adoptions</a>
+
+				{#{ include('adoption/_delete_form.html.twig') }#}
+			</div>
+
+		</section>
+
+	</main>
 {% endblock %}

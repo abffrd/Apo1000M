@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Adoption;
+use App\Entity\Adoptant;
 use App\Form\AdoptionType;
 use App\Repository\AdoptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -86,6 +87,7 @@ class AdoptionController extends AbstractController
 
          return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
      }*/
+
 
 
 }

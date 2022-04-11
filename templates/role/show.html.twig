@@ -3,6 +3,12 @@
 {% block title %}Role{% endblock %}
 
 {% block body %}
+<main class="flex w-full h-screen">
+
+      <section class="w-full p-4  ml-2">
+      <div class="px-4 md:px-10 py-4 md:py-7">
+      
+       <!-- ************************header table*********************** -->
     <h1>Role</h1>
 
     <table class="table">
@@ -22,5 +28,8 @@
 
     {# <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a> #}
 
-    {{ include('role/_delete_form.html.twig') }}
+    {# {{ include('role/_delete_form.html.twig') }} #}
+    </div >
+</section >
+</main >
 {% endblock %}

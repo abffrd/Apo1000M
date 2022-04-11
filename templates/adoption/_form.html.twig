@@ -1,5 +1,6 @@
 {{ form_start(form) }}
 
+
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_row(form.statut) }}
         <p>Le statut ne sera pas modifiable, il se met à jour automatiquement en fonction des étapes</p>
@@ -35,3 +36,4 @@
    <button class="btn">{{ button_label|default('Save') }}</button>
    
 {{ form_end(form) }}
+

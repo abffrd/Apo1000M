@@ -207,6 +207,7 @@ class AdoptionsFixtures extends Fixture
             $randomIndex = array_rand($roleObjects);
             $membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
 
+
             //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($adoptionObjects);
             $membre->addAdoption($adoptionObjects[$randomIndex]);
