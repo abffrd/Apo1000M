@@ -1,23 +1,106 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Hello back office 1000 Moustache !
+{% endblock %}
 
 {% block body %}
+<div class="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+		   <div class= "border-b-4 border-b-violet mb-4">
+				
+                <p class=" text-center text-2xl w-full sm:text-4xl">Gestion de 1000-Moustaches</p>
+
+			</div>
+        
+        <div class="max-w-md w-full rounded-xl bg-white space-y-8 shadow-xl">
+          
+
+			<div class= "bg-gray-50 mt-8">
+				<img class="bg-white h-full w-full" src="{{ asset('build/images/grand-logo.jpg') }}" alt="Logo 1000 Moustaches">
+
+			</div>
+           
+
+
+			<div class="rounded bg-white max-w-md rounded overflow-hidden shadow-xl p-6">
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
-
+    <form class="space-y-4" action="{{ path('app_login') }}" method="post">
+    <input type="hidden" name="remember" value="True">
+					<div class="rounded-md shadow-sm -space-y-px">
+						<div class="grid gap-6">
+							<div class="col-span-12">
+        <label for="username"></label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Email" class="mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+                                </div>
+         <div class="col-span-12">                       
+        <label for="password"></label>
+        <input type="password" id="password" name="_password" placeholder="Mot de passe" class="mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+    </div>
+    </div>
+			</div>
         {# If you want to control the URL the user is redirected to on success
         <input type="hidden" name="_target_path" value="/account"/> #}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+{# Mot de pass oublier #}
+         <div class="flex items-center justify-between">
+						<div class="flex items-center">
+							<input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-green-blue focus:ring-green-blue border-gray-300 rounded">
+							<label for="remember_me" class="ml-2 block text-sm text-gray-900">
+								Se rappeler de moi
+							</label>
+						</div>
 
-        <button type="submit">login</button>
+						<div class="text-sm">
+							<a href="#" class="font-medium text-green-blue hover:text-teal">
+								Mot de passe oublié ?
+							</a>
+						</div>
+					</div>
+
+
+					<div>
+						<button type="submit" class="shadow-inner group relative w-full flex justify-center py-2 px-4 border border-transparent text-md  rounded-md text-white btn overflow-hidden  bg-green-blue">
+                          {# button login #}
+
+                
+                     <span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+                        <span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+                        <span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                        <span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+                        <span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-violet opacity-0 group-hover:opacity-100"></span>
+                        <span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Se connecter</span>
+                
+
+                         {# button login #}
+
+					</button>
+                       
+						<div class=" mt-8 border-t-4 text-center">
+                        
+							<p class="text-lg pb-4 pt-4 flex justify-center">
+								Vous n'avez pas de compte encore?
+							</p>
+							
+								 {# button registration #}
+                            <a href="{{ path('app_register') }}" class="btn relative inline-flex items-center justify-center p-4 px-4 py-2 mb-5 overflow-hidden  text-white-600 transition duration-300 ease-out border-2 rounded-md shadow-md group">
+                            <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-violet group-hover:translate-x-0 ease">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </span>
+                            <span class="absolute flex items-center justify-center w-full h-full text-white-500 transition-all duration-300 transform group-hover:translate-x-full ease">Inscription</span>
+                             <span class="relative invisible">Inscription</span>
+                                </a>
+                            {# Button registration #}   
+
+							
+                          
+                           
+                            
+						</div>
+					</div>
     </form>
+    </div>
+    	</div>
+        </div>
 {% endblock %}
