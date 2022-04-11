@@ -8,7 +8,7 @@ body {
 
 @layer base {
     body {
-        font-family: 'Fredoka One', cursive;
+        font-family: 'Fredoka', sans-serif;
     }
 }
 
@@ -17,6 +17,10 @@ body {
     /** button class**/
     .btn {
         @apply px-4 py-2 bg-green-blue hover:bg-teal text-white rounded;
+    }
+
+    .btn-base {
+        @apply px-4 py-2 text-black rounded border-black bg-white hover:bg-green-blue text-white;
     }
     
     /** scale effect**/
