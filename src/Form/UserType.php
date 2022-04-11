@@ -17,13 +17,13 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('roles', EntityType::class, [
+            ->add('approles', EntityType::class, [
                 'class'=>Role::class,
                 'label' => 'Rôles',
                 'choice_label' => 'role',
                 'multiple' => true,
                 'expanded' => true,
-                'mapped' => false
+               
             ] )
             ->add('password')
             ->add('nom')

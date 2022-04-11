@@ -16,6 +16,7 @@ class RoleType extends AbstractType
     {
         $builder
             ->add('role', TextType::class)
+            ->add('users', null)
             
         ;
     }
