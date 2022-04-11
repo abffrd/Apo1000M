@@ -102,24 +102,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Role>
+     * //@return Collection<int, Role>
      */
-    public function getRoles(): Collection
+    /* public function getRoles(): Collection
     {
         return $this->roles;
-    }
+    } */
 
-    // /**
-    //  * @see UserInterface
-    //  */
-    // public function getRoles(): array
-    // {
-    //     $roles = $this->roles;
-    //     // guarantee every user at least has ROLE_USER
-    //     $roles[] = 'ROLE_USER';
+     /**
+      * @see UserInterface
+      */
+     public function getRoles(): array
+     {
+         $roles = $this->roles;
+         // guarantee every user at least has ROLE_USER
+         $roles[] = 'ROLE_USER';
 
-    //     return array_unique($roles);
-    // }
+         return array_unique($roles);
+     }
 
     public function addRole(Role $role): self
     {
@@ -141,7 +141,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         //$this->roles->removeElement($role);
 
-        return $this;
+        //return $this;
     }
 
     /**

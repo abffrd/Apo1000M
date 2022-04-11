@@ -179,8 +179,6 @@ class AdoptionsFixtures extends Fixture
             '["ROLE_RESPONSABLE_POLE"]',
             '["ROLE_BENEVOLE"]',
             '["ROLE_USER"]',
-            
-            
         ];
 
         $roleObjects = [];
