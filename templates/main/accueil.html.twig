@@ -1,59 +1,95 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil back office 1000 Moustache !
-{% endblock %}
+{% block title %}Accueil back office 1000 Moustache !{% endblock %}
 {% block body %}
 
-	<main class="flex h-screen ">
-	  <aside class="h-screen  xl:w-2/4 lg:w-11/12 w-full hidden sm:block sm:w-full md:w-full h-screen">
-             <img class="max-w-full p-10 m-20" src=" {{ asset('build/images/dog-cat.png') }} " alt="dog-cat-home">
-          </aside>
-		<section class="p-4 mx-auto">
+	<main class="flex ">
 
-			<div class="flex flex-col justify-between h-screen p-4  bg-teal-800">
-				<div class="">
-					<div class=" p-4 text-center text-2xl rounded cursor-pointer"><p class="border-b-4 text-4xl font-bold" >Accueil</p></div>
+	  <aside class="h-screen  xl:w-2/4 lg:w-11/12 w-full hidden sm:block sm:w-full h-screen md:w-full h-screen">
+             <img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/dog-cat.png') }} " alt="dog-cat-home">
+        </aside>
 
-					<div class="flex flex-row justify-center items-center text-xl p-4 bg-teal-800">
-						<div class="flex flex-col p-4 ">
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_animal_index') }}">List des Animaux</a>
-							</div>
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_adoption_index') }}">List des Adoption</a>
-							</div>
+		<section class="mx-auto">
 
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_user_index') }}">List des users</a>
-							</div>
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_adoptant_index') }}">List des Adoptant</a>
-							</div>
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_famille_accueil_index') }}">List des famille d'accueil</a>
-							</div>
-
+		   	<div class="flex flex-col p-4 ">
+				
+						<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+				   			<p class="border-b-4 text-4xl font-bold" >Accueil</p>
 						</div>
-						<div class="flex flex-col p-4 ">
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_espece_index') }}">List des espece</a>
-							</div>
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_famille_accueil_new') }}">Ajoutez un Famille d'accueil</a>
+
+					<div class="flex flex-col justify-center text-center items-center sm:flex-row ">
+
+							<div class="flex flex-col p-4 sm:flex">
+							
+								<a href="{{ path('app_animal_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">Liste des Animaux</span>
+    								</a>
+							
+								<a href="{{ path('app_adoption_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">List des Adoption</span>
+    								</a>
+							
+								<a href="{{ path('app_user_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">List des users</span>
+    								</a>
+							
+								<a href="{{ path('app_adoptant_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">List des Adoptant</span>
+    								</a>
+							
+								<a href="{{ path('app_famille_accueil_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">List des famille d'accueil</span>
+    								</a>
+							
+
 							</div>
 
-							<div class="trans teal-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer hover:bg-violet ">
-								<a href="{{ path('app_animal_new') }}">Ajoutez un animal</a>
-							</div>
-							<div class="bg-blue-400 text-white p-3  border-double border-4 border-violet rounded mt-2 cursor-pointer hover:text-blue-300"><a>Famillie ayant disponibility</a></div>
-							<div class="bg-blue-400 text-white p-3 border-double border-4 border-violet rounded mt-2 cursor-pointer  hover:text-blue-300"><a>others</a></div>
+							<div class="flex flex-col p-2 sm:flex">
 
-						</div>
+								<a href="{{ path('app_espece_index') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">List des espece</span>
+    								</a>
+							
+								<a href="{{ path('app_famille_accueil_new') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">Ajoutez un Famille d'accueil</span>
+    								</a>
+							
+								<a href="{{ path('app_animal_new') }}" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">Ajoutez un animal</span>
+    								</a>
+							
+
+							  	<a href="#" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								 <span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">Famillie ayant disponibility</span>
+    								</a>
+							 
+							    	<a href="#" class="relative p-3 mt-2 rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+   								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
+    								<span class="absolute rounded inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
+    								<span class="relative">others</span>
+    								</a>
+							</div>
+
+					
 					</div>
-
-
-				</div>
-
 
 			</div>
 
@@ -61,13 +97,6 @@
 		</section>
 
 
-	</main>
+	</main>	
 
-	{# <a href="#_" class="relative px-6 py-3 font-bold text-white rounded-lg group">
-    <span class="absolute inset-0 w-full h-full transition duration-300 transform -translate-x-1 -translate-y-1 bg-purple-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0"></span>
-    <span class="absolute inset-0 w-full h-full transition duration-300 transform translate-x-1 translate-y-1 bg-pink-800 ease opacity-80 group-hover:translate-x-0 group-hover:translate-y-0 mix-blend-screen"></span>
-    <span class="relative">Button Text</span>
-</a> #}
-
-
-{% endblock body %}
+{% endblock %}
