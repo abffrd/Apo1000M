@@ -64,6 +64,11 @@ class AdoptionController extends AbstractController
         $form = $this->createForm(AdoptionType::class, $adoption);
         $form->handleRequest($request);
 
+/*if ($adoption->getStatut()) {
+    $form->remove('date_appel', 'retour_animaux_proposes');
+}*/
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $adoptionRepository->add($adoption);
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);

@@ -67,7 +67,8 @@ class AdoptantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $adoptantRepository->add($adoptant);
-            return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
+            //return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
 
         return $this->renderForm('adoptant/edit.html.twig', [

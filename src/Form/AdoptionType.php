@@ -29,7 +29,7 @@ class AdoptionType extends AbstractType
             ->add('compte_rendu', TextareaType::class, [
                 'label' => 'Compte-rendu de l\'appel',
                 'required' => false,])
-            ->add('retour_animaux_proposes', TextareaType::class, [
+            /*->add('retour_animaux_proposes', TextareaType::class, [
                 'label' => 'Retour de l\adoptant sur les animaux proposés',
                 'required' => false,])
             ->add('date_rencontre', DateType::class, [
@@ -68,7 +68,7 @@ class AdoptionType extends AbstractType
                 'input' => 'datetime_immutable',
                 'required' => false,
                 'data' => new \DateTimeImmutable(),
-            ])
+            ])*/
             ->add('remarque', TextareaType::class, [
                 'label' => 'Remarques sur le dossier',
                 'required' => false,])
@@ -93,7 +93,7 @@ class AdoptionType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('animaux_proposes', TextareaType::class, [
+            /*->add('animaux_proposes', TextareaType::class, [
                 'label' => 'Animaux proposés',
                 'required' => false,])
             ->add('adoptant', EntityType::class, [
@@ -105,7 +105,7 @@ class AdoptionType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
                 'required' => false,
-            ])
+            ])*/
             ->add('users', EntityType::class, [
                 // looks for choices from this entity
                 'class' => User::class,

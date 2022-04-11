@@ -131,7 +131,13 @@ class AdoptionsFixtures extends Fixture
             $adoption->setDateDepart(new DateTime());
             $adoption->setRemarque($faker->sentence());
             //TODO : mettre le statut en liste
-            $adoption->setStatut('statut');
+            $adoption->setStatut('000');
+
+
+            $statutObjects  =['000', '010','020','030','040','050'];
+            $randomIndex = array_rand($statutObjects);
+            $adoption->setStatut($statutObjects[$randomIndex]);
+
 
             //récupérer l'adoptant fixturisé
                 /*$randomIndex = array_rand($adoptantsObjects);
@@ -218,5 +224,8 @@ class AdoptionsFixtures extends Fixture
         }
 
         $manager->flush();
+
+        //commande pour lancer les fixtures
+        //php bin/console doctrine:fixtures:load
     }
 }

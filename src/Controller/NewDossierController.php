@@ -97,6 +97,7 @@ class NewDossierController extends AbstractController
         $adoption = new Adoption;
         
         $adoption->setAdoptant($adoptant); 
+        $adoption->setStatut('000');
         
         $entityManager->persist($adoption);
         $entityManager->flush();
