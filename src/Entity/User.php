@@ -29,11 +29,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -59,9 +54,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $adoptions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=role::class, inversedBy="users")
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->adoptions = new ArrayCollection();
+        $this->roles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,12 +112,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
+    
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -217,5 +213,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getFullname()
     {
         return $this->prenom . ' ' . $this->nom;
+    }
+
+    public function addRole(role $role): self
+    {
+        if (!$this->roles->contains($role)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
+    public function removeRole(role $role): self
+    {
+        $this->roles->removeElement($role);
+
+        return $this;
     }
 }
