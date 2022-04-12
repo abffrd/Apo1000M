@@ -37,7 +37,7 @@
 						</div>
 
 
-						{# {% if (app_user) %} #}
+						 {% if (app.user) %}
 
 						<div class="md:flex items-center flex-row justify-end md:flex-1 sm-flex-direction-col">
 							{# <ul> #}
@@ -82,13 +82,18 @@
 					</div>
 
 
-					{# {% endif %} #}
+					 {% endif %} 
 				</div>
 			</div>
 
 		</div>
-	</body>
-</html></header>{% block body %}{% endblock %}<footer>
+	</header>
+{% block body %}{% endblock %}
+
+<footer>
 <div class="w-full">
 	<img class="animate-bounce w-full" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
-</di</footer></body></body></html>
+</div>
+</footer>
+</body>
+</html>

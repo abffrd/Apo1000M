@@ -114,7 +114,7 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => false,
-                'mapped' => false,
+               
                 'required' => false,
             ])
             ->add('animals', EntityType::class, [
