@@ -8,31 +8,35 @@
       <section class="w-full p-4  ml-2">
        <!-- ************************header table*********************** -->
 
-        <div class="px-4 md:px-10 py-4 md:py-7">
-            <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">List de Adoptant </p>
-                <div class="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+        <div class="px-4 md:px-10  py-4 md:py-7">
+            <div class="flex  items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-2xl lg:text-4xl font-bold leading-normal text-gray-800">Liste des adoptants <span class="material-icons">pets</span> </p>
+                <div class="py-3 px-4 mb-4 flex items-center rounded-xl text-sm font-bold leading-none text-gray-600 bg-white border-2 border-black group-hover:bg-green-blue cursor-pointer rounded">
                     <p>Sort By:</p>
-                    <select aria-label="select" class="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
-                        <option class="text-sm text-indigo-800">Latest</option>
-                        <option class="text-sm text-indigo-800">Oldest</option>
-                        <option class="text-sm text-indigo-800">Latest</option>
+                    <select aria-label="select" class="focus:text-noir focus:outline-none bg-transparent ml-1 rounded-xl">
+                        <option class="text-sm text-noir rounded-xl">Latest</option>
+                        <option class="text-sm text-noir rounded-xl">Oldest</option>
+                        <option class="text-sm text-noir rounded-xl">Latest</option>
                     </select>
                 </div>
+                
             </div>
         </div>
         <div class=" py-4 md:py-7 px-4 md:px-8 xl:px-10">
-            <div class="sm:flex items-center justify-between">
- <p class="text-sm font-medium leading-none text-white"><a href="{{ path('app_adoptant_new') }}"><button class="btn">{{ button_label|default('Create New') }}</button></a></p>
-
-            </div>
+				<div class="sm:flex items-center justify-between mb-4 w-full">
+					<p class="text-sm font-bold leading-none text-white ">
+						<a class="text-sm font-bold leading-none text-white" href="{{ path('app_adoptant_new') }}">
+							<button class="btn rounded p-4 text-md font-bold leading-none text-black border border-noir shadow-xl">{{ button_label|default('Create New') }}</button>
+						</a>
+					</p>
+				</div>
     <h1></h1>
     <!--************************************** table******************************* -->
 
         <table class="min-w-full border-collapse block md:table">
             <thead class="block md:table-header-group">
                 <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
+                    <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Id </th>
                     <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Nom</th>
                     <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Prenom</th>
                     <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Adresse</th>
@@ -79,3 +83,4 @@
       </main>
 
 {% endblock %}
+

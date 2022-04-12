@@ -25,16 +25,19 @@ security:
                 # name of the route created previously
                 login_path: app_login # GET => affiche le form
                 check_path: app_login # POST => traite le form
-                default_target_path: app_home  #Redirige vers la page d'accueil : "app_home"
+                #default_target_path: app_home  #Redirige vers la page d'accueil : "app_home"
 
                 enable_csrf: true
-
+    #remember_me:
+            #secret: '%kernel.secret%'
+            #signature_properties: [password]
             logout:
                 path: app_logout
 
                 # where to redirect after logout
                 target: app_login
-
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            entry_point: App\Security\LoginFormAuthenticator
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -44,8 +47,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     security:
