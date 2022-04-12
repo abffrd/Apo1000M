@@ -47,9 +47,28 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # Login et register toujours accessible
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/utilisateur, roles: ROLE_ADMIN }
+        
+        - { path: ^/accueil, roles: ROLE_USER }
         - { path: ^/profile, roles: ROLE_USER }
+       
+        - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: PUBLIC_ACCESS }
+        
+       
 
+    role_hierarchy:
+        # BENEVOLE hérite du rôle USER
+        ROLE_BENEVOLE: ROLE_USER
+        # RESPONSABLE_POLE hérite du rôle BENEVOLE
+        ROLE_RESPONSABLE_POLE: ROLE_BENEVOLE
+        # MEMBRE_BUREAU hérite du rôle RESPONSABLE_POLE
+        ROLE_MEMBRE_BUREAU: ROLE_RESPONSABLE_POLE
+        # ADMIN hérite du rôle MEMBRE_BUREAU
+        ROLE_ADMIN: ROLE_MEMBRE_BUREAU
+    
 when@test:
     security:
         password_hashers:
