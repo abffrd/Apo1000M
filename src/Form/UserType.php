@@ -26,7 +26,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                
             ] )
-            ->add('password',PasswordType::class, )
+            ->add('password')
             ->add('nom')
             ->add('prenom')
             ->add('Actif',ChoiceType::class, [
