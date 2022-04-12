@@ -1,23 +1,115 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Hello back office 1000 Moustache !
+{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+	<main class="flex">
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/dog-cat.png') }} " alt="dog-cat-home">
+		</aside>>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
+		<section class="mx-auto">
 
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"/> #}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<div class="flex flex-col p-4 ">
 
-        <button type="submit">login</button>
-    </form>
-{% endblock %}
+				<div class=" p-4 text-center text-2xl rounded cursor-default">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Gestion de l'association
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+
+				<div class="max-w-md w-full rounded-xl bg-white space-y-8 shadow-xl">
+
+
+					<div class="bg-gray-50 mt-8">
+						<img class="rounded-md animate-bounce bg-white h-full w-full" src="{{ asset('build/images/grand-logo.jpg') }}" alt="Logo 1000 Moustaches">
+
+					</div>
+
+
+					<div class="rounded bg-white max-w-md rounded overflow-hidden shadow-xl p-6">
+						{% if error %}
+							<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						{% endif %}
+
+						<form class="space-y-4" action="{{ path('app_login') }}" method="post">
+							<input type="hidden" name="remember" value="True">
+							<div class="rounded-md shadow-sm -space-y-px">
+								<div class="grid gap-6">
+									<div class="col-span-12">
+										<label for="username"></label>
+										<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Email" class="mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+									</div>
+									<div class="col-span-12">
+										<label for="password"></label>
+										<input type="password" id="password" name="_password" placeholder="Mot de passe" class="mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
+									</div>
+								</div>
+							</div>
+							{# If you want to control the URL the user is redirected to on success
+																																																        <input type="hidden" name="_target_path" value="/account"/> #}
+							<input
+							type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							{# Mot de pass oublier #}
+							<div class="flex items-center justify-between">
+								<div class="flex items-center">
+									<input id="remember_me" name="remember_me" type="checkbox" class="h-4 w-4 text-black focus:ring-green-blue border-gray-300 rounded cursor-pointer">
+									<label for="remember_me" class="ml-2 block text-sm text-gray-900">
+										Se rappeler de moi
+									</label>
+								</div>
+
+								<div class="text-sm">
+									<a href="#" class="font-medium text-black hover:text-green-blue">
+										Mot de passe oublié ?
+									</a>
+								</div>
+							</div>
+
+
+							<div>
+								<button
+									type="submit" class="shadow-inner group relative w-full flex justify-center py-2 px-4 text-md rounded-md text-black overflow-hidden bg-white border-2 border-black">
+									{# button login #}
+
+									<span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-black group-hover:w-full ease"></span>
+									<span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-black group-hover:w-full ease"></span>
+									<span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+									<span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+									<span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-green-blue opacity-0 group-hover:opacity-100"></span>
+									<span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">Se connecter</span>
+
+									{# button login #}
+
+								</button>
+
+								<div class=" mt-8 border-t-4 text-center">
+
+									<p class="text-lg pb-4 pt-4 flex justify-center cursor-default">
+										Vous n'avez pas encore de compte ?
+									</p>
+
+									{# button registration #}
+									<a href="{{ path('app_register') }}" class="relative inline-flex items-center justify-center p-4 px-4 py-2 mb-5 overflow-hidden  text-white-600 transition duration-300 ease-out border-2 border-black rounded-md shadow-md group">
+										<span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+											<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+											</svg>
+										</span>
+										<span class="absolute flex items-center justify-center w-full h-full text-white-500 transition-all duration-300 transform group-hover:translate-x-full ease">Inscription</span>
+										<span class="relative invisible">Inscription</span>
+									</a>
+									{# Button registration #}
+
+
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+	{% endblock %}
