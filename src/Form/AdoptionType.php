@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Adoption;
-use App\Entity\Adoptant;
 use App\Entity\Animal;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -114,8 +114,12 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => false,
-                'mapped' => false,
+                //'mapped' => false,
                 'required' => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.prenom', 'ASC');
+                },
             ])
             ->add('animal', EntityType::class, [
                 // looks for choices from this entity
@@ -123,10 +127,14 @@ class AdoptionType extends AbstractType
                 'choice_label' => 'nom',
                 'label' => 'Animal réservé',
                 // used to render a select box, check boxes or radios
-                'multiple' => false,
-                'expanded' => false,
-                'mapped' => false,
-                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+                //'mapped' => true,
+                //'required' => false,
+                /*'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('a')
+                        ->orderBy('a.nom', 'ASC');
+                },*/
             ])
 
         ;
@@ -136,6 +144,10 @@ class AdoptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Adoption::class,
+
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ]
         ]);
     }
 }

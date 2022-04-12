@@ -74,11 +74,12 @@ class AdoptionController extends AbstractController
 
                 //récupérer l'animal sélectionné dans l'adoption -> ok
 
-                $animalId=$_POST['adoption']['animal'];
-
-
+                //$animalId=$_POST['adoption']['animal'];
+                //dd($animalId);
+                //$animal = $animalRepository->find($animalId);
+                //dd($animal);
                 //modifier sa fiche pour indiquer qu'il est réservé pour cette adoption -> ko
-/*
+                /*
                 $animal->getId($animalId); 
                 $animal->setStatut('réservé');
                 $entityManager->persist($animal);
@@ -93,6 +94,7 @@ class AdoptionController extends AbstractController
             'form' => $form,
         ]);
     }
+    
 
     // TODO Gérer l'archivage
      /**
