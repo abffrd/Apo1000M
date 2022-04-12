@@ -16,9 +16,10 @@
 
 <div class="flex flex-row justify-center  items-center p-4 bg-teal-800">
 <div class="flex flex-col p-4 ">
+          {% if is_granted('ROLE_ADMIN') %}
               <div class="teal-400 text-white p-3 rounded mt-2  cursor-pointer  hover:text-blue-300"><a href="{{ path('app_animal_index') }}">List des Animaux</a></div>
               <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer hover:text-blue-300"><a href="{{ path('app_adoption_index') }}">List des Adoption</a></div>
-              
+           {% endif %}   
               <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_user_index') }}">List des users</a></div>
               <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_adoptant_index') }}">List des Adoptant</a></div>
               <div class="teal-400 text-white p-3 rounded mt-2 cursor-pointer  hover:text-blue-300"><a href="{{ path('app_famille_accueil_index') }}">List des famille d'accueil</a></div>
