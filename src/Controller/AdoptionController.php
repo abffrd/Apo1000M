@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Adoption;
 use App\Entity\Adoptant;
+use App\Entity\Animal;
 use App\Form\AdoptionType;
 use App\Repository\AdoptionRepository;
+use App\Repository\AnimalRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use PhpParser\Node\Expr\New_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,14 +63,30 @@ class AdoptionController extends AbstractController
     /**
      * @Route("/{id}/modification", name="app_adoption_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository): Response
+    public function edit( Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AdoptionType::class, $adoption);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $adoptionRepository->add($adoption);
+
+                //récupérer l'animal sélectionné dans l'adoption -> ok
+
+                //$animalId=$_POST['adoption']['animal'];
+                //dd($animalId);
+                //$animal = $animalRepository->find($animalId);
+                //dd($animal);
+                //modifier sa fiche pour indiquer qu'il est réservé pour cette adoption -> ko
+                /*
+                $animal->getId($animalId); 
+                $animal->setStatut('réservé');
+                $entityManager->persist($animal);
+                $entityManager->flush();*/
+         
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+            
         }
 
         return $this->renderForm('adoption/edit.html.twig', [
@@ -74,6 +94,7 @@ class AdoptionController extends AbstractController
             'form' => $form,
         ]);
     }
+    
 
     // TODO Gérer l'archivage
      /**
