@@ -45,6 +45,23 @@ class AdoptionRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function findAPrendre($statut)
+    {
+       $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Adoption a
+            WHERE a.statut like :statut'
+             
+        )->setParameter('statut', $statut);
+
+
+        return $query->getResult();
+
+    }
+
     // /**
     //  * @return Adoption[] Returns an array of Adoption objects
     //  */

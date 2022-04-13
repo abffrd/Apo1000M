@@ -50,7 +50,7 @@
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date depart</th> 
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Remarque</th>#}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animal</th>
+							{# <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animal</th>#}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Adoptant</th>
 {# 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animaux proposes</th> #}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">actions</th>
@@ -72,7 +72,7 @@
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td> #}
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.statut }}</td>
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animal.nom ?? "" }}</td>
+								{#<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animal.nom ?? "" }}</td>#}
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.adoptant.prenom ?? "" }} {{ adoption.adoptant.nom ?? "" }}</td>
 {# 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animauxProposes }}</td> #}
 

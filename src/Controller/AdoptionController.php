@@ -71,19 +71,6 @@ class AdoptionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $adoptionRepository->add($adoption);
-
-                //récupérer l'animal sélectionné dans l'adoption -> ok
-
-                //$animalId=$_POST['adoption']['animal'];
-                //dd($animalId);
-                //$animal = $animalRepository->find($animalId);
-                //dd($animal);
-                //modifier sa fiche pour indiquer qu'il est réservé pour cette adoption -> ko
-                /*
-                $animal->getId($animalId); 
-                $animal->setStatut('réservé');
-                $entityManager->persist($animal);
-                $entityManager->flush();*/
          
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
             
@@ -108,6 +95,19 @@ class AdoptionController extends AbstractController
 
          return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
      }*/
+
+      /**
+     * @Route("/{id}/sans_suite", name="app_adoption_disable", methods={"GET"})
+     */
+    public function sansSuite( Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        $adoption->setStatut('dossier sans suite');
+        $adoptionRepository->add($adoption);
+
+            return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+            
+    }
+
 
 
 

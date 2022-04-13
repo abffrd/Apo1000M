@@ -67,7 +67,7 @@ class NewDossierController extends AbstractController
         $adoption = new Adoption;
         
         $adoption->setAdoptant($adoptant); 
-        $adoption->setStatut('000');
+        $adoption->setStatut('à prendre');
         
         $entityManager->persist($adoption);
         $entityManager->flush();
@@ -76,4 +76,16 @@ class NewDossierController extends AbstractController
         return $this->redirectToRoute('app_new_dossier', [], Response::HTTP_SEE_OTHER); 
 
     } 
+
+    /**
+     * @Route("/a_prendre", name="app_adoption_a_prendre")
+     */
+    public function aPrendre(AdoptionRepository $adoptionRepository): Response
+    {
+        $statut = 'à prendre ';
+        $adoptions = $adoptionRepository->findAPrendre($statut);
+        return $this->render('adoption/index.html.twig', [
+            'adoptions' => $adoptions
+        ]);
+    }
 }
