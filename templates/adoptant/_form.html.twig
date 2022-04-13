@@ -1,6 +1,17 @@
 {{ form_start(form) }}
+
+{{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.prenom, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.adresse, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.telephone, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.email, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.ville, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.code_postal, {'attr': {class:'rounded-md w-full :'}}) }}
+
     {{ form_widget(form) }}
 
-    <button class="btn m-2">{{ button_label|default('Save') }}</button>
+    <button class="btn ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button>
+    <a class="btn ml-20 mr-20" href="{{ path('app_adoptant_index') }}">Retour </a>
+
 {{ form_end(form) }}
 
