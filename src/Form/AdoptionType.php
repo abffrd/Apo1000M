@@ -76,7 +76,7 @@ class AdoptionType extends AbstractType
                 'label' => 'Statut de l\'adoption',
                 'required' => false,
                 'choices'  => [
-                    'à prendre ' => 'à prendre ' ,
+                    'à prendre' => 'à prendre' ,
                     'CR appel à faire' => 'CR appel à faire',
                     'CR appel à valider' => 'CR appel à valider',
                     'animaux à proposer'  => 'animaux à proposer',

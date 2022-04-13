@@ -134,7 +134,7 @@ class AdoptionsFixtures extends Fixture
             $adoption->setStatut('000');
 
 
-            $statutObjects  =['000', '010','020','030','040','050'];
+            $statutObjects  =['à prendre', 'CR appel à faire'];
             $randomIndex = array_rand($statutObjects);
             $adoption->setStatut($statutObjects[$randomIndex]);
 
