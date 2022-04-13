@@ -55,7 +55,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $actif;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Adoption::class, inversedBy="users")
+     * @ORM\ManyToMany(targetEntity=Adoption::class, mappedBy="users")
+     * @ORM\JoinTable(name="user_adoption")
      */
     private $adoptions;
 

@@ -88,4 +88,19 @@ class NewDossierController extends AbstractController
             'adoptions' => $adoptions
         ]);
     }
+
+    /**
+     * @Route("/mes_adoptions", name="app_adoption_a_moi")
+     */
+    public function mine(AdoptionRepository $adoptionRepository): Response
+    {
+        $id = '90';
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $id =$user->getId();
+        $adoptions = $adoptionRepository->findMine($id);
+
+        return $this->render('adoption/index.html.twig', [
+            'adoptions' => $adoptions
+        ]);
+    }
 }
