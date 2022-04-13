@@ -50,8 +50,8 @@ security:
         #- { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/role, roles: ROLE_ADMIN }
 
-        - { path: ^/utilisateur/ajout, roles: ROLE_MEMBRE_BUREAU }
-        - { path: ^/utilisateur, roles: ROLE_BENEVOLE }
+        #- { path: ^/utilisateur/ajout, roles: ROLE_MEMBRE_BUREAU }
+        #- { path: ^/utilisateur, roles: ROLE_BENEVOLE }
 
         - { path: ^/adoption, roles: ROLE_BENEVOLE }
 

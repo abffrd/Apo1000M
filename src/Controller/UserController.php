@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class UserController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_RESPONSABLE_POLE")
+     * 
      * @Route("/", name="app_user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
