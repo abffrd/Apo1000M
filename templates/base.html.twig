@@ -24,7 +24,7 @@
 
 
 	<body>
-		<header class="border-4 border-b-violet ">
+		<header class="border-4 border-b-green-blue">
 			<div class="relative bg-white">
 
 				<div class=" px-4 sm:px-6">
@@ -37,63 +37,52 @@
 						</div>
 
 
-						 {% if (app.user) %}
+						{% if (app.user) %}
 
-						<div class="md:flex items-center flex-row justify-end md:flex-1 sm-flex-direction-col">
-							{# <ul> #}
-							{# <a href="#_" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-															<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-															<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-															<span class="relative text-black group-hover:text-white">Bonjour User ! #}
+							<div class="md:flex items-center flex-row justify-end md:flex-1 sm-flex-direction-col">
+								{# <ul> #}
+								{# <a href="#_" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+																															<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+																															<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+																															<span class="relative text-black group-hover:text-white">Bonjour User ! #}
 
-							<!-- Profile dropdown -->
-								<div class="ml-3 relative rounded trans px-6 py-3 font-bold text-white rounded-lg group"> 
-								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-								<div class="pl-8 ml-3 flex flex-col">
-									<span class="relative text-black group-hover:text-white">
-										<svg class="h-4 w-4 text-black-500" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-										<polyline points="18 15 12 9 6 15"/></svg>
-									</span>
-								</div>
-								<button id="user-menu" aria-label="User menu" aria-haspopup="true">
-									
-									<span class="relative text-black group-hover:text-white">
-									
-										<p>Bonjour User!
-										</p>
-									</button>
-									<div id="user-menu-dropdown" class="menu-hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-										<div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-											<a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-												Profile</a>
+								<!-- Profile dropdown -->
+									<div class="ml-3 relative rounded trans px-6 py-3 font-bold text-white rounded-lg group"> <span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+									<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+									<div class="pl-8 ml-3 flex flex-col">
+										<span class="relative text-black group-hover:text-white">
+											<svg class="h-4 w-4 text-black-500" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<polyline points="18 15 12 9 6 15"/></svg>
+										</span>
+									</div>
+									<button id="user-menu" aria-label="User menu" aria-haspopup="true">
 
-											<a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-												Déconnexion</a>
+										<span class="relative text-black group-hover:text-white">
+
+											<p>Bonjour User!
+											</p>
+										</button>
+										<div id="user-menu-dropdown" class="menu-hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+											<div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+												<a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+													Profile</a>
+
+												<a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
+													Déconnexion</a>
+											</div>
 										</div>
 									</div>
+									{# </ul> #}
+								</span>
+							</a>
 
-
-								</div>
-								{# </ul> #}
-							</span>
-						</a>
-
-					</div>
-
-
-					 {% endif %} 
+						</div>
+					{% endif %}
 				</div>
 			</div>
-
 		</div>
-	</header>
-{% block body %}{% endblock %}
-
-<footer class= "mt-10">
+	</body>
+</html></header>{% block body %}{% endblock %}<footer class="mt-10">
 <div class="w-full">
 	<img class="animate-bounce w-full" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
-</div>
-</footer>
-</body>
-</html>
+</div></footer></body></html>
