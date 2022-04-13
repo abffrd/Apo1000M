@@ -36,7 +36,7 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
             //TODO rediriger vers la route d'accueil
-            return $this->redirectToRoute('app_adoption_index');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('registration/register.html.twig', [
