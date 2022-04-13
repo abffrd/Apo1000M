@@ -51,7 +51,7 @@ security:
         - { path: ^/role, roles: ROLE_ADMIN }
 
         - { path: ^/utilisateur/ajout, roles: ROLE_MEMBRE_BUREAU }
-        - { path: ^/utilisateur, roles: ROLE_RESPONSABLE_POLE }
+        - { path: ^/utilisateur, roles: ROLE_BENEVOLE }
 
         - { path: ^/adoption, roles: ROLE_BENEVOLE }
 
@@ -63,7 +63,7 @@ security:
 
         - { path: ^/espece, roles: ROLE_RESPONSABLE_POLE }
 
-        - { path: ^/new_dossier, roles: ROLE_RESPONSABLE_POLE }
+        - { path: ^/new_dossier, roles: ROLE_BENEVOLE }
         
         
         - { path: ^/accueil, roles: ROLE_USER }
