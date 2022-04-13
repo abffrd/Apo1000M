@@ -27,8 +27,8 @@
         {{ form_row(form.date_adoption) }}
          <button class="btn">Date adoption renseignée</button>
         {{ form_row(form.date_depart) }#}
-        <!--<button class="btn">Date départ renseignée</button>
-         <button class="btn">Dossier sans suite</button>-->
+        <!--<button class="btn">Date départ renseignée</button>-->
+        <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
         {{ form_row(form.remarque) }}
 
    <button class="btn">{{ button_label|default('Save') }}</button>

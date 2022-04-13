@@ -8,6 +8,9 @@
 
 		<section
 			class="w-full p-4  ml-2">
+  	<a class = "btn m-10" href="{{ path('app_adoption_a_prendre') }}">Voir les adoptions à prendre</a>
+	<a class = "btn m-10" href="{{ path('app_adoption_index') }}">Voir toutes les adoptions</a>
+	<a class = "btn m-10" href="{{ path('app_adoption_a_moi') }}">Voir les adoptions qui me sont affectées (id 90 pour l'instant -> 31 et 32)</a>
 
 			<!-- ************************header table*********************** -->
 
@@ -15,24 +18,24 @@
 				<div class="flex items-center justify-between">
 					<p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Liste des Adoptions
 					<span class="material-icons">pets</span> </p>
-					<div class="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+					{#<div class="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
 						<p>Trier par:</p>
 						<select aria-label="select" class="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
 							<option class="text-sm text-indigo-800">Latest</option>
 							<option class="text-sm text-indigo-800">Oldest</option>
 							<option class="text-sm text-indigo-800">Latest</option>
 						</select>
-					</div>
+					</div>#}
 				</div>
 			</div>
 			<div class=" py-4 md:py-7 px-4 md:px-8 xl:px-10">
-				<div class="sm:flex items-center justify-between">
+				{#<div class="sm:flex items-center justify-between">
 					<p class="text-sm font-medium leading-none text-white">
 						<a href="{{ path('app_adoption_new') }}">
 							<button class="btn">{{ button_label|default('Create New') }}</button>
 						</a>
 					</p>
-				</div>
+				</div>#}
 				<!--************************************** table******************************* -->
 				<table class="min-w-full border-collapse block md:table">
 					<thead class="block md:table-header-group">
@@ -50,7 +53,7 @@
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date depart</th> 
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Remarque</th>#}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animal</th>
+							{# <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animal</th>#}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Adoptant</th>
 {# 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animaux proposes</th> #}
 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">actions</th>
@@ -72,7 +75,7 @@
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td> #}
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.statut }}</td>
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animal.nom ?? "" }}</td>
+								{#<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animal.nom ?? "" }}</td>#}
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.adoptant.prenom ?? "" }} {{ adoption.adoptant.nom ?? "" }}</td>
 {# 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animauxProposes }}</td> #}
 

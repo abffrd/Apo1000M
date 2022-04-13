@@ -70,8 +70,8 @@ security:
         - { path: ^/list, roles: ROLE_RESPONSABLE_POLE }
        
         # Login et register toujours accessible
-        - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+        #- { path: ^/register, roles: PUBLIC_ACCESS }
+        #- { path: ^/, roles: PUBLIC_ACCESS }
         
        
 

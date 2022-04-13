@@ -76,19 +76,20 @@ class AdoptionType extends AbstractType
                 'label' => 'Statut de l\'adoption',
                 'required' => false,
                 'choices'  => [
-                    'à prendre '  => '000',
-                    'CR appel à faire'  => '010',
-                    'CR appel à valider'  => '020',
-                    'animaux à proposer'  => '030',
-                    'animaux proposés - attente retour adoptant'  => '040',
-                    'en attente rencontre'  => '050',
-                    'CR rencontre à valider'  => '060',
-                    'en attente visite domicile'  => '070',
-                    'CR visite à valider'  => '080',
-                    'en attente adoption'  => '090',
-                    'en attente départ'  => '100',
-                    'adoption finalisée'  => '110',
-                    'adoption annulée'  => '999',
+                    'à prendre ' => 'à prendre ' ,
+                    'CR appel à faire' => 'CR appel à faire',
+                    'CR appel à valider' => 'CR appel à valider',
+                    'animaux à proposer'  => 'animaux à proposer',
+                    'animaux proposés - attente retour adoptant'  => 'animaux proposés - attente retour adoptant',
+                    'en attente rencontre'  => 'en attente rencontre',
+                    'CR rencontre à valider'  => 'CR rencontre à valider',
+                    'en attente visite domicile'  => 'en attente visite domicile',
+                    'CR visite à valider'  => 'CR visite à valider',
+                    'en attente adoption'  => 'en attente adoption',
+                    'en attente départ'  => 'en attente départ',
+                    'adoption finalisée'  => 'adoption finalisée',
+                    'adoption annulée'  => 'adoption annulée',
+                    'dossier sans suite' => 'dossier sans suite',
                 ],
                 'multiple' => false,
                 'expanded' => false,
@@ -113,8 +114,9 @@ class AdoptionType extends AbstractType
                 'choice_label' => 'fullname',
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
-                'expanded' => false,
-                'required' => false,
+                'expanded' => true,
+                'mapped' => true,
+                //'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.prenom', 'ASC');
@@ -130,10 +132,10 @@ class AdoptionType extends AbstractType
                 'expanded' => true,
                 //'mapped' => true,
                 //'required' => false,
-                /*'query_builder' => function (EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('a')
                         ->orderBy('a.nom', 'ASC');
-                },*/
+                },
             ])
 
         ;
