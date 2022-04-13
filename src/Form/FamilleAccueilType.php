@@ -18,23 +18,42 @@ class FamilleAccueilType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom'])
+                'label' => 'Nom :',
+                'attr' => ['placeholder' => 'Pepito'],
+                ])
             ->add('prenom', TextType::class, [
-                'label' => 'Prénom'])
+                'label' => 'Prénom :',
+                'attr' => ['placeholder' => 'Chocolat'],
+                ])
             ->add('adresse', TextType::class, [
-                'label' => 'Adresse'])
-            ->add('code_postal', IntegerType::class)
+                'label' => 'Adresse :',
+                'attr' => ['placeholder' => 'mail@example.com'],
+                ])
+            ->add('code_postal', IntegerType::class, [
+                'label' => 'Code Postal: ',
+                'attr' => ['placeholder' => '98764'],
+            ])
             ->add('ville', TextType::class, [
-                'label' => 'Ville'])
+                'label' => 'Ville :',
+                'attr' => ['placeholder' => 'Paris'],
+                ])
             ->add('commentaire', TextareaType::class, [
-                'label' => 'Commentaire'])
-            ->add('email')
-            ->add('telephone', TextType::class)
+                'label' => 'Commentaire :',
+                'attr' => ['placeholder' => 'Woof? Woof? Bark! Bark!']
+                ])
+            ->add('email', TextType::class, [
+                'label' => 'E-mail :',
+                'attr' => ['placeholder' => 'mail@example.com']
+                ])
+            ->add('telephone', TextType::class, [
+                'label' => 'Téléphone :',
+                'attr' => ['placeholder' => '1234567890'],
+                ])
             ->add('especes', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Espece::class,
                 'choice_label' => 'type',
-                'label' => 'Espèces d\'animaux accueillis',
+                'label' => 'Espèces d\'animaux accueillis :',
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => true,

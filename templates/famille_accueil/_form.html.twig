@@ -1,16 +1,37 @@
-{{ form_start(form) }}
+{% block body %}
 
-{{ form_row(form.nom, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.prenom, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.adresse, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.code_postal, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.ville, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.commentaire, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.email, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.telephone, {'attr': {class:'rounded-md px-20 :'}}) }}
-{{ form_row(form.especes, {'attr': {class:'rounded-md px-20 :'}}) }}
+	<main class="flex mx-auto ">
 
-    {{ form_widget(form) }}
-    <button class="btn mr-20">{{ button_label|default('Sauvegarder') }}</button>
-    <a class="btn ml-20 " href="{{ path('app_famille_accueil_index') }}"> Retour</a>
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/dog-cat.jpg') }} " alt="dog-cat-home">
+		</aside>
+
+		<section class="mx-auto">
+
+			<div class="flex flex-col p-4 ">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Création famille d'accueil:
+					</p>
+				</div>
+
+{{ form_start(form, {'attr': {class:''}}) }}
+
+            {{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.prenom, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.adresse, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.code_postal, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.ville, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.commentaire, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.email, {'attr': {class:'rounded-md w-full :'}}) }}
+            {{ form_row(form.telephone, {'attr': {class:'rounded-md w-full :'} }) }}
+            {{ form_row(form.especes, {'attr': {class:'grid justify-items-center '}}) }}
+
+            {{ form_widget(form) }}
+            <button class="btn mr-20">{{ button_label|default('Sauvegarder') }}</button>
+            <a class="btn ml-20 " href="{{ path('app_famille_accueil_index') }}"> Retour</a>
+
 {{ form_end(form) }}
+
+{% endblock %}
