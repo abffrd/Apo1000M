@@ -82,7 +82,7 @@ class NewDossierController extends AbstractController
      */
     public function aPrendre(AdoptionRepository $adoptionRepository): Response
     {
-        $statut = 'à prendre ';
+        $statut = 'à prendre';
         $adoptions = $adoptionRepository->findAPrendre($statut);
         return $this->render('adoption/index.html.twig', [
             'adoptions' => $adoptions
@@ -94,7 +94,6 @@ class NewDossierController extends AbstractController
      */
     public function mine(AdoptionRepository $adoptionRepository): Response
     {
-        $id = '90';
         $user = $this->get('security.token_storage')->getToken()->getUser();
         $id =$user->getId();
         $adoptions = $adoptionRepository->findMine($id);

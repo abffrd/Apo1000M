@@ -205,7 +205,7 @@ class AdoptionsFixtures extends Fixture
          $user->setNom('Admin');
          $user->setPrenom('Moustaches');
          // password is moustache
-         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_ADMIN']);
          $user->setActif('1');
          $manager->persist($user);
@@ -215,7 +215,7 @@ class AdoptionsFixtures extends Fixture
          $user->setNom('Membre de bureau');
          $user->setPrenom('Moustaches');
          // password is moustache
-         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_MEMBRE_BUREAU']);
          $user->setActif('1');
          $manager->persist($user);
@@ -225,7 +225,7 @@ class AdoptionsFixtures extends Fixture
          $user->setNom('Responsable Pôle');
          $user->setPrenom('Moustaches');
          // password is moustache
-         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_RESPONSABLE_POLE']);
          $user->setActif('1');
          $manager->persist($user);
@@ -236,7 +236,7 @@ class AdoptionsFixtures extends Fixture
          $user->setNom('Bénévole');
          $user->setPrenom('Moustaches');
          // password is moustache
-         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_BENEVOLE']);
          $user->setActif('1');
          $manager->persist($user);
@@ -246,7 +246,7 @@ class AdoptionsFixtures extends Fixture
          $user->setNom('User');
          $user->setPrenom('Moustaches');
          // password is moustache
-         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_USER']);
          $user->setActif('1');
          $manager->persist($user);
