@@ -53,7 +53,6 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-                'mapped' => false
             ]);
     }
 

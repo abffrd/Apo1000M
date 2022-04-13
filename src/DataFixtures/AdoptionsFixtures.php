@@ -143,8 +143,6 @@ class AdoptionsFixtures extends Fixture
                 /*$randomIndex = array_rand($adoptantsObjects);
                 $adoption->setAdoptant($adoptantsObjects[$randomIndex]);*/
 
-            //TODO : ajouter les membres qui s'occupent du dossier
-            //!$adoption->addMembre
 
             $adoption->setAnimauxProposes('les animaux proposes sont...');
 
@@ -221,6 +219,61 @@ class AdoptionsFixtures extends Fixture
             $manager->persist($membre);
 
         }
+
+
+         // crétion de l'utilsateur
+         $user = new User();
+         $user->setEmail('admin@moustache.fr');
+         $user->setNom('Admin');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_ADMIN']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+         $user = new User();
+         $user->setEmail('membre@moustache.fr');
+         $user->setNom('Membre de bureau');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_MEMBRE_BUREAU']);
+         $user->setActif('1');
+         $manager->persist($user);
+         
+         $user = new User();
+         $user->setEmail('responsable@moustache.fr');
+         $user->setNom('Responsable Pôle');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_RESPONSABLE_POLE']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+ 
+         $user = new User();
+         $user->setEmail('benevole@moustache.fr');
+         $user->setNom('Bénévole');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_BENEVOLE']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+         $user = new User();
+         $user->setEmail('user@moustache.fr');
+         $user->setNom('User');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_USER']);
+         $user->setActif('1');
+         $manager->persist($user);
+
+         
 
         $manager->flush();
 
