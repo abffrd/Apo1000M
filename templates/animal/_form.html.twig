@@ -1,4 +1,16 @@
 {{ form_start(form) }}
+
+{{ form_row(form.nom, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.date_naissance, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.statut, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.tests, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.sexe, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.commentaire, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.identification, {'attr': {class:'rounded-md pr-20 :'}}) }}
+{{ form_row(form.vaccins, {'attr': {class:'rounded-md pr-20 :'}}) }}
+
     {{ form_widget(form) }}
-    <button class="btn m-2">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    <button class="btn m-5">{{ button_label|default('Sauvegarder') }}</button>
+	<a class="btn m-10" href="{{ path('app_animal_index') }}">Retour </a>
+
+    {{ form_end(form) }}
