@@ -47,15 +47,31 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        #- { path: ^/utilisateur, roles: ROLE_ADMIN }
+        #- { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/role, roles: ROLE_ADMIN }
+
+        #- { path: ^/utilisateur/ajout, roles: ROLE_MEMBRE_BUREAU }
+        #- { path: ^/utilisateur, roles: ROLE_BENEVOLE }
+
+        - { path: ^/adoption, roles: ROLE_BENEVOLE }
+
+        - { path: ^/adoptant, roles: ROLE_BENEVOLE }
+
+        - { path: ^/animal, roles: ROLE_BENEVOLE }
+
+        - { path: ^/famille_accueil, roles: ROLE_RESPONSABLE_POLE }
+
+        - { path: ^/espece, roles: ROLE_RESPONSABLE_POLE }
+
+        - { path: ^/new_dossier, roles: ROLE_BENEVOLE }
+        
         
         - { path: ^/accueil, roles: ROLE_USER }
-        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/list, roles: ROLE_RESPONSABLE_POLE }
        
         # Login et register toujours accessible
-        - { path: ^/register, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+        #- { path: ^/register, roles: PUBLIC_ACCESS }
+        #- { path: ^/, roles: PUBLIC_ACCESS }
         
        
 

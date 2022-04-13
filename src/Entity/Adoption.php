@@ -95,7 +95,8 @@ class Adoption
 
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="adoptions")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="adoptions")
+     * @ORM\JoinTable(name="user_adoption")
      */
     private $users;
 

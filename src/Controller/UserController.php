@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/utilisateur")
@@ -18,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     /**
+     * 
      * @Route("/", name="app_user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
@@ -61,6 +63,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
     public function show(User $user): Response

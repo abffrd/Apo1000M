@@ -16,27 +16,38 @@ class AdoptantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class,
-            [ 'required' => false,])
+            ->add('nom', TextType::class, [
+            'label' => 'Nom :',
+             'required' => false,
+             'attr' => ['placeholder' => 'Poti'],
+             ])
             ->add('prenom', TextType::class, [
-                'label' => 'Prénom',
-                'required' => false,])
-            ->add('adresse', TextType::class,
-            [ 'required' => false,])
+                'label' => 'Prénom :',
+                'required' => false,
+                'attr' => ['placeholder' => 'Poutchi'],
+                ])
+            ->add('adresse', TextType::class,[
+                'label' => 'Adresse :',
+                'required' => false,
+                'attr' => ['placeholder' => '00 avenue des petites patates'],
+                ])
             ->add('telephone', TextType::class, [
-                'label' => 'Téléphone',
+                'label' => 'Téléphone :',
+                'attr' => ['placeholder' => '1234567890'],
             ])
             ->add('email', EmailType::class, [
-                'label' => 'E-mail',
+                'label' => 'E-mail :',
                 'required' => false,
                 'attr' => ['placeholder' => 'mail@example.com'],
                 ])
             ->add('ville', TextType::class, [
-                'attr' => ['placeholder' => 'Nom de ville'],
+                'label' => 'Ville :',
+                'attr' => ['placeholder' => 'Paris'],
                 'required' => false,
             ])
-            ->add('code_postal', TextType::class, [
-                'attr' => ['placeholder' => 'Code postal'],
+            ->add('code_postal', IntegerType::class, [
+                'label' => 'Code Postal: ',
+                'attr' => ['placeholder' => '98745'],
                 'required' => false,
             ])
         ;

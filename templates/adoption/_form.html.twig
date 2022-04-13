@@ -1,14 +1,30 @@
 {{ form_start(form) }}
+  
 
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_row(form.statut) }}
         {{ form_row(form.users) }}
-       <!--  <button class="btn">M'affecter le dossier</button>-->
+
+        {% if adoption.statut == 'à prendre' %}
+        <a class = "btn m-10" href="{{ path('app_adoption_affecter', {'id': adoption.id}) }}">M'affecter le dossier</a>
+        {% endif %}
+       <!--  <button class="btn">M'affecter le dossier </button>-->
         {{ form_row(form.date_appel) }}
         {{ form_row(form.compte_rendu) }}
-        {{ form_row(form.animal) }}  
-        <!--<button class="btn">CR complet</button>
-        <button class="btn">toggle -> CR validé</button>-->
+        
+        {% if adoption.statut == 'CR appel à faire' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_CR_complet', {'id': adoption.id}) }}">CR complet - à valider</a></p>
+        {% endif %}
+        
+        {% if adoption.statut == 'CR appel à valider' %}
+        <div>
+                <a class = "btn m-10" href="{{ path('app_adoption_CR_accepte', {'id': adoption.id}) }}">CR accepté</a>
+                <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">CR refusé</a>
+        </div>
+        {% endif %}
+
+
+        {{ form_row(form.animal) }}
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
         <button class="btn">toggle -> proposition validée</button>
@@ -27,11 +43,13 @@
         {{ form_row(form.date_adoption) }}
          <button class="btn">Date adoption renseignée</button>
         {{ form_row(form.date_depart) }#}
-        <!--<button class="btn">Date départ renseignée</button>
-         <button class="btn">Dossier sans suite</button>-->
+        <!--<button class="btn">Date départ renseignée</button>-->
         {{ form_row(form.remarque) }}
+        
+        <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
 
-   <button class="btn">{{ button_label|default('Save') }}</button>
+
+ <button class="btn">{{ button_label|default('Save') }}</button>
    
 {{ form_end(form) }}
 

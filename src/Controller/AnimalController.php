@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/animal")
@@ -26,6 +27,7 @@ class AnimalController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/ajout", name="app_animal_new", methods={"GET", "POST"})
      */
     public function new(Request $request, AnimalRepository $animalRepository): Response
@@ -56,6 +58,7 @@ class AnimalController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/{id}/modification", name="app_animal_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Animal $animal, AnimalRepository $animalRepository): Response
