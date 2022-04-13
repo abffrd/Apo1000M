@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 
@@ -28,6 +29,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/ajout", name="app_adoptant_new", methods={"GET", "POST"})
      */
     public function new(Request $request, AdoptantRepository $adoptantRepository): Response
@@ -48,6 +50,7 @@ class AdoptantController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/{id}", name="app_adoptant_show", methods={"GET"})
      */
     public function show(Adoptant $adoptant): Response

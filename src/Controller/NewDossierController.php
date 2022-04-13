@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/new_dossier")
@@ -19,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class NewDossierController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/", name="app_new_dossier", methods={"GET", "POST"})
      */
     public function index(AdoptantRepository $adoptantRepository,EntityManagerInterface $entityManager): Response
@@ -57,8 +59,9 @@ class NewDossierController extends AbstractController
     }
 
     /**
-    * @Route("/{telephone}/adoption_adoptant", name="create_adoption_adoptant", methods={"GET"})
-    */
+     * @IsGranted("ROLE_RESPONSABLE_POLE")
+     * @Route("/{telephone}/adoption_adoptant", name="create_adoption_adoptant", methods={"GET"})
+     */
      public function create_adoption_adoptant(Adoptant $adoptant, AdoptantRepository $adoptantRepository, EntityManagerInterface $entityManager): Response
     {
         // on regarde si le n0 de téléphone est dans la table adoptant

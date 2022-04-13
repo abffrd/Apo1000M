@@ -1,16 +1,18 @@
 {{ form_start(form) }}
 
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_row(form.telephone) }}
-        {{ form_row(form.nom) }}
-        {{ form_row(form.prenom) }}
-        {{ form_row(form.adresse) }}
-        {{ form_row(form.ville) }}
-        {{ form_row(form.code_postal) }}
-        {{ form_row(form.email) }}
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
-  <a href="{{ path('app_adoptant_index') }}"><button class="btn ">Ajouter une adoption</button></a>
+{{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.prenom, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.adresse, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.telephone, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.email, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.ville, {'attr': {class:'rounded-md w-full :'}}) }}
+{{ form_row(form.code_postal, {'attr': {class:'rounded-md w-full :'}}) }}
+
+    {{ form_widget(form) }}
+
+    <button class="btn ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button>
+    <a href="{{ path('app_adoptant_index') }}"><button class="btn ">Ajouter une adoption</button></a>
+
 
 {{ form_end(form) }}
-
