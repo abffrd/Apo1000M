@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Adoption;
-use App\Entity\Adoptant;
 use App\Entity\Animal;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -29,7 +29,7 @@ class AdoptionType extends AbstractType
             ->add('compte_rendu', TextareaType::class, [
                 'label' => 'Compte-rendu de l\'appel',
                 'required' => false,])
-            ->add('retour_animaux_proposes', TextareaType::class, [
+            /*->add('retour_animaux_proposes', TextareaType::class, [
                 'label' => 'Retour de l\adoptant sur les animaux proposés',
                 'required' => false,])
             ->add('date_rencontre', DateType::class, [
@@ -68,7 +68,7 @@ class AdoptionType extends AbstractType
                 'input' => 'datetime_immutable',
                 'required' => false,
                 'data' => new \DateTimeImmutable(),
-            ])
+            ])*/
             ->add('remarque', TextareaType::class, [
                 'label' => 'Remarques sur le dossier',
                 'required' => false,])
@@ -93,7 +93,7 @@ class AdoptionType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
-            ->add('animaux_proposes', TextareaType::class, [
+            /*->add('animaux_proposes', TextareaType::class, [
                 'label' => 'Animaux proposés',
                 'required' => false,])
             ->add('adoptant', EntityType::class, [
@@ -105,7 +105,7 @@ class AdoptionType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
                 'required' => false,
-            ])
+            ])*/
             ->add('users', EntityType::class, [
                 // looks for choices from this entity
                 'class' => User::class,
@@ -114,19 +114,26 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => false,
-                'mapped' => false,
                 'required' => false,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.prenom', 'ASC');
+                },
             ])
-            ->add('animals', EntityType::class, [
+            ->add('animal', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Animal::class,
                 'choice_label' => 'nom',
                 'label' => 'Animal réservé',
                 // used to render a select box, check boxes or radios
-                'multiple' => false,
-                'expanded' => false,
-                'mapped' => false,
-                'required' => false,
+                'multiple' => true,
+                'expanded' => true,
+                //'mapped' => true,
+                //'required' => false,
+                /*'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('a')
+                        ->orderBy('a.nom', 'ASC');
+                },*/
             ])
 
         ;
@@ -136,6 +143,10 @@ class AdoptionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Adoption::class,
+
+            'attr' => [
+                'novalidate' => 'novalidate',
+            ]
         ]);
     }
 }

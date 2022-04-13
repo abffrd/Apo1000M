@@ -1,5 +1,6 @@
 {{ form_start(form) }}
 
+
 {{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
 {{ form_row(form.prenom, {'attr': {class:'rounded-md w-full :'}}) }}
 {{ form_row(form.adresse, {'attr': {class:'rounded-md w-full :'}}) }}
@@ -11,7 +12,7 @@
     {{ form_widget(form) }}
 
     <button class="btn ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button>
-    <a class="btn ml-20 mr-20" href="{{ path('app_adoptant_index') }}">Retour </a>
+    <a href="{{ path('app_adoptant_index') }}"><button class="btn ">Ajouter une adoption</button></a>
+
 
 {{ form_end(form) }}
-

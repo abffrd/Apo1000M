@@ -3,7 +3,7 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-<main class="flex w-full h-screen">
+<main class="flex w-full ">
 
       <section class="w-full p-4  ml-2">
        <!-- ************************header table*********************** -->
@@ -53,7 +53,7 @@
         <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Id</span>{{ user.id }}</td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Email</span>{{ user.email }}</td>
-                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Roles</span>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Roles</span>{{ user.approles|join(', ') }}</td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Password</span>{{ user.password }}</td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Nom</span>{{ user.nom }}</td>
                     <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Prenom</span>{{ user.prenom }}</td>

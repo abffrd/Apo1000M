@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une nouvelle adoption{% endblock %}
+
+{% block body %}
+<main class="flex justify-center items-center h-screen">
+
+      <section class=" border-2 p-10  ml-2 flex flex-col items-center">
+      <div class="px-10 md:px-12 py-10 md:py-7">
+      <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Créer une nouvelle adoption</p>
+                </div>
+       </div>
+    <h1></h1>
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show bg-green" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
+    <form class="m-10 flex flex-col justify-between" action="" method="get">
+    <div class="mt-10">
+        <p>N° de téléphone : <input class="mt-10" type="text" name="phone" /></p></div>
+    <div class="btn mt-10 text-center"> <a class=""> <input class="mt-10" type="submit" name="submit" /> </a></div>
+    </form>
+
+    <a class="btn mt-10" href="{{ path('app_adoption_index') }}">back to list</a> 
+    
+		</section>
+	</main>
+{% endblock %}

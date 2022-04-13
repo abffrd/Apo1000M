@@ -10,8 +10,8 @@ use App\Entity\Adoptant;
 use App\Entity\Animal;
 use App\Entity\Espece;
 use App\Entity\FamilleAccueil;
-use App\Entity\User;
 use App\Entity\Role;
+use App\Entity\User;
 use DateTime;
 
 class AdoptionsFixtures extends Fixture
@@ -52,7 +52,7 @@ class AdoptionsFixtures extends Fixture
             $famille->setNom($faker->lastName());
             $famille->setPrenom($faker->firstName());
             $famille->setAdresse($faker->streetAddress());
-            $famille->setTelephone($faker->phoneNumber());
+            $famille->setTelephone($faker->numberBetween(600000000, 799999999));
             $famille->setEmail($faker->email());
             $famille->setVille($faker->city());
             $famille->setCodePostal($faker->numberBetween(44000,44999));
@@ -131,18 +131,21 @@ class AdoptionsFixtures extends Fixture
             $adoption->setDateDepart(new DateTime());
             $adoption->setRemarque($faker->sentence());
             //TODO : mettre le statut en liste
-            $adoption->setStatut('statut');
+            $adoption->setStatut('000');
+
+
+            $statutObjects  =['000', '010','020','030','040','050'];
+            $randomIndex = array_rand($statutObjects);
+            $adoption->setStatut($statutObjects[$randomIndex]);
+
 
             //récupérer l'adoptant fixturisé
                 /*$randomIndex = array_rand($adoptantsObjects);
                 $adoption->setAdoptant($adoptantsObjects[$randomIndex]);*/
 
-            //TODO : ajouter les membres qui s'occupent du dossier
-            //!$adoption->addMembre
 
             $adoption->setAnimauxProposes('les animaux proposes sont...');
 
-            //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($animauxObjects);
             $adoption->addAnimal($animauxObjects[$randomIndex]);
 
@@ -159,7 +162,7 @@ class AdoptionsFixtures extends Fixture
             $adoptant->setNom($faker->lastName());
             $adoptant->setPrenom($faker->firstName());
             $adoptant->setAdresse($faker->streetAddress());
-            $adoptant->setTelephone($faker->phoneNumber());
+            $adoptant->setTelephone(($faker->numberBetween(600000000, 799999999)));
             $adoptant->setEmail($faker->email());
             $adoptant->setVille($faker->city());
             $adoptant->setCodePostal($faker->numberBetween(44000,44999));
@@ -204,8 +207,9 @@ class AdoptionsFixtures extends Fixture
             $membre->setActif($faker->numberBetween(0, 1));
 
             //TODO relation one to many --> à améliorer en many to many
-            //$randomIndex = array_rand($roleObjects);
-            //$membre->setRoles($roleObjects[$randomIndex]);
+            $randomIndex = array_rand($roleObjects);
+            $membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
+
 
             //TODO relation one to many --> à améliorer en many to many
             $randomIndex = array_rand($adoptionObjects);
@@ -216,6 +220,64 @@ class AdoptionsFixtures extends Fixture
 
         }
 
+
+         // crétion de l'utilsateur
+         $user = new User();
+         $user->setEmail('admin@moustache.fr');
+         $user->setNom('Admin');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_ADMIN']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+         $user = new User();
+         $user->setEmail('membre@moustache.fr');
+         $user->setNom('Membre de bureau');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_MEMBRE_BUREAU']);
+         $user->setActif('1');
+         $manager->persist($user);
+         
+         $user = new User();
+         $user->setEmail('responsable@moustache.fr');
+         $user->setNom('Responsable Pôle');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_RESPONSABLE_POLE']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+ 
+         $user = new User();
+         $user->setEmail('benevole@moustache.fr');
+         $user->setNom('Bénévole');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_BENEVOLE']);
+         $user->setActif('1');
+         $manager->persist($user);
+ 
+         $user = new User();
+         $user->setEmail('user@moustache.fr');
+         $user->setNom('User');
+         $user->setPrenom('Moustaches');
+         // password is moustache
+         $user->setPassword('$2y$13$g4Cs8r5IPAQJX/ndeMYzQudyUgqEzHU1euGcasWl32mdI5/g6GA8y');
+         $user->setRoles(['ROLE_USER']);
+         $user->setActif('1');
+         $manager->persist($user);
+
+         
+
         $manager->flush();
+
+        //commande pour lancer les fixtures
+        //php bin/console doctrine:fixtures:load
     }
 }

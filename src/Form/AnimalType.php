@@ -75,7 +75,6 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-                'mapped' => false
             ])
             ->add('adoption', EntityType::class, [
                 // looks for choices from this entity
@@ -85,7 +84,6 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-                'mapped' => false
             ]);
     }
 

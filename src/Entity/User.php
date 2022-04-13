@@ -59,9 +59,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $adoptions;
 
+    /**
+     * 
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     * @ORM\JoinTable(name="role_user")
+     * @ORM\JoinTable(name="user")
+     * 
+     * 
+     */
+    private $approles;
+
     public function __construct()
     {
         $this->adoptions = new ArrayCollection();
+        $this->approles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -99,23 +110,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+    // /**
+    //  * @see UserInterface
+    //  */
+    // public function getRoles(): array
+    // {
+    //     $roles = $this->roles;
+    //     // guarantee every user at least has ROLE_USER
+    //     $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
-    }
+    //     return array_unique($roles);
+    // }
 
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
         return $this;
+    }
+    public function getRoles()
+    {
+        $roles = [];
+        foreach ($this->approles as $currentRole)
+        {
+            $roles[] = $currentRole->getrole();
+        }
+
+        return $roles;
     }
 
     /**
@@ -217,5 +238,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getFullname()
     {
         return $this->prenom . ' ' . $this->nom;
+    }
+
+    /**
+     * @return Collection<int, Role>
+     */
+    public function getApproles(): Collection
+    {
+        return $this->approles;
+    }
+
+    public function addApprole(Role $approle): self
+    {
+        if (!$this->approles->contains($approle)) {
+            $this->approles[] = $approle;
+            $approle->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprole(Role $approle): self
+    {
+        if ($this->approles->removeElement($approle)) {
+            $approle->removeUser($this);
+        }
+
+        return $this;
     }
 }

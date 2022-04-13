@@ -30,14 +30,14 @@
 				<div class=" px-4 sm:px-6">
 					<div class="flex justify-between items-center border-b-2 py-6 md:justify-start md:space-x-10">
 						<div class="flex justify-start lg:w-0 lg:flex-1">
-							<img class="h-20 w-auto trans" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association">
+							<a href="{{ path('app_home') }}"><img class="h-20 w-auto trans" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association"></a>
 						</div>
 						<div class="mr-2 sm-my-2 hidden md:block">
-							<img class="h-20 w-auto justify-center trans" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association">
+							<a href="{{ path('app_home') }}"><img class="h-20 w-auto justify-center trans" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association"></a>
 						</div>
 
 
-						{# {% if (app_user) %} #}
+						 {% if (app.user) %}
 
 						<div class="md:flex items-center flex-row justify-end md:flex-1 sm-flex-direction-col">
 							{# <ul> #}
@@ -82,13 +82,18 @@
 					</div>
 
 
-					{# {% endif %} #}
+					 {% endif %} 
 				</div>
 			</div>
 
 		</div>
-	</body>
-</html></header>{% block body %}{% endblock %}<footer>
+	</header>
+{% block body %}{% endblock %}
+
+<footer class= "mt-10">
 <div class="w-full">
 	<img class="animate-bounce w-full" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
-</di</footer></body></body></html>
+</div>
+</footer>
+</body>
+</html>
