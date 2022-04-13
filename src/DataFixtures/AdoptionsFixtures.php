@@ -134,7 +134,7 @@ class AdoptionsFixtures extends Fixture
             $adoption->setStatut('000');
 
 
-            $statutObjects  =['000', '010','020','030','040','050'];
+            $statutObjects  =['à prendre', 'CR appel à faire'];
             $randomIndex = array_rand($statutObjects);
             $adoption->setStatut($statutObjects[$randomIndex]);
 
@@ -177,10 +177,11 @@ class AdoptionsFixtures extends Fixture
 
         //Création des fixtures pour les roles
         $roles = [
-            'ROLE_ADMIN',
-            'RESPONSABLE_POLE',
             'ROLE_USER',
-            'DEFAULT_ROLE',
+            'ROLE_BENEVOLE',
+            'ROLE_RESPONSABLE_POLE',
+            'ROLE_MEMBRE_BUREAU',
+            'ROLE_ADMIN' ,
         ];
 
         $roleObjects = [];
@@ -195,30 +196,7 @@ class AdoptionsFixtures extends Fixture
         }
 
 
-        //Création des fixtures pour les membres
-        $nbMembres = 20;
-        $membresObjects = [];
-        for ($i = 0; $i < $nbMembres; $i++){
-            $membre = new User();
-            $membre->setNom($faker->lastName());
-            $membre->setPrenom($faker->firstNAme());
-            $membre->setPassword($faker->password());
-            $membre->setEmail($faker->email());
-            $membre->setActif($faker->numberBetween(0, 1));
 
-            //TODO relation one to many --> à améliorer en many to many
-            $randomIndex = array_rand($roleObjects);
-            $membre->setRoles(['ROLE_USER', 'DEFAULT_ROLE']);
-
-
-            //TODO relation one to many --> à améliorer en many to many
-            $randomIndex = array_rand($adoptionObjects);
-            $membre->addAdoption($adoptionObjects[$randomIndex]);
-
-            $membresObjects[] = $membre;
-            $manager->persist($membre);
-
-        }
 
 
          // crétion de l'utilsateur
