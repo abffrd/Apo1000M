@@ -29,7 +29,7 @@
 				<div class="sm:flex items-center justify-between mb-4 w-full">
 					<p class="text-sm font-bold leading-none text-white ">
 						<a class="text-sm font-bold leading-none " href="{{ path('app_animal_new') }}">
-							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Create New') }}</button>
+							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Créer') }}</button>
 						</a>
 					</p>
 				</div>
@@ -41,13 +41,13 @@
 						<tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
 							<th class="bg-gray-600 p-2 text-white  text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Nom</th>
-							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date_naissance</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date de naissance</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Tests</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Sexe</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Vaccins</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Photo</th>
-							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Commentaire :</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Commentaire</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Identification</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Sterilise</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
@@ -100,11 +100,11 @@
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
 									<span class="inline-block w-1/3 md:hidden font-bold">Actions</span>
 									<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
-										<a href="{{ path('app_animal_show', {'id': animal.id}) }}">show</a>
+										<a href="{{ path('app_animal_show', {'id': animal.id}) }}">Détails</a>
 									</button>
 									{% if is_granted('ROLE_RESPONSABLE_POLE') %}
 										<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-1 px-2 border bord-bg-green-400 rounded">
-											<a href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
+											<a href="{{ path('app_animal_edit', {'id': animal.id}) }}">Modifier</a>
 										</button>
 									{% endif %}
 									{# <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archive</button> #}

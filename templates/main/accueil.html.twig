@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil back office 1000 Moustache !
+{% block title %}Accueil !
 {% endblock %}
 {% block body %}
 
@@ -37,6 +37,53 @@
 							<span class="relative text-black group-hover:text-white">Liste des adoptions</span>
 						</a>
 
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('app_user_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">Liste des utilisateurs</span>
+							</a>
+
+							<a href="{{ path('app_adoptant_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">Liste des adoptants</span>
+							</a>
+
+							<a href="{{ path('app_famille_accueil_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">Liste des familles d'accueil</span>
+							</a>
+
+							<a href="{{ path('app_new_dossier') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">création d'une adoption</span>
+							</a>
+						</div>
+
+						<div class="space-y-8 flex flex-col p-2 w-80 sm:flex">
+
+							<a href="{{ path('app_espece_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">Liste des espèces</span>
+							</a>
+
+							<a href="{{ path('app_famille_accueil_new') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">création famille d'accueil</span>
+							</a>
+
+							<a href="{{ path('app_animal_new') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+								<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+								<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+								<span class="relative text-black group-hover:text-white">création d'un animal</span>
+							</a>
+
+						{% endif %}
 						<a href="{{ path('app_adoption_a_prendre') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
 							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
@@ -49,60 +96,11 @@
 							<span class="relative text-black group-hover:text-white">Liste de mes adoptions</span>
 						</a>
 
-{% if is_granted('ROLE_ADMIN') %}
-						<a href="{{ path('app_user_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+						<a href="#" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
 							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">Liste des utilisateurs</span>
+							<span class="relative text-black group-hover:text-white">Autres</span>
 						</a>
-
-						<a href="{{ path('app_adoptant_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">Liste des adoptants</span>
-						</a>
-
-						<a href="{{ path('app_famille_accueil_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">Liste des familles d'accueils</span>
-						</a>
-
-
-					</div>
-
-					<div class="space-y-8 flex flex-col p-2 w-80 sm:flex">
-
-						<a href="{{ path('app_espece_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">Liste des espèces</span>
-						</a>
-
-						<a href="{{ path('app_famille_accueil_new') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">création famille d'accueil</span>
-						</a>
-
-						<a href="{{ path('app_animal_new') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">création d'un animal</span>
-						</a>
-
-						<a href="{{ path('app_new_dossier') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">création d'une adoption</span>
-						</a>
-
-						<a href="#_" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-							<span class="relative text-black group-hover:text-white">Autre...</span>
-						</a>
-{% endif %}
 					</div>
 
 
