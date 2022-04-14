@@ -25,6 +25,14 @@
 
 
         {{ form_row(form.animal) }}
+        {% if adoption.statut == 'animaux à proposer' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_animal_reserve', {'id': adoption.id}) }}">Animal réservé</a></p>
+        {% endif %}
+
+        
+         {% if adoption.statut == 'en attente départ' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_finalisee', {'id': adoption.id}) }}">Adoption finalisée</a></p>
+        {% endif %}       
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
         <button class="btn">toggle -> proposition validée</button>

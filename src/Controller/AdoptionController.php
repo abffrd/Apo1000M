@@ -138,9 +138,32 @@ class AdoptionController extends AbstractController
      */
     public function affecter(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
     {
-        
         $adoption->setStatut('CR appel à faire');
         $adoptionRepository->add($adoption);
         return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
     }
+
+    /**
+     * @Route("/{id}/reserver", name="app_adoption_animal_reserve", methods={"GET"})
+     */
+    public function reserver(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        
+        $adoption->setStatut('en attente départ');
+        $adoptionRepository->add($adoption);
+        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
+    }
+
+    /**
+     * @Route("/{id}/finaliser", name="app_adoption_finalisee", methods={"GET"})
+     */
+    public function finaliser(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        
+        $adoption->setStatut('adoption finalisée');
+        $adoptionRepository->add($adoption);
+        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
+    }
+
+
 }
