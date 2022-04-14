@@ -9,6 +9,7 @@ use App\Entity\FamilleAccueil;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,7 +22,7 @@ class AnimalType extends AbstractType
                 'label' => 'Nom :',
                 'attr' => ['placeholder' => 'Pepito'],
                 ])
-            ->add('date_naissance', TextType::class, [
+            ->add('date_naissance', DateType::class, [
                 'label' => 'Date de naissance :',
                 'attr' => ['placeholder' => 'Cacao'],
                 ])
@@ -79,11 +80,12 @@ class AnimalType extends AbstractType
             ->add('adoption', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Adoption::class,
-                'choice_label' => 'statut',
+             'choice_label' => 'id',
                 'label' => "Statut d'adoption",
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
+                'mapped' => true,
             ]);
     }
 

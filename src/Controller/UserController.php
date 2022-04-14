@@ -51,7 +51,7 @@ class UserController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
             //TODO rediriger vers la route d'accueil
-            return $this->redirectToRoute('app_use_index');
+            return $this->redirectToRoute('app_user_index');
         }
 
       
@@ -84,14 +84,14 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             // encode the plain password
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('password')->getData()
-                )
-            );
+           // $user->setPassword(
+            // $userPasswordHasher->hashPassword(
+            //         $user,
+            //         $form->get('password')->getData()
+            //     )
+            // );
             
-            $entityManager->persist($user);
+            //$entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
             //TODO rediriger vers la route d'accueil

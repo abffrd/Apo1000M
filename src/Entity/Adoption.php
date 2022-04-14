@@ -101,7 +101,8 @@ class Adoption
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="adoption")
+     * @ORM\OneToMany(targetEntity="Animal", mappedBy="adoption")
+     * @ORM\JoinTable(name="animal")
      */
     private $animal;
 
@@ -110,6 +111,7 @@ class Adoption
         $this->users = new ArrayCollection();
         $this->animal = new ArrayCollection();
     }
+    
 
     public function getId(): ?int
     {

@@ -80,10 +80,12 @@ class Animal
     private $espece;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Adoption::class, inversedBy="animal")
+     * @ORM\ManyToOne(targetEntity="Adoption", inversedBy="animal")
+     * @ORM\JoinTable(name="adoption")
      */
     private $adoption;
 
+   
     public function getId(): ?int
     {
         return $this->id;

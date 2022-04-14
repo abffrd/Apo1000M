@@ -62,6 +62,7 @@ class AdoptionController extends AbstractController
 
     /**
      * @Route("/{id}/modification", name="app_adoption_edit", methods={"GET", "POST"})
+     * 
      */
     public function edit( Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
     {
@@ -71,7 +72,21 @@ class AdoptionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $adoptionRepository->add($adoption);
-         
+          
+        
+
+       // Retrieve the value from the extra field non-mapped field !
+            $animalfromform = $form->get("animal")->getData();
+    
+             foreach ($animalfromform as $a) {
+                
+             $adoption->addAnimal($a);
+            
+             } 
+          
+          
+          // $entityManager->persist($c);
+              $entityManager->flush();
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
             
         }
