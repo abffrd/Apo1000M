@@ -1,54 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register
+{% block title %}S'incrire !
 {% endblock %}
 
 {% block body %}
-	<div class="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-		<div class="border-b-4 border-b-gray mb-4">
 
-			<p class=" text-center text-2xl w-full sm:text-4xl">Inscription
-			</p>
+	<main class="flex">
 
-		</div>
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-8/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="scale-110 max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/group.png') }} " alt="dog-cat-home">
+		</aside>
 
-		<div class="max-w-md w-full rounded-xl bg-white space-y-8 shadow-xl">
+		<section class="mx-auto">
+			<div class="flex flex-col p-4 ">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-default">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Incription
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+
+				<div class="max-w-md w-full rounded-xl bg-white space-y-8 shadow-xl">
+
+					<div class="bg-gray-50 mt-8">
+						<img class="animate-bounce rounded-md bg-white h-full w-full" src="{{ asset('build/images/grand-logo.jpg') }}" alt="Logo 1000 Moustaches">
+					</div>
 
 
-			<div class="bg-gray-50 mt-8">
-				<img class="animate-bounce rounded-md bg-white h-full w-full" src="{{ asset('build/images/grand-logo.jpg') }}" alt="Logo 1000 Moustaches">
+					<div class="rounded bg-white max-w-md rounded overflow-hidden shadow-xl p-5">
 
+						<form class="space-y-4" action="#" method="POST">
+							{#% if error %#}
+							{# <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
+																																				</div> #}
+							{#% endif %#}{{ form_start(registrationForm) }}
+							
+							{{ form_row(registrationForm.nom, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+							{{ form_row(registrationForm.prenom, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+							{{ form_row(registrationForm.email, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}
+							) }}
+							{{ form_row(registrationForm.motDePasse, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}
+							) }}
+
+								<button
+								type="submit" class="shadow-inner group relative w-full flex justify-center py-2 px-4 text-md rounded-md text-black overflow-hidden bg-white border-2 border-black"> {# button registration #}
+
+
+								<span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-black group-hover:w-full ease"></span>
+								<span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-black group-hover:w-full ease"></span>
+								<span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+								<span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+								<span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-green-blue opacity-0 group-hover:opacity-100"></span>
+								<span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">S'inscrire</span>
+							</button>
+
+							{{ form_end(registrationForm) }}
+						</form>
+					</div>
+				</div>
 			</div>
-
-
-			<div class="rounded bg-white max-w-md overflow-hidden shadow-xl p-8">
-
-
-				{{ form_start(registrationForm) }}
-
-				{{ form_row(registrationForm.nom, {'attr': {class:'rounded-md pr-10 w-full :'}}) }}
-
-				{{ form_row(registrationForm.prenom, {'attr': {class:'rounded-md pr-10 w-full :'}}) }}
-				{{ form_row(registrationForm.email, {'attr': {class:'rounded-md pr-10 w-full :'}}) }}
-				{{ form_row(registrationForm.plainPassword, {'attr': {class:'rounded-md pr-10 w-full :'}}) }}
-				{{ form_row(registrationForm.agreeTerms) }}
-
-
-				<button
-					type="submit" class="shadow-inner group relative w-full flex justify-center py-2 px-4 text-md rounded-md text-black overflow-hidden bg-white border-2 border-black">
-					{# button registration #}
-
-
-					<span class="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-black group-hover:w-full ease"></span>
-					<span class="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-black group-hover:w-full ease"></span>
-					<span class="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-					<span class="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
-					<span class="absolute inset-0 w-full h-full duration-300 delay-300 bg-green-blue opacity-0 group-hover:opacity-100"></span>
-					<span class="relative transition-colors duration-300 delay-200 group-hover:text-white ease">S'inscrire</span>
-				</button>
-
-				{{ form_end(registrationForm) }}
-			</div>
 		</div>
-	</div>
+	</main>
 {% endblock %}
