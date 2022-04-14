@@ -36,6 +36,19 @@
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
 							<span class="relative text-black group-hover:text-white">Liste des adoptions</span>
 						</a>
+
+						<a href="{{ path('app_adoption_a_prendre') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+							<span class="relative text-black group-hover:text-white">Liste des adoption à prendre</span>
+						</a>
+
+						<a href="{{ path('app_adoption_a_moi') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+							<span class="relative text-black group-hover:text-white">Liste de mes adoptions</span>
+						</a>
+
 {% if is_granted('ROLE_ADMIN') %}
 						<a href="{{ path('app_user_index') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
 							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
@@ -54,6 +67,7 @@
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
 							<span class="relative text-black group-hover:text-white">Liste des familles d'accueils</span>
 						</a>
+
 
 					</div>
 
