@@ -130,7 +130,7 @@ class AdoptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => true,
-                //'mapped' => true,
+                'mapped' => true,
                 //'required' => false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('a')

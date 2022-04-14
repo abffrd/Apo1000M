@@ -93,7 +93,6 @@ class Adoption
     private $animaux_proposes;
 
 
-
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="adoptions")
      * @ORM\JoinTable(name="user_adoption")
