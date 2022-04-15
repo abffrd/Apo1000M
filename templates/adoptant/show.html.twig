@@ -44,7 +44,17 @@
         </tbody>
     </table>
 
-  
+
+    <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoptant_index') }}">
+        <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Retour</button>
+    </a>
+    {#<a href="{{ path('app_adoptant_index') }}">Retour</a>#}
+
+    <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">
+        <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+    </a>
+    {# <a href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">Modifier</a> #}
+
     </div >
 
     <div class="flex justify-between m-2">
