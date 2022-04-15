@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adoptant;
 use App\Form\AdoptantType;
 use App\Repository\AdoptantRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,26 +64,32 @@ class AdoptantController extends AbstractController
     /**
      * @Route("/{id}/modification", name="app_adoptant_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository): Response
+    public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository,EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AdoptantType::class, $adoptant);
         $form->handleRequest($request);
-        $retour = ($_SERVER['HTTP_REFERER']);
+        //$retour = ($_SERVER['HTTP_REFERER']);
         //dd($retour); // "http://localhost:8000/adoption/302/modification"
 
-        $id = 302;
+        //$id = 302;
         if ($form->isSubmitted() && $form->isValid()) {
            
-            $adoptantRepository->add($adoptant);
+            
             //dd($_SERVER['HTTP_REFERER']); // "http://localhost:8000/adoptant/335/modification"
             //return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
             //TODO redirection vers la page adoption si on en vient
              //header('Location: http://localhost:8000/adoption/' . $id . '/modification');
-             header ('Location: ' . $_SERVER['HTTP_REFERER']);
+             //header ('Location: ' . $_SERVER['HTTP_REFERER']);
 
-            exit();
- 
+            //exit();
+
+            $entityManager->persist($adoptant);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_adoptant_index');
+            
         }
+        
 
         return $this->renderForm('adoptant/edit.html.twig', [
             'adoptant' => $adoptant,

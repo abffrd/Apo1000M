@@ -46,7 +46,7 @@ class AdoptantType extends AbstractType
                 'required' => false,
             ])
             ->add('code_postal', IntegerType::class, [
-                'label' => 'Code Postal: ',
+                'label' => 'Code Postal : ',
                 'attr' => ['placeholder' => '98745'],
                 'required' => false,
             ])
