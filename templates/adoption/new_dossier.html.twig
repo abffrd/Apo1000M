@@ -5,13 +5,16 @@
 {% block body %}
 <main class="flex justify-center items-center h-screen">
 
-      <section class=" border-2 p-10  ml-2 flex flex-col items-center">
+        <aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/adoption.png') }} " alt="dog-cat-home">
+		</aside>
+
+      <section class="flex flex-col p-4 ">
       <div class="px-10 md:px-12 py-10 md:py-7">
       <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Créer une nouvelle adoption</p>
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Créer une nouvelle adoption :</p>
                 </div>
        </div>
-    <h1></h1>
 
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -21,14 +24,14 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        
+
     <form class="m-10 flex flex-col justify-between" action="" method="get">
-    <div class="mt-10">
-        <p>N° de téléphone : <input class="mt-10" type="text" name="phone" /></p></div>
-    <div class="btn mt-10 text-center"> <a class=""> <input class="mt-10" type="submit" name="submit" /> </a></div>
+    <div class="mt-5">
+        <p> N° de téléphone : <input class="mt-10 rounded-md" type="text" name="phone" /></p></div>
+    <div class="btn mt-10 text-center"><input class="md-5" type="submit" name="submit" /></div>
     </form>
 
-    <a class="btn mt-10" href="{{ path('app_adoption_index') }}">back to list</a> 
+    <a class="btn mt-10" href="{{ path('app_adoption_index') }}">Retour à la liste</a> 
     
 		</section>
 	</main>
