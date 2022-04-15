@@ -8,29 +8,56 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bridge\Doctrine\Form\Type\BooleanType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'label' => 'E-mail :',
+                'attr' => ['placeholder' => ''],
+            ])
             ->add('approles', EntityType::class, [
                 'class'=>Role::class,
-                'label' => 'Rôles',
+                'label' => 'Rôles :',
                 'choice_label' => 'role',
                 'multiple' => true,
                 'expanded' => true,
                
-            ] )
-            ->add('password')
-            ->add('nom')
-            ->add('prenom')
+            ])
+            ->add('password', TextType::class,[
+                'label' => 'Mot de passe :',
+                'attr' => ['placeholder' => ''],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+                    ]),
+                ],
+            ])
+            ->add('nom', TextType::class,[
+                'label' => 'Nom :',
+                'attr' => ['placeholder' => ''],
+            ])
+            ->add('prenom', TextType::class,[
+                'label' => 'Prénom :',
+                'attr' => ['placeholder' => ''],
+            ])
             ->add('Actif',ChoiceType::class, [
-                'label' => 'Statut du compte',
+                'label' => 'Statut du compte :',
                 'choices'  => [
                     'actif '  => '1',
                     'non actif'  => '0',
