@@ -12,7 +12,7 @@
 
 				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
 					<p class="border-b-4 text-4xl mt-6 font-bold">
-						Créer une nouvelle adoption :
+						Modifier un adoptant :
 					</p>
 				</div>
 
@@ -29,8 +29,12 @@
 
     {{ form_widget(form) }}
 
+	{# <div>
+    <button class="btn m-20 ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button> #}
+
     <button class="btn m-20 ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button>
-    <a href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Ajouter une adoption</button></a>
+	{# <a  href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Retour</button></a> #}
+    {# <a href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Ajouter une adoption</button></a> #}
 
 
 {{ form_end(form) }}
