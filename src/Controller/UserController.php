@@ -51,7 +51,7 @@ class UserController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
             //TODO rediriger vers la route d'accueil
-            return $this->redirectToRoute('app_use_index');
+            return $this->redirectToRoute('app_user_index');
         }
 
       
