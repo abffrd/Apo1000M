@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th>Famille d'accueil</th>
-                                <td>{{ animal.FamilleAccueil.prenom}} {{ animal.FamilleAccueil.nom}} à {{ animal.FamilleAccueil.ville}}</td>
+                                <td>{{ animal.FamilleAccueil.prenom ?? "Personne"}} {{ animal.FamilleAccueil.nom ?? ""}} à {{ animal.FamilleAccueil.ville ?? ""}}</td>
                             </tr>
                         </tbody>
                     </table>
