@@ -85,25 +85,29 @@ class Adoption
      */
     private $adoptant;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="adoptions")
-     */
-    private $membres;
+    
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $animaux_proposes;
 
+
     /**
-     * @ORM\ManyToMany(targetEntity=Animal::class, mappedBy="adoption")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="adoptions")
+     * @ORM\JoinTable(name="user_adoption")
      */
-    private $animals;
+    private $users;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="adoption")
+     */
+    private $animal;
 
     public function __construct()
     {
-        $this->membres = new ArrayCollection();
-        $this->animals = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->animal = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -267,32 +271,6 @@ class Adoption
         return $this;
     }
 
-    /**
-     * @return Collection<int, Membre>
-     */
-    public function getMembres(): Collection
-    {
-        return $this->membres;
-    }
-
-    public function addMembre(Membre $membre): self
-    {
-        if (!$this->membres->contains($membre)) {
-            $this->membres[] = $membre;
-            $membre->addAdoption($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMembre(Membre $membre): self
-    {
-        if ($this->membres->removeElement($membre)) {
-            $membre->removeAdoption($this);
-        }
-
-        return $this;
-    }
 
     public function getAnimauxProposes(): ?string
     {
@@ -306,19 +284,48 @@ class Adoption
         return $this;
     }
 
+ 
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAdoption($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAdoption($this);
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Animal>
      */
-    public function getAnimals(): Collection
+    public function getAnimal(): Collection
     {
-        return $this->animals;
+        return $this->animal;
     }
 
     public function addAnimal(Animal $animal): self
     {
-        if (!$this->animals->contains($animal)) {
-            $this->animals[] = $animal;
-            $animal->addAdoption($this);
+        if (!$this->animal->contains($animal)) {
+            $this->animal[] = $animal;
+            $animal->setAdoption($this);
         }
 
         return $this;
@@ -326,8 +333,11 @@ class Adoption
 
     public function removeAnimal(Animal $animal): self
     {
-        if ($this->animals->removeElement($animal)) {
-            $animal->removeAdoption($this);
+        if ($this->animal->removeElement($animal)) {
+            // set the owning side to null (unless already changed)
+            if ($animal->getAdoption() === $this) {
+                $animal->setAdoption(null);
+            }
         }
 
         return $this;

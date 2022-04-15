@@ -25,14 +25,25 @@ class Role
     private $role;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Membre::class, mappedBy="roles")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="approles")
+     *  @ORM\JoinTable(name="role_user")
+     *     
+     * 
+     * @ORM\JoinTable(name="role")
      */
-    private $membres;
+    private $users;
 
     public function __construct()
     {
-        $this->membres = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        $result = $this->role;
+        return  (string) $result;
+    }
+
 
     public function getId(): ?int
     {
@@ -52,28 +63,25 @@ class Role
     }
 
     /**
-     * @return Collection<int, Membre>
+     * @return Collection<int, User>
      */
-    public function getMembres(): Collection
+    public function getUsers(): Collection
     {
-        return $this->membres;
+        return $this->users;
     }
 
-    public function addMembre(Membre $membre): self
+    public function addUser(User $user): self
     {
-        if (!$this->membres->contains($membre)) {
-            $this->membres[] = $membre;
-            $membre->addRole($this);
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
         }
 
         return $this;
     }
 
-    public function removeMembre(Membre $membre): self
+    public function removeUser(User $user): self
     {
-        if ($this->membres->removeElement($membre)) {
-            $membre->removeRole($this);
-        }
+        $this->users->removeElement($user);
 
         return $this;
     }

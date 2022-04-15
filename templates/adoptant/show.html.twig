@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptant{% endblock %}
+
+{% block body %}
+<main class="flex justify-center items-center  ">
+
+      <section class=" border-2 p-10  ml-2">
+      <div class="px-10 md:px-12 py-10 md:py-7">
+      <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Adoptant </p>
+                </div>
+       </div>
+       <!-- ************************header table*********************** -->
+    
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ adoptant.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ adoptant.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ adoptant.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ adoptant.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ adoptant.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ adoptant.email }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ adoptant.ville }}</td>
+            </tr>
+            <tr>
+                <th>Code_postal</th>
+                <td>{{ adoptant.codePostal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_adoptant_index') }}">back to list</a>
+
+    <a href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">edit</a>
+    </div >
+</section >
+</main >
+
+    {# {{ include('adoptant/_delete_form.html.twig') }} #}
+{% endblock %}

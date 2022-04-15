@@ -35,7 +35,7 @@ class Adoptant
     private $adresse;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $telephone;
 
@@ -62,6 +62,13 @@ class Adoptant
     public function __construct()
     {
         $this->adoptions = new ArrayCollection();
+    }
+
+
+    public function __toString()
+    {
+        $result = $this->telephone;
+        return  (string) $result;
     }
 
     public function getId(): ?int
@@ -181,5 +188,10 @@ class Adoptant
         }
 
         return $this;
+    }
+
+    public function getFullname()
+    {
+        return $this->prenom . ' ' . $this->nom;
     }
 }

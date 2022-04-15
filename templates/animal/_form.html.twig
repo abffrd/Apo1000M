@@ -1,0 +1,37 @@
+{% block body %}
+
+	<main class="flex mx-auto ">
+
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/accueil.png') }} " alt="dog-cat-home">
+		</aside>
+
+		<section class="flex mx-auto">
+
+			<div class="flex flex-col p-4 ">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Nouvel animal :
+					</p>
+				</div>
+
+    {{ form_start(form) }}
+
+                {{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.date_naissance, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.statut, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.tests, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.sexe, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.commentaire, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.identification, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.vaccins, {'attr': {class:'rounded-md w-full :'}}) }}
+
+                {{ form_widget(form) }}
+                <button class="btn m-5">{{ button_label|default('Sauvegarder') }}</button>
+	            <a class="btn m-10" href="{{ path('app_animal_index') }}">Retour </a>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

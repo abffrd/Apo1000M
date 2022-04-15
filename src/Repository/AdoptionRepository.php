@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Adoption;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -45,6 +46,40 @@ class AdoptionRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function findAPrendre($statut)
+    {
+       $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Adoption a
+            WHERE a.statut like :statut'
+             
+        )->setParameter('statut', $statut);
+
+
+        return $query->getResult();
+
+    }
+
+    public function findMine($id)
+    {
+       $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a 
+            FROM App\Entity\Adoption a
+            JOIN a.users u
+            
+            WHERE u.id = :id'
+             
+        )->setParameter('id', $id);
+
+
+        return $query->getResult();
+
+    }   
     // /**
     //  * @return Adoption[] Returns an array of Adoption objects
     //  */

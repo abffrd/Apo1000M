@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Team
+{% endblock %}
+{% block body %}
+
+	<main class="flex ">
+
+		<section class="mx-auto">
+
+			<div class="flex flex-col p-4 ">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Le projet
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+				<div class="flex flex-col justify-center text-center items-center sm:flex-row">
+				<p>Réalisation d'un site interne pour les bénévoles de l'association 1000 Moustaches afin de gérer les adoptions.</p>
+				</div>
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						L'équipe
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+
+				<div class="flex flex-col justify-center text-center items-center sm:flex-row">
+
+					<div>
+						<p> Alice </p>
+						<p> Product Owner </p>
+						<img src=" {{ asset('build/images/alice.png') }} " alt="alice">
+					</div>
+
+					<div>
+						<p> Alaric </p>
+						<p> Scrum Master </p>
+						<img class="rounded-full" src=" {{ asset('build/images/alaric-team.png') }} " alt="alaric">
+					</div>
+
+					<div>
+						<p> Denis </p>
+						<p> Git Master </p>
+						<img src=" {{ asset('build/images/petit-logo.png') }} " alt="denis">
+					</div>
+					<div>
+						<p> Muthu </p>
+						<p> Lead Dev Front </p>
+						<img src=" {{ asset('build/images/petit-logo.png') }} " alt="muthu">
+					</div>
+					<div>
+						<p> Vincent </p>
+						<p> Lead Dev Back </p>
+						<img src=" {{ asset('build/images/petit-logo.png') }} " alt="vincent">
+					</div>					
+
+
+				</div>
+
+			</div>
+
+
+		</section>
+
+
+	</main>
+
+{% endblock %}

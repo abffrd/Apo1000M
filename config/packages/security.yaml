@@ -3,17 +3,41 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
 
+            form_login:
+                # name of the route created previously
+                login_path: app_login # GET => affiche le form
+                check_path: app_login # POST => traite le form
+                #default_target_path: app_home  #Redirige vers la page d'accueil : "app_home"
+
+                enable_csrf: true
+    #remember_me:
+            #secret: '%kernel.secret%'
+            #signature_properties: [password]
+            logout:
+                path: app_logout
+
+                # where to redirect after logout
+                target: app_login
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            entry_point: App\Security\LoginFormAuthenticator
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -23,9 +47,44 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        #- { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/role, roles: ROLE_ADMIN }
 
+        #- { path: ^/utilisateur/ajout, roles: ROLE_MEMBRE_BUREAU }
+        #- { path: ^/utilisateur, roles: ROLE_BENEVOLE }
+
+        - { path: ^/adoption, roles: ROLE_BENEVOLE }
+
+        - { path: ^/adoptant, roles: ROLE_BENEVOLE }
+
+        - { path: ^/animal, roles: ROLE_BENEVOLE }
+
+        - { path: ^/famille_accueil, roles: ROLE_RESPONSABLE_POLE }
+
+        - { path: ^/espece, roles: ROLE_RESPONSABLE_POLE }
+
+        - { path: ^/new_dossier, roles: ROLE_BENEVOLE }
+        
+        
+        - { path: ^/accueil, roles: ROLE_USER }
+        - { path: ^/list, roles: ROLE_RESPONSABLE_POLE }
+       
+        # Login et register toujours accessible
+        #- { path: ^/register, roles: PUBLIC_ACCESS }
+        #- { path: ^/, roles: PUBLIC_ACCESS }
+        
+       
+
+    role_hierarchy:
+        # BENEVOLE hérite du rôle USER
+        ROLE_BENEVOLE: ROLE_USER
+        # RESPONSABLE_POLE hérite du rôle BENEVOLE
+        ROLE_RESPONSABLE_POLE: ROLE_BENEVOLE
+        # MEMBRE_BUREAU hérite du rôle RESPONSABLE_POLE
+        ROLE_MEMBRE_BUREAU: ROLE_RESPONSABLE_POLE
+        # ADMIN hérite du rôle MEMBRE_BUREAU
+        ROLE_ADMIN: ROLE_MEMBRE_BUREAU
+    
 when@test:
     security:
         password_hashers:

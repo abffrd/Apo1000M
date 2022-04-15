@@ -1,15 +1,31 @@
 body {
-    background-color: lightgray;
+    background-color: rgb(247, 241, 241);
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Fredoka', sans-serif;
+    }
+}
 
 @layer components {
 
     /** button class**/
     .btn {
-        @apply px-4 py-2 bg-green-blue hover:bg-teal text-white rounded;
+        @apply px-4 py-2 bg-white text-black rounded border-2 border-black;
+    }
+
+    .btn-base {
+        @apply px-4 py-2 text-black rounded border-black bg-white hover:bg-green-blue text-white;
+    }
+    
+    /** scale effect**/
+    .trans {
+        @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-white hover:bg-green-blue
     }
 
     /** Form classes **/
@@ -28,4 +44,18 @@ body {
     .form-checkbox {
         @apply rounded border-2 border-gray-200;
     }
+
+    .teal-400{
+        @apply bg-green-blue ;
+    }
+    #user-menu ~ #user-menu-dropdown{ 
+        @apply ease-in duration-75 opacity-0 scale-0
+    }
+    
+    
+    #user-menu ~ #user-menu-dropdown:focus-within, #user-menu:focus ~ #user-menu-dropdown {
+        @apply ease-out duration-100 opacity-100 scale-100
+    }
+   
+    
 }

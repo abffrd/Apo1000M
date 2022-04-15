@@ -1,0 +1,63 @@
+{{ form_start(form) }}
+  
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form.statut) }}
+        {{ form_row(form.users) }}
+
+        {% if adoption.statut == 'à prendre' %}
+        <a class = "btn m-10" href="{{ path('app_adoption_affecter', {'id': adoption.id}) }}">M'affecter le dossier</a>
+        {% endif %}
+       <!--  <button class="btn">M'affecter le dossier </button>-->
+        {{ form_row(form.date_appel) }}
+        {{ form_row(form.compte_rendu) }}
+        
+        {% if adoption.statut == 'CR appel à faire' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_CR_complet', {'id': adoption.id}) }}">CR complet - à valider</a></p>
+        {% endif %}
+        
+        {% if adoption.statut == 'CR appel à valider' %}
+        <div>
+                <a class = "btn m-10" href="{{ path('app_adoption_CR_accepte', {'id': adoption.id}) }}">CR accepté</a>
+                <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">CR refusé</a>
+        </div>
+        {% endif %}
+
+
+        {{ form_row(form.animal) }}
+        {% if adoption.statut == 'animaux à proposer' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_animal_reserve', {'id': adoption.id}) }}">Animal réservé</a></p>
+        {% endif %}
+
+        
+         {% if adoption.statut == 'en attente départ' %}
+        <p> <a class = "btn m-10" href="{{ path('app_adoption_finalisee', {'id': adoption.id}) }}">Adoption finalisée</a></p>
+        {% endif %}       
+        {#{ form_row(form.animaux_proposes) }}
+        <button class="btn">Proposition complete</button>
+        <button class="btn">toggle -> proposition validée</button>
+        {{ form_row(form.retour_animaux_proposes) }}
+        <button class="btn">Réserver l'animal</button>
+        {{ form_row(form.date_rencontre) }}
+        <button class="btn">Valider la date de rencontre</button>
+        {{ form_row(form.retour_rencontre_adoptant) }}
+        {{ form_row(form.retour_rencontre_fa) }}
+        <button class="btn">CR rencontre complet</button>
+        <button class="btn">toggle -> CR validé</button>
+        {{ form_row(form.date_visite) }}
+        {{ form_row(form.retour_visite) }}
+         <button class="btn">CR visite complet</button>
+        <button class="btn">toggle -> CR validé</button>
+        {{ form_row(form.date_adoption) }}
+         <button class="btn">Date adoption renseignée</button>
+        {{ form_row(form.date_depart) }#}
+        <!--<button class="btn">Date départ renseignée</button>-->
+        {{ form_row(form.remarque) }}
+        
+        <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
+
+
+ <button class="btn">{{ button_label|default('Save') }}</button>
+   
+{{ form_end(form) }}
+
