@@ -3,58 +3,68 @@
 {% block title %}Adoptant{% endblock %}
 
 {% block body %}
-<main class="flex justify-center items-center  ">
+	<main class="flex ">
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src="https://images.pexels.com/photos/6864965/pexels-photo-6864965.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="dog-cat-home">
+		</aside>
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Adoptant </p>
-                </div>
-       </div>
+		<section class="mx-auto">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Détails sur {{ adoptant.prenom ?? ""}} {{ adoptant.nom ?? ""}}
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
        <!-- ************************header table*********************** -->
     
+ <div class="flex p-4">
 
-    <table class="table">
+    <table class="table-auto text-left">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ adoptant.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ adoptant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ adoptant.prenom }}</td>
-            </tr>
+
             <tr>
                 <th>Adresse</th>
                 <td>{{ adoptant.adresse }}</td>
-            </tr>
+                            </tr>
             <tr>
-                <th>Telephone</th>
+                <th></th>
+                <td>{{ adoptant.codePostal }} {{ adoptant.ville }}</td>
+            </tr>
+
+            <tr>
+                <th>Téléphone</th>
                 <td>{{ adoptant.telephone }}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ adoptant.email }}</td>
             </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ adoptant.ville }}</td>
-            </tr>
-            <tr>
-                <th>Code_postal</th>
-                <td>{{ adoptant.codePostal }}</td>
-            </tr>
+
         </tbody>
     </table>
 
-    <a href="{{ path('app_adoptant_index') }}">Retour</a>
-
-    <a href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">Modifier</a>
+  
     </div >
+
+    <div class="flex justify-between m-2">
+                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">
+                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Enregistrer</button>
+                </a>
+
+                <a href="{{ path('app_adoptant_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+             </span>
+                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+            <span class="relative invisible">Retour</span>
+            </a>
+    </div>
+
+
+
 </section >
 </main >
 
