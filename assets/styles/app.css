@@ -22,7 +22,7 @@ body {
     .btn-base {
         @apply px-4 py-2 text-black rounded border-black bg-white hover:bg-green-blue text-white;
     }
-    
+
     /** scale effect**/
     .trans {
         @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:text-white hover:bg-green-blue
@@ -48,14 +48,14 @@ body {
     .teal-400{
         @apply bg-green-blue ;
     }
-    #user-menu ~ #user-menu-dropdown{ 
+    #user-menu ~ #user-menu-dropdown{
         @apply ease-in duration-75 opacity-0 scale-0
     }
-    
-    
+
+
     #user-menu ~ #user-menu-dropdown:focus-within, #user-menu:focus ~ #user-menu-dropdown {
         @apply ease-out duration-100 opacity-100 scale-100
     }
-   
-    
+
+
 }
