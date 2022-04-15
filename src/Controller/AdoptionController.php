@@ -136,11 +136,58 @@ class AdoptionController extends AbstractController
     /**
      * @Route("/{id}/affecter", name="app_adoption_affecter", methods={"GET"})
      */
-    public function affecter(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+   /* public function affecter(Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        $adoption->setStatut('CR appel à faire');
+        $adoptionRepository->add($adoption);      
+        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+    }
+*/
+    /**
+     * @Route("/{id}/affecter", name="app_adoption_affecter", methods={"GET", "POST"})
+     */
+    public function affecter( Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(AdoptionType::class, $adoption);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $adoption->setStatut('CR appel à faire');
+            $adoptionRepository->add($adoption);
+         
+            return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
+            
+        }
+
+        return $this->renderForm('adoption/edit.html.twig', [
+            'adoption' => $adoption,
+            'form' => $form,
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/{id}/reserver", name="app_adoption_animal_reserve", methods={"GET"})
+     */
+    public function reserver(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
     {
         
-        $adoption->setStatut('CR appel à faire');
+        $adoption->setStatut('en attente départ');
         $adoptionRepository->add($adoption);
         return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
     }
+
+    /**
+     * @Route("/{id}/finaliser", name="app_adoption_finalisee", methods={"GET"})
+     */
+    public function finaliser(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
+    {
+        
+        $adoption->setStatut('adoption finalisée');
+        $adoptionRepository->add($adoption);
+        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
+    }
+
+
 }

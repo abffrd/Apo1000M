@@ -23,6 +23,7 @@ class AnimalType extends AbstractType
                 'attr' => ['placeholder' => 'Pepito'],
                 ])
             ->add('date_naissance', DateType::class, [
+
                 'label' => 'Date de naissance :',
                 'widget' => 'single_text',
                 ])
@@ -66,7 +67,6 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-                'mapped' => false
             ])
             ->add('espece', EntityType::class, [
                 // looks for choices from this entity
@@ -76,8 +76,8 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-            ])
-            ->add('adoption', EntityType::class, [
+            ]);
+            /*->add('adoption', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Adoption::class,
                 'choice_label' => 'statut',
@@ -85,7 +85,7 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
-            ]);
+            ]);*/
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -29,4 +29,14 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/team", name="app_team")
+     */
+    public function team(): Response
+    {
+        return $this->render('main/team.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }
