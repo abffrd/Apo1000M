@@ -23,7 +23,7 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'label' => 'E-mail :',
-                'attr' => ['placeholder' => ''],
+
             ])
             ->add('approles', EntityType::class, [
                 'class'=>Role::class,
@@ -35,7 +35,6 @@ class UserType extends AbstractType
             ])
             ->add('password', TextType::class,[
                 'label' => 'Mot de passe :',
-                'attr' => ['placeholder' => ''],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -50,11 +49,12 @@ class UserType extends AbstractType
             ])
             ->add('nom', TextType::class,[
                 'label' => 'Nom :',
-                'attr' => ['placeholder' => ''],
+                
             ])
+
             ->add('prenom', TextType::class,[
                 'label' => 'Prénom :',
-                'attr' => ['placeholder' => ''],
+
             ])
             ->add('Actif',ChoiceType::class, [
                 'label' => 'Statut du compte :',
