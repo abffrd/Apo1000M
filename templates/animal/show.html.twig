@@ -3,70 +3,77 @@
 {% block title %}Animal{% endblock %}
 
 {% block body %}
-<main class="flex justify-center items-center  ">
+	<main class="flex ">
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">>Animal </p>
+		<section class="mx-auto">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Détails sur {{ animal.nom }}
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+    <div class="flex p-4">
+                <img class="drop-shadow-md rounded-md w-2/5 p-2 object-contain " src=" {{ animal.photo }} " alt="{{ animal.nom }}">
+                
+                <div class="w-3/5 p-2">
+                    <table class="table-auto text-left">
+                        <tbody>
+                            <tr>
+                                <th>Espèce</th>
+                                <td>{{ animal.espece.type}}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de naissance</th>
+                                <td>{{ animal.dateNaissance ? animal.dateNaissance|date('Y-m-d') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Statut d'adoption</th>
+                                <td>{{ animal.statut }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Tests</th>
+                                <td>{{ animal.tests }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sexe</th>
+                                <td>{{ animal.sexe }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vaccins</th>
+                                <td>{{ animal.vaccins }}</td>
+                            </tr>
+                            <tr>
+                                <th>Commentaire</th>
+                                <td>{{ animal.commentaire }}</td>
+                            </tr>
+                            <tr>
+                                <th>Identification</th>
+                                <td>{{ animal.identification }}</td>
+                            </tr>
+                            <tr>
+                                <th>Sterilise</th>
+                                <td>{{ animal.sterilise ? 'Yes' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Famille d'accueil</th>
+                                <td>{{ animal.FamilleAccueil.prenom}} {{ animal.FamilleAccueil.nom}} à {{ animal.FamilleAccueil.ville}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-       </div>
-       <!-- ************************header table*********************** -->
-    
-    
+    </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ animal.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ animal.nom }}</td>
-            </tr>
-            <tr>
-                <th>Date_naissance</th>
-                <td>{{ animal.dateNaissance ? animal.dateNaissance|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Statut</th>
-                <td>{{ animal.statut }}</td>
-            </tr>
-            <tr>
-                <th>Tests</th>
-                <td>{{ animal.tests }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ animal.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Vaccins</th>
-                <td>{{ animal.vaccins }}</td>
-            </tr>
-            <tr>
-                <th>Photo</th>
-                <td>{{ animal.photo }}</td>
-            </tr>
-            <tr>
-                <th>Commentaire</th>
-                <td>{{ animal.commentaire }}</td>
-            </tr>
-            <tr>
-                <th>Identification</th>
-                <td>{{ animal.identification }}</td>
-            </tr>
-            <tr>
-                <th>Sterilise</th>
-                <td>{{ animal.sterilise ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_animal_index') }}">
+                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Retour</button>
+                </a>
 
-    <a class="btn m-2" href="{{ path('app_animal_index') }}">back to list</a>
+                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_animal_edit', {'id': animal.id}) }}">
+                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+                </a>
+            </div>
 
-    <a class="btn m-2" href="{{ path('app_animal_edit', {'id': animal.id}) }}">edit</a>
 
     {# {{ include('animal/_delete_form.html.twig') }} #}
      </div >
