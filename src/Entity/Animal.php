@@ -80,9 +80,14 @@ class Animal
     private $espece;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Adoption::class, inversedBy="animal")
+     * @ORM\ManyToMany(targetEntity=Adoption::class, inversedBy="animals")
      */
     private $adoption;
+
+    public function __construct()
+    {
+        $this->adoption = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -233,14 +238,26 @@ class Animal
         return $this;
     }
 
-    public function getAdoption(): ?Adoption
+    /**
+     * @return Collection<int, Adoption>
+     */
+    public function getAdoption(): Collection
     {
         return $this->adoption;
     }
 
-    public function setAdoption(?Adoption $adoption): self
+    public function addAdoption(Adoption $adoption): self
     {
-        $this->adoption = $adoption;
+        if (!$this->adoption->contains($adoption)) {
+            $this->adoption[] = $adoption;
+        }
+
+        return $this;
+    }
+
+    public function removeAdoption(Adoption $adoption): self
+    {
+        $this->adoption->removeElement($adoption);
 
         return $this;
     }

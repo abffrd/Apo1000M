@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Adoptant;
+use App\Entity\Membre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Adoptant|null find($id, $lockMode = null, $lockVersion = null)
- * @method Adoptant|null findOneBy(array $criteria, array $orderBy = null)
- * @method Adoptant[]    findAll()
- * @method Adoptant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Membre|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Membre|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Membre[]    findAll()
+ * @method Membre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AdoptantRepository extends ServiceEntityRepository
+class MembreRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Adoptant::class);
+        parent::__construct($registry, Membre::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Adoptant $entity, bool $flush = true): void
+    public function add(Membre $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class AdoptantRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Adoptant $entity, bool $flush = true): void
+    public function remove(Membre $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class AdoptantRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Adoptant[] Returns an array of Adoptant objects
+    //  * @return Membre[] Returns an array of Membre objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+            ->orderBy('m.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class AdoptantRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Adoptant
+    public function findOneBySomeField($value): ?Membre
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

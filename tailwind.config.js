@@ -7,8 +7,7 @@ module.exports = {
       extend: {
         colors: {
           'green-blue': '#3292a2',
-          'teal': '#14b8a6',
-          'violet': '#86198f',
+          'teal': '#14b8a6'
         },
         fontWeight: {
           medium: 500,

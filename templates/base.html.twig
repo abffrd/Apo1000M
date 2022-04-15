@@ -1,88 +1,19 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>
-			{% block title %}1000-Moustaches
-			{% endblock %}
-		</title>
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
-		{% endblock %}
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	</head>
-
-
-	<body>
-		<header class="border-4 border-b-green-blue">
-			<div class="relative bg-white">
-
-				<div class=" px-4 sm:px-6">
-					<div class="flex justify-between items-center border-b-2 py-6 md:justify-start md:space-x-10">
-						<div class="flex justify-start lg:w-0 lg:flex-1">
-							<a href="{{ path('app_home') }}"><img class="h-20 w-auto trans" src=" {{ asset('build/images/petit-logo.png') }} " alt=" logo-association"></a>
-						</div>
-						<div class="mr-2 sm-my-2 hidden md:block">
-							<a href="{{ path('app_home') }}"><img class="h-20 w-auto justify-center trans" src=" {{ asset('build/images/moustaches.png') }} " alt=" titre-association"></a>
-						</div>
-
-
-						{% if (app.user) %}
-
-							<div class="md:flex items-center flex-row justify-end md:flex-1 sm-flex-direction-col">
-								{# <ul> #}
-								{# <a href="#_" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
-																															<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-																															<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-																															<span class="relative text-black group-hover:text-white">Bonjour User ! #}
-
-								<!-- Profile dropdown -->
-									<div class="ml-3 relative rounded trans px-6 py-3 font-bold text-white rounded-lg group"> <span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
-									<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
-									<div class="pl-8 ml-3 flex flex-col">
-										<span class="relative text-black group-hover:text-white">
-											<svg class="h-4 w-4 text-black-500" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-												<polyline points="18 15 12 9 6 15"/></svg>
-										</span>
-									</div>
-									<button id="user-menu" aria-label="User menu" aria-haspopup="true">
-
-										<span class="relative text-black group-hover:text-white">
-
-											<p>Bonjour {{app.user.prenom}} !
-											</p>
-										</button>
-										<div id="user-menu-dropdown" class="menu-hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-											<div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-												<a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-													Profile</a>
-
-												<a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" role="menuitem">
-													Déconnexion</a>
-											</div>
-										</div>
-									</div>
-									{# </ul> #}
-								</span>
-							</a>
-
-						</div>
-					{% endif %}
-				</div>
-			</div>
-		</div>
-	</body>
-</html></header>{% block body %}{% endblock %}<footer class="mt-10">
-<div class="w-full">
-	<img class="animate-bounce w-full" src=" {{ asset('build/images/banniere.png') }} " alt="banniere-association">
-</div></footer></body></html>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
