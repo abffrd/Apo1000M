@@ -72,20 +72,24 @@ class AdoptionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $adoptionRepository->add($adoption);
-          
-        
+         //Remove all the existing animals
+            $animal = $adoption->getAnimal();
+            foreach ($animal  as $c) {
+              //  var_dump($c);die();
+                $adoption->removeAnimal($c);
+            }
+            //  var_dump($c);die();
 
        // Retrieve the value from the extra field non-mapped field !
             $animalfromform = $form->get("animal")->getData();
     
              foreach ($animalfromform as $a) {
-                
+          //add the nouvelle animal      
              $adoption->addAnimal($a);
             
              } 
           
-          
-          // $entityManager->persist($c);
+         // $entityManager->persist($c);
               $entityManager->flush();
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
             
