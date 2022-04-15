@@ -8,7 +8,9 @@ use App\Entity\Espece;
 use App\Entity\FamilleAccueil;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,17 +29,34 @@ class AnimalType extends AbstractType
                 'label' => 'Date de naissance :',
                 'widget' => 'single_text',
                 ])
-            ->add('statut', TextType::class, [
+            ->add('statut', ChoiceType::class, [
                 'label' => 'Statut :',
-                'attr' => ['placeholder' => 'Disponible ? '],
+                'choices' => [
+                    'Adoptable' => 'adoptable',
+                    'Non adoptable' => 'non adoptable',
+                ],
+                'multiple' => false,
+                'expanded' => false,
+
+                'attr' => ['placeholder' => 'm/f ?'],
                 ])
             ->add('tests', TextType::class, [
                 'label' => 'Tests :',
                 'attr' => ['placeholder' => ''],
                 ])
-            ->add('sexe', TextType::class, [
+            ->add('sexe', ChoiceType::class, [
                 'label' => 'Sexe :',
-                'attr' => ['placeholder' => 'M/F ?'],
+                'choices' => [
+                    'Masculin' => 'Masculin',
+                    'Féminin' => 'Féminin',
+
+                ],
+                
+                'multiple' => false,
+                'expanded' => true,
+                'mapped' => false,
+
+                'attr' => ['placeholder' => 'm/f ?'],
                 ])
             ->add('vaccins', TextType::class, [
                 'label' => 'Vaccins :',
@@ -47,7 +66,7 @@ class AnimalType extends AbstractType
                 'label' => 'Photo :',
                 'attr' => ['placeholder' => 'Une photo s\'il vous plait !'],
                 ])
-            ->add('commentaire', TextType::class, [
+            ->add('commentaire', TextareaType::class, [
                 'label' => 'Commentaire :',
                 'attr' => ['placeholder' => 'Woof? Woof? Bark! Bark!'],
                 ])
@@ -55,15 +74,21 @@ class AnimalType extends AbstractType
                 'label' => 'Identification :',
                 'attr' => ['placeholder' => ''],
                 ])
-            ->add('sterilise', TextType::class, [
+            ->add('sterilise', ChoiceType::class, [
                 'label' => 'Stérilisé :',
-                'attr' => ['placeholder' => ''],
+                'choices' => [
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+
+                ],
+                'multiple' => false,
+                'expanded' => false,
                 ])
             ->add('familleAccueil', EntityType::class, [
                 // looks for choices from this entity
                 'class' => FamilleAccueil::class,
                 'choice_label' => 'nom',
-                'label' => 'Acceptée par',
+                'label' => 'Accueilli par :',
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
@@ -72,7 +97,7 @@ class AnimalType extends AbstractType
                 // looks for choices from this entity
                 'class' => Espece::class,
                 'choice_label' => 'type',
-                'label' => 'Espèce',
+                'label' => 'Espèce :',
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
