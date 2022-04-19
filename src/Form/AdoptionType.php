@@ -132,6 +132,7 @@ class AdoptionType extends AbstractType
                 'expanded' => true,
                 'mapped' => true,
                 //'required' => false,
+                'by_reference'=> false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('a')
                         ->orderBy('a.nom', 'ASC');

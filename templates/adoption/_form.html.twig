@@ -1,44 +1,43 @@
 {{ form_start(form) }}
-  
-
+            
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        <div class = "mt-6">
-        {{ form_row(form.statut,{'attr': {class:'form-control m-4 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
-        </div>
+
         {{ form_row(form.users,{'attr': {class:'form-control m-4 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
      <div class = "flex items-center justify-center m-6">
         {% if adoption.statut == 'à prendre' %}
-        <a class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_affecter', {'id': adoption.id}) }}">M'affecter le dossier</a>
-
+        <div class = "mt-6">
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="affecter" value="M'affecter le dossier">
         {% endif %}
-         </div>
-       <!--  <button class="btn">M'affecter le dossier </button>-->
+        </div>
         {{ form_row(form.date_appel,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
         {{ form_row(form.compte_rendu,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
         <div class = "flex items-center justify-center m-6">
         {% if adoption.statut == 'CR appel à faire' %}
-        <p> <a class = "bg-white rounded-xl p-4 m-6 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_CR_complet', {'id': adoption.id}) }}">CR complet - à valider</a></p>
-        {% endif %}
-       </div>
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRcomplet" value="CR complet, à valider">
+       {% endif %}
+        
+        </div>
         <div class = "flex m-6">
         {% if adoption.statut == 'CR appel à valider' %}
-        
-                <a class = "bg-white rounded-xl p-4 m-6 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_CR_accepte', {'id': adoption.id}) }}">CR accepté</a>
-                <a class = "bg-white rounded-xl p-4 m-6 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">CR refusé</a>
-       
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRaccepte" value="CR accepté">
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="CR refusé">
+
         {% endif %}
       </div>
 
         {{ form_row(form.animal,{'attr': {class:'form-control m-6 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
          <div class = "flex items-center justify-center m-6">
         {% if adoption.statut == 'animaux à proposer' %}
-        <p> <a class = "bg-white rounded-xl p-4 m-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_animal_reserve', {'id': adoption.id}) }}">Animal réservé</a></p>
+
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="AnimalReserve" value="Animal réservé">
         {% endif %}
       </div>
          <div class = "flex items-center justify-center mb-4">
          {% if adoption.statut == 'en attente départ' %}
-        <p> <a class = "bg-white rounded-xl p-4 m-6 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_finalisee', {'id': adoption.id}) }}">Adoption finalisée</a></p>
-        {% endif %} </div>      
+
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="finalise" value="Adoption finalisée">
+        {% endif %}       
+
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
         <button class="btn">toggle -> proposition validée</button>
@@ -62,7 +61,8 @@
         {{ form_row(form.remarque,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
          </div>
         <div class = "flex justify-between m-4">
-        <a class = "bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
+        
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="Dossier sans suite">
 
 
          <button class="bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Save') }}</button>

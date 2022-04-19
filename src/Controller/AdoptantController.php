@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Adoptant;
 use App\Form\AdoptantType;
 use App\Repository\AdoptantRepository;
+use App\Repository\AdoptionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,10 +55,11 @@ class AdoptantController extends AbstractController
      * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/{id}", name="app_adoptant_show", methods={"GET"})
      */
-    public function show(Adoptant $adoptant): Response
+    public function show(Adoptant $adoptant , AdoptionRepository $adoptionRepository): Response
     {
         return $this->render('adoptant/show.html.twig', [
             'adoptant' => $adoptant,
+            'adoptions' => $adoptionRepository->findByAdoptant($adoptant),
         ]);
     }
 
@@ -68,17 +70,17 @@ class AdoptantController extends AbstractController
     {
         $form = $this->createForm(AdoptantType::class, $adoptant);
         $form->handleRequest($request);
-        //$retour = ($_SERVER['HTTP_REFERER']);
-        //dd($retour); // "http://localhost:8000/adoption/302/modification"
+        $retour = ($_SERVER['HTTP_REFERER']);
+        //dd($retour); // --> affiche "http://localhost:8000/adoption/302/modification"
 
         //$id = 302;
         if ($form->isSubmitted() && $form->isValid()) {
            
-            
-            //dd($_SERVER['HTTP_REFERER']); // "http://localhost:8000/adoptant/335/modification"
+            dd($retour); // --> affiche "http://localhost:8000/adoptant/335/modification"
+
             //return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
             //TODO redirection vers la page adoption si on en vient
-             //header('Location: http://localhost:8000/adoption/' . $id . '/modification');
+            //header('Location:' .$retour);
              //header ('Location: ' . $_SERVER['HTTP_REFERER']);
 
             //exit();
