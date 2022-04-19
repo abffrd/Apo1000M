@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Adoptant;
+use App\Entity\Adoption;
 use App\Form\AdoptantType;
 use App\Repository\AdoptantRepository;
 use App\Repository\AdoptionRepository;
@@ -12,8 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * @Route("/adoptant")
@@ -64,45 +64,31 @@ class AdoptantController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/modification", name="app_adoptant_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modification/{idAdoption}", name="app_adoptant_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository,EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Adoptant $adoptant, AdoptantRepository $adoptantRepository,EntityManagerInterface $entityManager, int $idAdoption ): Response
     {
         $form = $this->createForm(AdoptantType::class, $adoptant);
         $form->handleRequest($request);
-        $retour = ($_SERVER['HTTP_REFERER']);
-        //dd($retour); // --> affiche "http://localhost:8000/adoption/302/modification"
-
-        //$id = 302;
-        if ($form->isSubmitted() && $form->isValid()) {
-           
-            dd($retour); // --> affiche "http://localhost:8000/adoptant/335/modification"
-
-            //return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
-            //TODO redirection vers la page adoption si on en vient
-            //header('Location:' .$retour);
-             //header ('Location: ' . $_SERVER['HTTP_REFERER']);
-
-            //exit();
-
-            $entityManager->persist($adoptant);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_adoptant_index');
-            
-        }
         
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $adoptantRepository->add($adoptant);
+            
+
+            $entityManager->flush();
+            
+            return $this->redirectToRoute('app_adoption_edit', [
+                'id'=> $idAdoption
+                
+            ]);
+        }
 
         return $this->renderForm('adoptant/edit.html.twig', [
             'adoptant' => $adoptant,
             'form' => $form,
         ]);
     }
-
-//     <?php
-//     header('Location: http://www.votresite.com/pageprotegee.php');
-//     exit();
-//
 
     // TODO Gérer l'archivage
     /**

@@ -73,11 +73,11 @@
 									<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
 										<a href="{{ path('app_adoptant_show', {'id': adoptant.id}) }}">Détails</a>
 									</button>
-									{% if is_granted('ROLE_RESPONSABLE_POLE') %}
+									{# {% if is_granted('ROLE_RESPONSABLE_POLE') %}
 										<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-1 px-2 border bord-bg-green-400 rounded">
 											<a href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">Modifier</a>
 										</button>
-									{% endif %}
+									{% endif %} #}
 									{# <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archive</button> #}
 								</td>
 							</tr>
