@@ -14,6 +14,8 @@
        </div>
        <!-- ************************header table*********************** -->
 
+     <h1>Statut de l'adoption :</h1>
+     <h3>{{ adoption.statut }}</h3>
 	<h1> Adoptant :</h1>
       <h3>{{adoption.adoptant.prenom ?? ""}} {{adoption.adoptant.nom ?? ""}} </h3>
       <a class = "btn m-10" href="{{ path('app_adoptant_edit', {'id': adoption.adoptant.id}) }}">Saisir les coordonnées de l'adoptant</a>

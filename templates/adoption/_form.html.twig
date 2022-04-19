@@ -1,41 +1,37 @@
 {{ form_start(form) }}
-  
-
+            
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_row(form.statut) }}
         {{ form_row(form.users) }}
 
-        {% if adoption.statut == 'à prendre' %}
-
- 
-
-       
-       
+        {% if adoption.statut == 'à prendre' %}    
+                <input class = "btn m-10" type="submit" name="affecter" value="M'affecter le dossier">
         {% endif %}
-       <!--  <button class="btn">M'affecter le dossier </button>-->
+
         {{ form_row(form.date_appel) }}
         {{ form_row(form.compte_rendu) }}
         
         {% if adoption.statut == 'CR appel à faire' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_CR_complet', {'id': adoption.id}) }}">CR complet - à valider</a></p>
-        {% endif %}
+        <input class = "btn m-10" type="submit" name="CRcomplet" value="CR complet, à valider">
+       {% endif %}
         
         {% if adoption.statut == 'CR appel à valider' %}
         <div>
-                <a class = "btn m-10" href="{{ path('app_adoption_CR_accepte', {'id': adoption.id}) }}">CR accepté</a>
-                <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">CR refusé</a>
+                <input class = "btn m-10" type="submit" name="CRaccepte" value="CR accepté">
+                <input class = "btn m-10" type="submit" name="CRrefuse" value="CR refusé">
+
         </div>
         {% endif %}
 
 
         {{ form_row(form.animal) }}
         {% if adoption.statut == 'animaux à proposer' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_animal_reserve', {'id': adoption.id}) }}">Animal réservé</a></p>
+        <input class = "btn m-10" type="submit" name="AnimalReserve" value="Animal réservé">
         {% endif %}
 
         
          {% if adoption.statut == 'en attente départ' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_finalisee', {'id': adoption.id}) }}">Adoption finalisée</a></p>
+        <input class = "btn m-10" type="submit" name="finalise" value="Adoption finalisée">
         {% endif %}       
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
@@ -58,8 +54,7 @@
         <!--<button class="btn">Date départ renseignée</button>-->
         {{ form_row(form.remarque) }}
         
-        <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
-
+        <input class = "btn m-10" type="submit" name="CRrefuse" value="Dossier sans suite">
 
  <button class="btn">{{ button_label|default('Save') }}</button>
    
