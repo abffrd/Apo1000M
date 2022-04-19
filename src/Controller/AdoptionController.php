@@ -70,8 +70,28 @@ class AdoptionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            if(isset($_POST['affecter'])) {
+                $adoption->setStatut('CR appel à faire');       
+               }
+                
+            elseif(isset($_POST['CRcomplet'])) { 
+                $adoption->setStatut('CR appel à valider');       
+                }
+            elseif(isset($_POST['CRaccepte'])) { 
+                $adoption->setStatut('animaux à proposer');     
+                }
+            elseif(isset($_POST['CRrefuse'])) { 
+                $adoption->setStatut('dossier sans suite');      
+                }
+            elseif(isset($_POST['AnimalReserve'])) { 
+                $adoption->setStatut('en attente départ');    
+                }
+            elseif(isset($_POST['finalise'])) { 
+                $adoption->setStatut('adoption finalisée');   
+                }
+                
             $adoptionRepository->add($adoption);
-         
+            
             return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
             
         }
@@ -108,55 +128,6 @@ class AdoptionController extends AbstractController
             
     }
 
-    
-    /**
-     * @Route("/{id}/cr_complet", name="app_adoption_CR_complet", methods={"GET"})
-     */
-    public function CRComplet( Request $request, Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(AdoptionType::class, $adoption);
-        $form->handleRequest($request);
-     
-
-        $adoption->setStatut('CR appel à valider');
-        $adoptionRepository->add($adoption);
-        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
-    }
-
-    /**
-     * @Route("/{id}/cr_accepte", name="app_adoption_CR_accepte", methods={"GET"})
-     */
-    public function CRAccepte(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
-    {
-        $adoption->setStatut('animaux à proposer');
-        $adoptionRepository->add($adoption);
-        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
-    }
-    
-    /**
-     * @Route("/{id}/affecter", name="app_adoption_affecter", methods={"GET", "POST"})
-     */
-  public function affecter(Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
-    {
-        $adoption->setStatut('CR appel à faire');
-        $adoptionRepository->add($adoption);      
-        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-
-
-
-
-    /**
-     * @Route("/{id}/reserver", name="app_adoption_animal_reserve", methods={"GET"})
-     */
-    public function reserver(  Adoption $adoption, AdoptionRepository $adoptionRepository, EntityManagerInterface $entityManager): Response
-    {
-        
-        $adoption->setStatut('en attente départ');
-        $adoptionRepository->add($adoption);
-        return $this->redirectToRoute('app_adoption_index', [], Response::HTTP_SEE_OTHER);     
-    }
 
     /**
      * @Route("/{id}/finaliser", name="app_adoption_finalisee", methods={"GET"})

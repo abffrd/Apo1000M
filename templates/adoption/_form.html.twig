@@ -1,42 +1,43 @@
 {{ form_start(form) }}
-  
-
+            
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_row(form.statut) }}
-        {{ form_row(form.users) }}
 
+        {{ form_row(form.users,{'attr': {class:'form-control m-4 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+     <div class = "flex items-center justify-center m-6">
         {% if adoption.statut == 'à prendre' %}
-
- 
-
-       
-       
+        <div class = "mt-6">
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="affecter" value="M'affecter le dossier">
         {% endif %}
-       <!--  <button class="btn">M'affecter le dossier </button>-->
-        {{ form_row(form.date_appel) }}
-        {{ form_row(form.compte_rendu) }}
-        
-        {% if adoption.statut == 'CR appel à faire' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_CR_complet', {'id': adoption.id}) }}">CR complet - à valider</a></p>
-        {% endif %}
-        
-        {% if adoption.statut == 'CR appel à valider' %}
-        <div>
-                <a class = "btn m-10" href="{{ path('app_adoption_CR_accepte', {'id': adoption.id}) }}">CR accepté</a>
-                <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">CR refusé</a>
         </div>
-        {% endif %}
-
-
-        {{ form_row(form.animal) }}
-        {% if adoption.statut == 'animaux à proposer' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_animal_reserve', {'id': adoption.id}) }}">Animal réservé</a></p>
-        {% endif %}
-
+        {{ form_row(form.date_appel,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+        {{ form_row(form.compte_rendu,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+        <div class = "flex items-center justify-center m-6">
+        {% if adoption.statut == 'CR appel à faire' %}
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRcomplet" value="CR complet, à valider">
+       {% endif %}
         
+        </div>
+        <div class = "flex m-6">
+        {% if adoption.statut == 'CR appel à valider' %}
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRaccepte" value="CR accepté">
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="CR refusé">
+
+        {% endif %}
+      </div>
+
+        {{ form_row(form.animal,{'attr': {class:'form-control m-6 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+         <div class = "flex items-center justify-center m-6">
+        {% if adoption.statut == 'animaux à proposer' %}
+
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="AnimalReserve" value="Animal réservé">
+        {% endif %}
+      </div>
+         <div class = "flex items-center justify-center mb-4">
          {% if adoption.statut == 'en attente départ' %}
-        <p> <a class = "btn m-10" href="{{ path('app_adoption_finalisee', {'id': adoption.id}) }}">Adoption finalisée</a></p>
+
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="finalise" value="Adoption finalisée">
         {% endif %}       
+
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
         <button class="btn">toggle -> proposition validée</button>
@@ -56,12 +57,15 @@
          <button class="btn">Date adoption renseignée</button>
         {{ form_row(form.date_depart) }#}
         <!--<button class="btn">Date départ renseignée</button>-->
-        {{ form_row(form.remarque) }}
+        <div class = "flex m-2">
+        {{ form_row(form.remarque,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+         </div>
+        <div class = "flex justify-between m-4">
         
-        <a class = "btn m-10" href="{{ path('app_adoption_disable', {'id': adoption.id}) }}">Dossier sans suite</a>
+        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="Dossier sans suite">
 
 
- <button class="btn">{{ button_label|default('Save') }}</button>
-   
+         <button class="bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Save') }}</button>
+   </div>
 {{ form_end(form) }}
 

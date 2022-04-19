@@ -13,7 +13,7 @@ module.exports = {
         fontWeight: {
           medium: 500,
           semibold: 600,
-        }
+        },
       },
     },
     plugins: [

@@ -6,6 +6,7 @@ use App\Entity\Adoptant;
 use App\Entity\Adoption;
 use App\Form\AdoptantType;
 use App\Repository\AdoptantRepository;
+use App\Repository\AdoptionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,10 +55,11 @@ class AdoptantController extends AbstractController
      * @IsGranted("ROLE_RESPONSABLE_POLE")
      * @Route("/{id}", name="app_adoptant_show", methods={"GET"})
      */
-    public function show(Adoptant $adoptant): Response
+    public function show(Adoptant $adoptant , AdoptionRepository $adoptionRepository): Response
     {
         return $this->render('adoptant/show.html.twig', [
             'adoptant' => $adoptant,
+            'adoptions' => $adoptionRepository->findByAdoptant($adoptant),
         ]);
     }
 
@@ -73,6 +75,7 @@ class AdoptantController extends AbstractController
             
             $adoptantRepository->add($adoptant);
             
+
             $entityManager->flush();
             
             return $this->redirectToRoute('app_adoption_edit', [
