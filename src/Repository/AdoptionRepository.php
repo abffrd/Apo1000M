@@ -98,6 +98,7 @@ class AdoptionRepository extends ServiceEntityRepository
         return $query->getResult();
 
     }   
+
     
     // /**
     //  * @return Adoption[] Returns an array of Adoption objects
