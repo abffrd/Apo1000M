@@ -3,7 +3,7 @@
 	<main class="flex mx-auto ">
 
 		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
-			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/accueil.png') }} " alt="dog-cat-home">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/dog-cat.png') }} " alt="dog-cat">
 		</aside>
 
 		<section class="flex mx-auto">
@@ -12,7 +12,7 @@
 
 				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
 					<p class="border-b-4 text-4xl mt-6 font-bold">
-						Créer une nouvelle adoption :
+						Modifier un adoptant :
 					</p>
 				</div>
 
@@ -29,8 +29,12 @@
 
     {{ form_widget(form) }}
 
+	{# <div>
+    <button class="btn m-20 ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button> #}
+
     <button class="btn m-20 ml-5 mr-5">{{ button_label|default('Sauvegarde') }}</button>
-    <a href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Ajouter une adoption</button></a>
+	<a  href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Retour</button></a>
+    {# <a href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Ajouter une adoption</button></a> #}
 
 
 {{ form_end(form) }}

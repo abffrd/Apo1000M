@@ -3,25 +3,28 @@
 {% block title %}Edit FamilleAccueil{% endblock %}
 
 {% block body %}
-<main class="flex justify-center items-center ">
+<main class="flex mx-auto ">
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Edit FamilleAccueil </p>
-                </div>
-       </div>
-       <!-- ************************header table*********************** -->
-	
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/dog-cat.png') }} " alt="dog-cat-home">
+		</aside>
 
-    
+		<section class="flex mx-auto ">
 
-    {{ include('famille_accueil/_form.html.twig', {'button_label': 'Update'}) }}
+			<div class="flex flex-col p-4 ">
 
-    <a class="btn" href="{{ path('app_famille_accueil_index') }}">back to list</a>
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Modifier la famille d'accueil <span class="material-icons">pets</span>
+					</p>
+				</div>
+       <!-- ************************header formulaire*********************** -->
+
+
+    {{ include('famille_accueil/_form.html.twig', {'button_label': 'Modifier'}) }}
 
     {#{ include('famille_accueil/_delete_form.html.twig') }#}
-     </div >
+     </div>
 </section >
 </main >
 {% endblock %}

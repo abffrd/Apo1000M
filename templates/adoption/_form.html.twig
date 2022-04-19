@@ -6,7 +6,11 @@
         {{ form_row(form.users) }}
 
         {% if adoption.statut == 'à prendre' %}
-        <a class = "btn m-10" href="{{ path('app_adoption_affecter', {'id': adoption.id}) }}">M'affecter le dossier</a>
+
+ 
+
+       
+       
         {% endif %}
        <!--  <button class="btn">M'affecter le dossier </button>-->
         {{ form_row(form.date_appel) }}

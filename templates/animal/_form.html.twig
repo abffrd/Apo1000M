@@ -1,37 +1,42 @@
 {% block body %}
 
-	<main class="flex mx-auto ">
-
-		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
-			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/accueil.png') }} " alt="dog-cat-home">
-		</aside>
-
-		<section class="flex mx-auto">
-
-			<div class="flex flex-col p-4 ">
-
-				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
-					<p class="border-b-4 text-4xl mt-6 font-bold">
-						Nouvel animal :
-					</p>
-				</div>
 
     {{ form_start(form) }}
 
-                {{ form_row(form.nom, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.date_naissance, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.statut, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.tests, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.sexe, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.commentaire, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.identification, {'attr': {class:'rounded-md w-full :'}}) }}
-                {{ form_row(form.vaccins, {'attr': {class:'rounded-md w-full :'}}) }}
+                {{ form_row(form.nom, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+                {{ form_row(form.date_naissance, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.statut, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.tests, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.sexe, {'attr': {class:'form-control flex justify-around items-center mt-1 checked:bg-green-blue checked:border-green-blue focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-green-blue rounded-md  :'}}) }}
+                {{ form_row(form.commentaire, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.identification, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.vaccins, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.photo, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.sterilise, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.familleAccueil, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
+                {{ form_row(form.espece, {'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md  :'}}) }}
 
-                {{ form_widget(form) }}
-                <button class="btn m-5">{{ button_label|default('Sauvegarder') }}</button>
-	            <a class="btn m-10" href="{{ path('app_animal_index') }}">Retour </a>
+
+                <div class="flex justify-between m-2">
+                <button class="bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Enregistrer') }}</button>
+	            {# <a class="btn m-10" href="{{ path('app_animal_index') }}">Retour </a> #}
+                <a href="{{ path('app_animal_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+             </span>
+                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+            <span class="relative invisible">Retour</span>
+            </a>
+
+              </div>
 
     {{ form_end(form) }}
 
 
 {% endblock %}
+
+
+
+
