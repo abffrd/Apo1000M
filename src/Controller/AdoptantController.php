@@ -68,6 +68,12 @@ class AdoptantController extends AbstractController
     {
         $form = $this->createForm(AdoptantType::class, $adoptant);
         $form->handleRequest($request);
+        $retour = $request->server->get('HTTP_REFERER');
+        //$retour = $request->getPathInfo();
+        //$refererQueryString = parse_url(urldecode($retour));
+        //dd($refererQueryString);
+        //var_dump($retour);
+        //var_dump(header ('Location: ' . $retour));
         //$retour = ($_SERVER['HTTP_REFERER']);
         //dd($retour); // "http://localhost:8000/adoption/302/modification"
 
@@ -79,14 +85,15 @@ class AdoptantController extends AbstractController
             //return $this->redirectToRoute('app_adoptant_index', [], Response::HTTP_SEE_OTHER);
             //TODO redirection vers la page adoption si on en vient
              //header('Location: http://localhost:8000/adoption/' . $id . '/modification');
-             //header ('Location: ' . $_SERVER['HTTP_REFERER']);
-
-            //exit();
-
-            $entityManager->persist($adoptant);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_adoptant_index');
+             
+             //exit();
+             
+             $entityManager->persist($adoptant);
+             $entityManager->flush();
+            header ('Location: ' . $retour);
+             //return ltrim($retour);
+             //return $this->render($retour);
+            //return $this->redirectToRoute('app_adoptant_index');
             
         }
         
