@@ -20,7 +20,7 @@
 	<h1 > Adoptant :</h1>
       <h3 class = "m-2">{{adoption.adoptant.prenom ?? ""}} {{adoption.adoptant.nom ?? ""}} </h3>
       <div class = "flex">
-      <a class = "bg-white rounded-xl text-center text-sm font-normal p-2 sm:text-md sm:p-4 sm:m-1 leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold " href="{{ path('app_adoptant_edit', {'id': adoption.adoptant.id}) }}">Saisir les coordonnées de l'adoptant</a>
+      <a class = "bg-white rounded-xl text-center text-sm font-normal p-2 sm:text-md sm:p-4 sm:m-1 leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold " href="{{ path('app_adoptant_edit', {'id': adoption.adoptant.id, 'idAdoption': adoption.id}) }}">Saisir les coordonnées de l'adoptant</a>
 	 </div>
 
 				{{ include('adoption/_form.html.twig', {'button_label': 'Modifier'}) }}
