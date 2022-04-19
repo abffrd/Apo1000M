@@ -80,6 +80,25 @@ class AdoptionRepository extends ServiceEntityRepository
         return $query->getResult();
 
     }   
+
+    public function findByAdoptant($adoptant)
+    {
+       $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT a 
+            FROM App\Entity\Adoption a
+            JOIN a.adoptant u
+            
+            WHERE u.id = :id'
+             
+        )->setParameter('id', $adoptant);
+
+
+        return $query->getResult();
+
+    }   
+    
     // /**
     //  * @return Adoption[] Returns an array of Adoption objects
     //  */
