@@ -60,10 +60,12 @@ class FamilleAccueil
     private $telephone;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Espece::class, inversedBy="familleAccueils")
+     * @ORM\ManyToMany(targetEntity="Espece", mappedBy="familleAccueils")
+     * @ORM\JoinTable(name="famille_accueil_espece")
      */
     private $especes;
 
+    
     /**
      * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="familleAccueil")
      */

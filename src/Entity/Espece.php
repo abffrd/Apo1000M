@@ -25,7 +25,8 @@ class Espece
     private $type;
 
     /**
-     * @ORM\ManyToMany(targetEntity=FamilleAccueil::class, mappedBy="especes")
+     * @ORM\ManyToMany(targetEntity="FamilleAccueil", inversedBy="especes")
+     * @ORM\JoinTable(name="famille_accueil_espece")
      */
     private $familleAccueils;
 

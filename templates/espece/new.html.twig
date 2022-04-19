@@ -5,19 +5,20 @@
 {% block body %}
 <main class="flex justify-center items-center  h-screen">
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Create new Espece </p>
-                </div>
-       </div>
+      <section class="flex mx-auto">
+
+			<div class="flex flex-col p-4 ">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Créer une nouvelle espèce <span class="material-icons">pets</span>
+					</p>
+				</div>
        <!-- ************************header table*********************** -->
-    
-    
+
+
 
     {{ include('espece/_form.html.twig') }}
-
-    <a class="btn m-10" href="{{ path('app_espece_index') }}">back to list</a>
      </div >
 </section >
 </main >
