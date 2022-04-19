@@ -8,7 +8,8 @@
       <section class=" border-2 p-6  ml-2">
       <div class="px-8 md:px-12 py-10 md:py-7">
       <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Utilisateur </p>
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Détail sur l'utilisateur <span class="material-icons">pets</span>
+                </p>
                 </div>
        </div>
         
@@ -48,9 +49,24 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">Retour</a>
+    
+{#     <a href="{{ path('app_user_index') }}">Retour</a>
+ #}    
+    <a class="text-sm font-bold leading-none text-white " href="{{ path('app_user_edit', {'id': user.id}) }}">
+        <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+    </a>
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+    {# <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a> #}
+
+    <a href="{{ path('app_user_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+        </span>
+        <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+        <span class="relative invisible">Retour</span>
+    </a>
 
     {#{ include('user/_delete_form.html.twig') }#}
      </div >
