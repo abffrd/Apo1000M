@@ -3,8 +3,11 @@
 
 {% block body %}
 
-	<main class="flex justify-center bg-{{ asset('build/images/404.png') }}">
+	<main class="flex justify-center">
 
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src=" {{ asset('build/images/404.png') }} " alt="404 page">
+		</aside>
 		<div class="absolute bottom-0">
 			<a class="btn trans m-10" href="{{ path('app_home') }}">Retour à l'accueil !</a>
 		</div>
