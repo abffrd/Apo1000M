@@ -33,7 +33,7 @@ class UserType extends AbstractType
                 'expanded' => true,
                
             ])
-            ->add('password', TextType::class,[
+            ->add('password', PasswordType::class,[
                 'label' => 'Mot de passe :',
                 'constraints' => [
                     new NotBlank([

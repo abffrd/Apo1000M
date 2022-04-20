@@ -226,22 +226,7 @@ class AdoptionsFixtures extends Fixture
             'identification' => '250 26 85 02 08 14 01',
             'sterilise' => '1', 
         ];
-        $animaux[] = $fizzy; 
-  
-        $fizzy = [
-            'nom' => 'Fizzy',
-            $date = new \DateTime('09/03/2010'),
-            'datedenaissance' => $date,
-            'statut' => 'adoptable' ,
-            'tests' => '-' ,
-            'sexe' => 'masculin',
-            'vaccins' => 'ok',
-            'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2022/04/Fizzi-800x550.jpg.webp',
-            'commentaire' => "Bonjour, moi c’est Fizzi, digne papy Persan ! Malgré mon Pedigree de chat Persan, ma royale existence n’a pas été dorée. J’ai vécu à la Cendrillon pendant 12 ans, avec mes dignes compagnons d’infortune, avant qu’une bonne fée ne vienne nous sauver.",
-            'identification' => '250 26 85 02 08 14 01',
-            'sterilise' => '1', 
-        ];
-        $animaux[] = $fizzy;        
+        $animaux[] = $fizzy;   
  
         $lima = [
             'nom' => 'Lima',
