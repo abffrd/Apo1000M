@@ -40,7 +40,6 @@
 				<!--************************************** table******************************* -->
 					<table class="min-w-full border-collapse block md:table"> <thead class="block md:table-header-group">
 						<tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
 							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date d'appel</th>
 							{#							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Compte rendu</th>
 																					 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Retour animaux proposes</th>
@@ -63,7 +62,6 @@
 					<tbody class="block md:table-row-group">
 						{% for adoption in adoptions %}
 							<tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.id }}</td>
 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
 								{#								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.compteRendu }}</td>
 																								 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.retourAnimauxProposes }}</td>

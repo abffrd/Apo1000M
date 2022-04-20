@@ -54,7 +54,7 @@ class AnimalType extends AbstractType
                 
                 'multiple' => false,
                 'expanded' => true,
-                'mapped' => false,
+                'mapped' => true,
 
                 'attr' => ['placeholder' => 'm/f ?'],
                 ])
