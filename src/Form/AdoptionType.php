@@ -72,28 +72,28 @@ class AdoptionType extends AbstractType
             ->add('remarque', TextareaType::class, [
                 'label' => 'Remarques sur le dossier',
                 'required' => false,])
-            ->add('statut', ChoiceType::class, [
-                'label' => 'Statut de l\'adoption',
-                'required' => false,
-                'choices'  => [
-                    'à prendre' => 'à prendre' ,
-                    'CR appel à faire' => 'CR appel à faire',
-                    'CR appel à valider' => 'CR appel à valider',
-                    'animaux à proposer'  => 'animaux à proposer',
-                    'animaux proposés - attente retour adoptant'  => 'animaux proposés - attente retour adoptant',
-                    'en attente rencontre'  => 'en attente rencontre',
-                    'CR rencontre à valider'  => 'CR rencontre à valider',
-                    'en attente visite domicile'  => 'en attente visite domicile',
-                    'CR visite à valider'  => 'CR visite à valider',
-                    'en attente adoption'  => 'en attente adoption',
-                    'en attente départ'  => 'en attente départ',
-                    'adoption finalisée'  => 'adoption finalisée',
-                    'adoption annulée'  => 'adoption annulée',
-                    'dossier sans suite' => 'dossier sans suite',
-                ],
-                'multiple' => false,
-                'expanded' => false,
-            ])
+            // ->add('statut', ChoiceType::class, [
+            //     'label' => 'Statut de l\'adoption',
+            //     'required' => false,
+            //     'choices'  => [
+            //         'à prendre' => 'à prendre' ,
+            //         'CR appel à faire' => 'CR appel à faire',
+            //         'CR appel à valider' => 'CR appel à valider',
+            //         'animaux à proposer'  => 'animaux à proposer',
+            //         'animaux proposés - attente retour adoptant'  => 'animaux proposés - attente retour adoptant',
+            //         'en attente rencontre'  => 'en attente rencontre',
+            //         'CR rencontre à valider'  => 'CR rencontre à valider',
+            //         'en attente visite domicile'  => 'en attente visite domicile',
+            //         'CR visite à valider'  => 'CR visite à valider',
+            //         'en attente adoption'  => 'en attente adoption',
+            //         'en attente départ'  => 'en attente départ',
+            //         'adoption finalisée'  => 'adoption finalisée',
+            //         'adoption annulée'  => 'adoption annulée',
+            //         'dossier sans suite' => 'dossier sans suite',
+            //     ],
+            //     'multiple' => false,
+            //     'expanded' => false,
+            // ])
             /*->add('animaux_proposes', TextareaType::class, [
                 'label' => 'Animaux proposés',
                 'required' => false,])
@@ -132,6 +132,7 @@ class AdoptionType extends AbstractType
                 'expanded' => true,
                 'mapped' => true,
                 //'required' => false,
+                'by_reference'=> false,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('a')
                         ->orderBy('a.nom', 'ASC');

@@ -57,7 +57,8 @@ class FamilleAccueilType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => true,
                 'expanded' => true,
-                'mapped' => false
+                'mapped' => true,
+                'by_reference'=> true,
             ])
         ;
     }

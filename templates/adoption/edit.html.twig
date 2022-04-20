@@ -6,38 +6,52 @@
 {% block body %}
 	<main class="flex justify-center items-center  ">
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-center">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Suivre une adoption <span class="material-icons">pets</span></p>
+		<section class=" border-2 p-10  ml-2">
 
-       </div>
-       <!-- ************************header table*********************** -->
+			<div class="px-10 md:px-12 py-10 md:py-7">
 
-	<h1 > Adoptant :</h1>
-      <h3 class = "m-2">{{adoption.adoptant.prenom ?? ""}} {{adoption.adoptant.nom ?? ""}} </h3>
-      <div class = "flex">
-      <a class = "bg-white rounded-xl text-center text-sm font-normal p-2 sm:text-md sm:p-4 sm:m-1 leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold " href="{{ path('app_adoptant_edit', {'id': adoption.adoptant.id}) }}">Saisir les coordonnées de l'adoptant</a>
-	 </div>
+				{# <div class="flex items-center justify-center">
+					<p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Suivre une adoption
+						<span class="material-icons">pets</span>
+					</p>
+				</div> #}
+        <div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p tabindex="0" class="border-b-4 text-4xl mt-6 font-bold">
+						Suivre une adoption
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+
+				<!-- ************************header table*********************** -->
+
+				<h1>Statut de l'adoption :</h1>
+				<h3>{{ adoption.statut }}</h3>
+				<h1>Adoptant :</h1>
+				<h3 class="m-2">{{adoption.adoptant.prenom ?? ""}}
+					{{adoption.adoptant.nom ?? ""}}
+				</h3>
+
+				<div class="flex">
+					<a class="bg-white rounded-xl text-center text-sm font-normal p-2 sm:text-md sm:p-4 sm:m-1 leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold " href="{{ path('app_adoptant_edit', {'id': adoption.adoptant.id, 'idAdoption': adoption.id}) }}">Saisir les coordonnées de l'adoptant</a>
+				</div>
 
 				{{ include('adoption/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-			<div class = "flex justify-center items-center">
-                  <a href="{{ path('app_adoption_index') }}" class="relative  m-2 shadow-lg shadow-green-blue inline-flex items-center justify-center p-2 px-4 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
-               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
-                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-              </span>
-                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
-             <span class="relative invisible">Retour à la liste des adoptions</span>
-             </a>
-				{#{ include('adoption/_delete_form.html.twig') }#}
-			</div>
+				<div class="flex justify-center items-center">
+					<a href="{{ path('app_adoption_index') }}" class="relative  m-2 shadow-lg shadow-green-blue inline-flex items-center justify-center p-2 px-4 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+						<span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+							<svg class=" h-8 w-8 text-black-500" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+							</svg>
+						</span>
+						<span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+						<span class="relative invisible">Retour à la liste des adoptions</span>
+					</a>
+					{#{ include('adoption/_delete_form.html.twig') }#}
+				</div>
 
-       </div>
+			</div>
 		</section>
 
 	</main>
 {% endblock %}
-

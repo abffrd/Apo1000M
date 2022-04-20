@@ -40,8 +40,8 @@
 				<!--************************************** table******************************* -->
 					<table class="min-w-full border-collapse block md:table"> <thead class="block md:table-header-group">
 						<tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date d'appel</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Id</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date d'appel</th>
 							{#							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Compte rendu</th>
 																					 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Retour animaux proposes</th>
 																												<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date rencontre</th>
@@ -52,11 +52,11 @@
 																												<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date adoption</th>
 																												<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Date depart</th> 
 																												<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Remarque</th>#}
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
 							{# <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animal</th>#}
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Adoptant</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Adoptant</th>
 							{# 							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Animaux proposes</th> #}
-							<th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
 
 						</tr>
 					</thead>
@@ -88,7 +88,7 @@
 									<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-1 px-2 border border-green-500 rounded">
 										<a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">Modifier</a>
 									</button>
-									<button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archiver</button>
+									{# <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archiver</button> #}
 								</td>
 							</tr>
 						</td>

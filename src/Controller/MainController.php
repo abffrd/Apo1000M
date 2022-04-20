@@ -31,7 +31,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/team", name="app_team")
+     * @Route("/equipe", name="app_team")
      */
     public function team(): Response
     {

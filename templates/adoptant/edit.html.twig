@@ -3,6 +3,22 @@
 {% block title %}Edit Adoptant{% endblock %}
 
 {% block body %}
+
+<main class="flex justify-center items-center  ">
+
+    <section class=" border-2 p-10  ml-2">
+        {# <div class="px-10 md:px-12 py-10 md:py-7">
+            <div class="flex items-center justify-between">
+                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Edit Adoptant </p>
+            </div>
+        </div> #}
+    
+	{# <a  href="{{ path('app_adoptant_index') }}"><button class="btn m-20 ml-5 mr-5">Retour</button></a>
+    </div> #}
+    {# <a  href="{{ path('app_adoptant_index') }}">Retour</a> #}
+
+    {# {{ include('adoptant/_delete_form.html.twig') }} #}
+
 <main class="flex mx-auto ">
 
 		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
@@ -22,7 +38,8 @@
     {{ include('adoptant/_form.html.twig', {'button_label': 'Modifier'}) }}
 
 
-</div >
-</section >
+
+			</div >
+		</section >
 </main >
 {% endblock %}
