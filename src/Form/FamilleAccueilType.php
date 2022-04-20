@@ -58,7 +58,7 @@ class FamilleAccueilType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'mapped' => true,
-                'by_reference' => false
+                'by_reference'=> true,
             ])
         ;
     }

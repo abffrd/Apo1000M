@@ -3,40 +3,44 @@
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 
         {{ form_row(form.users,{'attr': {class:'form-control m-4 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
-     <div class = "flex items-center justify-center m-6">
-        {% if adoption.statut == 'à prendre' %}
-        <div class = "mt-6">
-                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="affecter" value="M'affecter le dossier">
-        {% endif %}
+        <div class = "flex items-center justify-center m-6">
+                {% if adoption.statut == 'à prendre' %}
+                <div class = "mt-6">
+                        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="affecter" value="M'affecter le dossier">
+                {% endif %}
+                </div>
         </div>
+
         {{ form_row(form.date_appel,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
         {{ form_row(form.compte_rendu,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
-        <div class = "flex items-center justify-center m-6">
-        {% if adoption.statut == 'CR appel à faire' %}
-        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRcomplet" value="CR complet, à valider">
-       {% endif %}
         
+        <div class = "flex items-center justify-center m-6">
+                {% if adoption.statut == 'CR appel à faire' %}
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRcomplet" value="CR complet, à valider">
+                {% endif %}
         </div>
+
         <div class = "flex m-6">
-        {% if adoption.statut == 'CR appel à valider' %}
+                {% if adoption.statut == 'CR appel à valider' %}
                 <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRaccepte" value="CR accepté">
                 <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="CR refusé">
-
-        {% endif %}
-      </div>
+                {% endif %}
+        </div>
 
         {{ form_row(form.animal,{'attr': {class:'form-control m-6 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
-         <div class = "flex items-center justify-center m-6">
-        {% if adoption.statut == 'animaux à proposer' %}
+        
+        <div class = "flex items-center justify-center m-6">
+                {% if adoption.statut == 'animaux à proposer' %}
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="AnimalReserve" value="Animal réservé">
+                {% endif %}
+        </div>
 
-        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="AnimalReserve" value="Animal réservé">
-        {% endif %}
-      </div>
-         <div class = "flex items-center justify-center mb-4">
-         {% if adoption.statut == 'en attente départ' %}
-
-        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="finalise" value="Adoption finalisée">
-        {% endif %}       
+        <div class = "flex items-center justify-center mb-4">
+                {% if adoption.statut == 'en attente départ' %}
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="finalise" value="Adoption finalisée">
+                {% endif %}  
+        </div>
+             
 
         {#{ form_row(form.animaux_proposes) }}
         <button class="btn">Proposition complete</button>
@@ -57,15 +61,21 @@
          <button class="btn">Date adoption renseignée</button>
         {{ form_row(form.date_depart) }#}
         <!--<button class="btn">Date départ renseignée</button>-->
+
         <div class = "flex m-2">
-        {{ form_row(form.remarque,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
-         </div>
-        <div class = "flex justify-between m-4">
-        
-        <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="Dossier sans suite">
+                {{ form_row(form.remarque,{'attr': {class:'form-control mt-1 focus:ring-green-blue focus:border-green-blue block w-full shadow-sm sm:text-sm border-gray-300 rounded-md :'}}) }}
+        </div>
 
 
          <button class="bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Save') }}</button>
-   </div>
+        </div>
+
+        <div class = "flex justify-between m-4">
+                <input class = "bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold" type="submit" name="CRrefuse" value="Dossier sans suite">
+                
+                {# <button class="bg-white rounded-xl p-4  text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Save') }}</button> #}
+                <button class="bg-white rounded-xl p-4 m-2 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Save') }}</button>
+        </div>
+        
 {{ form_end(form) }}
 
