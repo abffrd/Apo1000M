@@ -4,88 +4,97 @@
 {% endblock %}
 
 {% block body %}
-	<main class="flex justify-center items-center  ">
+	<main class="flex ">
+		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
+			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src="https://images.pexels.com/photos/6864965/pexels-photo-6864965.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="dog-cat-home">
+		</aside>
 
-      <section class=" border-2 p-10  ml-2">
-      <div class="px-10 md:px-12 py-10 md:py-7">
-      <div class="flex items-center justify-between">
-                <p tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800">Adoption </p>
-                </div>
-       </div>
+		<section class="mx-auto">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Détails sur une adoption
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
        <!-- ************************header table*********************** -->
+ <div class="flex p-4">
 
+    <table class="table-auto text-left">
 
-				<table class="table">
 					<tbody>
 						<tr>
-							<th>Id</th>
-							<td>{{ adoption.id }}</td>
+							<th>Statut de l'adoption</th>
+							<td>{{ adoption.statut}}</td>
+						</tr>
+
+						<tr>
+							<th>Adoptant</th>
+							<td>{{ adoption.adoptant.prenom}} {{ adoption.adoptant.nom}}</td>
 						</tr>
 						<tr>
-							<th>Date_appel</th>
+							<th>Adresse de l'adoptant</th>
+							<td>{{ adoption.adoptant.adresse}} {{ adoption.adoptant.nom}}</td>
+						</tr>
+						</tr>
+							<th></th>
+							<td>{{ adoption.adoptant.codePostal}} {{ adoption.adoptant.ville}}</td>
+						</tr>
+						<tr>
+							<th>Contact</th>
+							<td>{{ adoption.adoptant.email}}</td>
+						</tr>
+						</tr>
+							<th></th>
+							<td>{{ adoption.adoptant.telephone}}</td>
+						</tr>
+
+						<tr>
+							<th>Date d'appel</th>
 							<td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
 						</tr>
 						<tr>
-							<th>Compte_rendu</th>
+							<th>Compte rendu de l'appel</th>
 							<td>{{ adoption.compteRendu }}</td>
 						</tr>
 						<tr>
-							<th>Retour_animaux_proposes</th>
-							<td>{{ adoption.retourAnimauxProposes }}</td>
-						</tr>
-						<tr>
-							<th>Date_rencontre</th>
-							<td>{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Retour_rencontre_adoptant</th>
-							<td>{{ adoption.retourRencontreAdoptant }}</td>
-						</tr>
-						<tr>
-							<th>Retour_rencontre_fa</th>
-							<td>{{ adoption.retourRencontreFa }}</td>
-						</tr>
-						<tr>
-							<th>Date_visite</th>
-							<td>{{ adoption.dateVisite ? adoption.dateVisite|date('Y-m-d') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Retour_visite</th>
-							<td>{{ adoption.retourVisite }}</td>
-						</tr>
-						<tr>
-							<th>Date_adoption</th>
-							<td>{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Date_depart</th>
-							<td>{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td>
+							<th>Animal-aux réservé-s</th>
+							<td>//boucle à faire//</td>
 						</tr>
 						<tr>
 							<th>Remarque</th>
 							<td>{{ adoption.remarque }}</td>
 						</tr>
 						<tr>
-							<th>Statut</th>
-							<td>{{ adoption.statut }}</td>
+							<th>Bénévoles en charge du dossier</th>
+							<td>//boucle à faire//</td>
 						</tr>
-						<tr>
-							<th>Animaux_proposes</th>
-							<td>{{ adoption.animauxProposes }}</td>
-						</tr>
+
+
 					</tbody>
 				</table>
+    		</div >
 
-				<button class="btn">
-					<a href="{{ path('app_adoption_index') }}">Retour à la liste des adoptions</a>
-				</button>
+    <div class="flex justify-between m-2">
+                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">
+                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+                </a>
 
-				<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-2 px-4 border border-green-500 rounded">
-					<a href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">Modifier</a>
-				</button>
-			</div>
-		</section>
-	</main>
+                <a href="{{ path('app_adoption_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                </svg>
+             </span>
+                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+            <span class="relative invisible">Retour</span>
+            </a>
+    </div>
+
+
+</div>
+</section>
+</main>
 	{#{ include('adoption/_delete_form.html.twig') }#}
 
 
