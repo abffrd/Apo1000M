@@ -94,6 +94,7 @@ class AnimalType extends AbstractType
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
+                'required' => false,
             ])
             ->add('espece', EntityType::class, [
                 // looks for choices from this entity
