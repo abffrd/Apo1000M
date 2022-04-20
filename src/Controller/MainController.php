@@ -39,4 +39,13 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+    /**
+     * @Route("/oublie", name="app_oublie")
+     */
+    public function forgetpassword(): Response
+    {
+        return $this->render('main/oublie.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }
