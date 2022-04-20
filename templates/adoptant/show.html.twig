@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Adoptant{% endblock %}
+{% block title %}Adoptant
+{% endblock %}
 
 {% block body %}
 	<main class="flex ">
@@ -10,91 +11,89 @@
 
 		<section class="mx-auto">
 
-				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
-					<p class="border-b-4 text-4xl mt-6 font-bold">
-						Détails sur {{ adoptant.prenom ?? ""}} {{ adoptant.nom ?? ""}}
-						<span class="material-icons">pets</span>
-					</p>
-				</div>
-       <!-- ************************header table*********************** -->
-    
- <div class="flex p-4">
+			<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+				<p class="border-b-4 text-4xl mt-6 font-bold">
+					Détails sur
+					{{ adoptant.prenom ?? ""}}
+					{{ adoptant.nom ?? ""}}
+					<span class="material-icons">pets</span>
+				</p>
+			</div>
+			<!-- ************************header table*********************** -->
 
-    <table class="table-auto text-left">
-        <tbody>
+			<div class="flex items-center justify-around">
 
-            <tr>
-                <th>Adresse</th>
-                <td>{{ adoptant.adresse }}</td>
-                            </tr>
-            <tr>
-                <th></th>
-                <td>{{ adoptant.codePostal }} {{ adoptant.ville }}</td>
-            </tr>
+				<table class="table-auto flex justify-around">
+					<tbody class="table-auto text-center text-xl">
 
-            <tr>
-                <th>Téléphone</th>
-                <td>{{ adoptant.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ adoptant.email }}</td>
-            </tr>
+						<tr>
+							<th class="text-left">Adresse :</th>
+							<td>{{ adoptant.adresse }}</td>
+						</tr>
+						<tr>
+							<th></th>
+							<td>{{ adoptant.codePostal }}
+								{{ adoptant.ville }}</td>
+						</tr>
 
-        </tbody>
-    </table>
+						<tr>
+							<th class="pt-2 m-1 text-left">Téléphone :</th>
+							<td>{{ adoptant.telephone }}</td>
+						</tr>
+						<tr>
+							<th class="pt-2 m-1 text-left">Email :</th>
+							<td>{{ adoptant.email }}</td>
+						</tr>
 
-</div >
- <div class="flex p-4">
-        <table class="min-w-full border-collapse block md:table ">
-                            <thead class="block md:table-header-group">
-                                <tr class="border border-grey-500  md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-                                    <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
-                                    <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date</th>
-                                    <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="block  md:table-row-group ">
-                                {% for adoption in adoptions %}
-                                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
-                                            <span class="inline-block w-1/3 md:hidden font-bold uppercase">Statut</span>
-                                            {{ adoption.statut }}</td>
-                                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
-                                            <span class="inline-block w-1/3 md:hidden font-bold uppercase">Date d'appel</span>
-                                            {{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
-                                        <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
-                                            <span class="inline-block w-1/3 md:hidden font-bold uppercase">Détails</span>
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
-										<a href="{{ path('app_adoption_show', {'id': adoption.id}) }}">Détails</a>
-									</button></td>
-                                    </tr>
-                                </td>
-                                {% endfor %}
-                            </tbody>          
-        </table>
+					</tbody>
+				</table>
 
-</div >
+			</div>
+			<div class="flex p-4">
+				<table class="min-w-full border-collapse block md:table ">
+					<thead class="block md:table-header-group">
+						<tr class="border border-grey-500  md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Statut</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Date</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Action</th>
+						</tr>
+					</thead>
+					<tbody class="block  md:table-row-group ">
+						{% for adoption in adoptions %}
+							<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+								<span class="inline-block w-1/3 md:hidden font-bold uppercase">Statut</span>
+								{{ adoption.statut }}</td>
+							<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+								<span class="inline-block w-1/3 md:hidden font-bold uppercase">Date d'appel</span>
+								{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+							<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+								<span class="inline-block w-1/3 md:hidden font-bold uppercase">Détails</span>
+								<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
+									<a href="{{ path('app_adoption_show', {'id': adoption.id}) }}">Détails</a>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</td>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <div class="flex justify-between m-2">
-                {# <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">
-                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
-                </a> #}
+</div>
 
-                <a href="{{ path('app_adoptant_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
-               <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
-                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-             </span>
-                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
-            <span class="relative invisible">Retour</span>
-            </a>
-    </div>
+<div
+	class="flex justify-between m-2">
+	{# <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoptant_edit', {'id': adoptant.id}) }}">
+			                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+			                </a> #}
 
-
-
-</section >
-</main >
-
-    {# {{ include('adoptant/_delete_form.html.twig') }} #}
-{% endblock %}
+	<a href="{{ path('app_adoptant_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+		<span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+			<svg class=" h-8 w-8 text-black-500" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+			</svg>
+		</span>
+		<span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+		<span class="relative invisible">Retour</span>
+	</a>
+</div></section></main>{# {{ include('adoptant/_delete_form.html.twig') }} #}{% endblock %}
