@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello back office 1000 Moustache !
+{% endblock %}
+
+{% block body %}
+	<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+		<div class="flex flex-row">
+			<div>
+				<img class="w-auto hidden sm:block" src="{{ asset('build/images/dog-cat.png') }}" alt="cat-dog 1000 Moustaches">
+			</div>
+
+			<div class="rounded bg-white rounded-xl shadow-xl flex flex-col items-center justify-center text-2xl text-center">
+                       <h2 class="p-8">Vous avez oublié votre mot de passe??</h2>
+                        <h2 class="p-8">Veuillez contactez l'admin pour avoir votre nouveau mot de passe s'il vous plaît !</h2>
+				
+			</div>
+		</div>
+            </div>
+{% endblock %}
