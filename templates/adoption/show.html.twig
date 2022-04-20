@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="flex ">
+	{# <main class="flex ">
 		<aside class="h-screen w-full xl:w-2/4 hidden lg:w-11/12 hidden xl:block lg:block lg:w-full h-screen md:hidden sm:hidden sm:w-full h-screen">
 			<img class="max-w-full p-10 m-20 md:m-10 pt-20 mt-20" src="https://images.pexels.com/photos/6864965/pexels-photo-6864965.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="dog-cat-home">
 		</aside>
@@ -22,89 +22,163 @@
 
     <table class="table-auto text-left">
 
-					<tbody>
-						<tr>
-							<th>Statut de l'adoption</th>
-							<td>{{ adoption.statut}}</td>
-						</tr>
+					<tbody> #}
+	<main class="flex ">
 
-						<tr>
-							<th>Adoptant</th>
-							<td>{{ adoption.adoptant.prenom}} {{ adoption.adoptant.nom}}</td>
-						</tr>
-						<tr>
-							<th>Adresse de l'adoptant</th>
-							<td>{{ adoption.adoptant.adresse}} {{ adoption.adoptant.nom}}</td>
-						</tr>
-						</tr>
-							<th></th>
-							<td>{{ adoption.adoptant.codePostal}} {{ adoption.adoptant.ville}}</td>
-						</tr>
-						<tr>
-							<th>Contact</th>
-							<td>{{ adoption.adoptant.email}}</td>
-						</tr>
-						</tr>
-							<th></th>
-							<td>{{ adoption.adoptant.telephone}}</td>
-						</tr>
+		<section class="mx-auto">
 
-						<tr>
-							<th>Date d'appel</th>
-							<td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Compte rendu de l'appel</th>
-							<td>{{ adoption.compteRendu }}</td>
-						</tr>
+			<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+				<p class="border-b-4 text-4xl mt-6 font-bold">
+				Détails sur l'adoption 
+					<span class="material-icons">pets</span>
+				</p>
+			</div>
+           	<div class="flex flex-col p-4 sm:flex-row">
+                <figure class="flex flex-col max-w-xl p-4">
+                    <div class="rounded-md border-8 border-green-blue max-w-xl ">
+                        <img class="w-full" src="https://images.pexels.com/photos/6864965/pexels-photo-6864965.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="dog-cat-home">
+                    </div>
+                </figure>
 
-						<tr>
-							<th>Remarque</th>
-							<td>{{ adoption.remarque }}</td>
-						</tr>
-					</tbody>
-				</table>
-				
-</div>				
-<div>
-	<h2 class="text-lg  mb-3 mt-5">Bénévoles en charge du dossier</h2>
-	<table class=" ">
-		<thead class=" md:table-header-group">
-			<tr class="">
-				<th >Nom</th>
-				<th>Prénom</th>
-			</tr>
-		</thead>
-		<tbody class="  md:table-row-group ">
-			{% for user in adoption.users %}
-			<tr>
-				<td class="">{{ user.nom }}</td>
-				<td class="">{{ user.prenom }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>          
-	</table>
+                <div class="flex flex-col p-4  items-center justify-center">
+                    <div class="flex items-center justify-around">
+                        <table class="table-auto flex justify-around">
+                        <tbody  class="table-auto text-center text-xl">				
+							<tr>
+								<th class="pt-2 m-1 text-left">Statut de l'adoption :</th>
+								<td>{{ adoption.statut}}</td>
+							</tr>
 
+							<tr>
+								<th class="pt-2 m-1 text-left">Adoptant :</th>
+								<td>{{ adoption.adoptant.prenom}} {{ adoption.adoptant.nom}}</td>
+							</tr>
+							<tr>
+								<th class="pt-2 m-1 text-left">Adresse de l'adoptant :</th>
+								<td>{{ adoption.adoptant.adresse}} {{ adoption.adoptant.nom}}</td>
+							</tr>
+							</tr>
+								<th class="pt-2 m-1 text-left"></th>
+								<td>{{ adoption.adoptant.codePostal}} {{ adoption.adoptant.ville}}</td>
+							</tr>
+							<tr>
+								<th class="pt-2 m-1 text-left">Contact :</th>
+								<td>{{ adoption.adoptant.email}}</td>
+							</tr>
+							</tr>
+								<th class="pt-2 m-1 text-left"></th>
+								<td>{{ adoption.adoptant.telephone}}</td>
+							</tr>
 
-	<h2 class="text-lg mb-3 mt-5">Animaux réservés</h2>
-	<table class=" ">
-		<thead class=" md:table-header-group">
-			<tr class="">
-				<th >Espèce</th>
-				<th>Nom</th>
-			</tr>
-		</thead>
-		<tbody class="  md:table-row-group ">
-			{% for animal1 in adoption.animal %}
-			<tr>
-				<td class="">{{ animal1.espece.type }}</td>
-				<td class="">{{ animal1.nom }}</td>
-			</tr>
-			{% endfor %}
-		</tbody>          
-	</table>
+							<tr>
+								<th class="pt-2 m-1 text-left">Date d'appel :</th>
+								<td>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+							</tr>
+							<tr>
+								<th class="pt-2 m-1 text-left">Compte rendu de l'appel :</th>
+								<td>{{ adoption.compteRendu }}</td>
+							</tr>
+							<tr>
+								<th class="pt-2 m-1 text-left">Remarque :</th>
+								<td>{{ adoption.remarque }}</td>
+							</tr>
+							<tr>
+								<th class="pt-2 m-1 text-left">Bénévoles en charge du dossier :</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th >Nom</th>
+								<th>Prénom</th>
+							</tr>
+							{% for user in adoption.users %}
+							<tr>
+								<td class="">{{ user.nom }}</td>
+								<td class="">{{ user.prenom }}</td>
+							</tr>
+							{% endfor %}
+							<tr>
+								<th class="pt-2 m-1 text-left">Animaux réservés :</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th >Espèce</th>
+								<th>Nom</th>
+							</tr>
+							{% for animal1 in adoption.animal %}
+							<tr>
+								<td class="">{{ animal1.espece.type }}</td>
+								<td class="">{{ animal1.nom }}</td>
+							</tr>
+							{% endfor %}
+							
+						</tbody>
+						</table>
+					</div>
+						
+						{# <h2 class="text-lg  mb-3 mt-5">Bénévoles en charge du dossier</h2>
+							<table class=" ">
+							<thead class=" md:table-header-group">
+								<tr class="">
+									<th >Nom</th>
+									<th>Prénom</th>
+								</tr>
+							</thead>
+							<tbody class="  md:table-row-group ">
+							{% for user in adoption.users %}
+								<tr>
+									<td class="">{{ user.nom }}</td>
+									<td class="">{{ user.prenom }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>          
+							</table>
+						<h2 class="text-lg mb-3 mt-5">Animaux réservés</h2>
+							<table class=" ">
+							<thead class=" md:table-header-group">
+								<tr class="">
+									<th >Espèce</th>
+									<th>Nom</th>
+								</tr>
+							</thead>
+							<tbody class="  md:table-row-group ">
+							{% for animal1 in adoption.animal %}
+								<tr>
+									<td class="">{{ animal1.espece.type }}</td>
+									<td class="">{{ animal1.nom }}</td>
+								</tr>
+							{% endfor %}
+							</tbody>          
+							</table> #}
+    					
+    				
+					
+					
+					<div class="flex flex-row p-4">
 
-</div >
+        				<div class="flex flex-col p-4">
+            				<a href="{{ path('app_adoption_index') }}" class="relative  shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+                				<span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                    				<svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    				</svg>
+                				</span>
+                				<span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+                				<span class="relative invisible">Retour</span>
+            				</a>
+        				</div>
+
+        				<div class="flex flex-col p-4">
+            				<a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">
+                				<button class="bg-white rounded-xl p-5 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+            				</a>
+        				</div>
+
+        			</div>
+    			</div>
+    		</div>
+
+{# </div >
+
 
     <div class="flex justify-between m-2">
                 <a class="text-sm font-bold leading-none text-white " href="{{ path('app_adoption_edit', {'id': adoption.id}) }}">
@@ -123,9 +197,9 @@
     </div>
 
 
-</div>
-</section>
-</main>
+</div> #}
+		</section>
+	</main>
 	{#{ include('adoption/_delete_form.html.twig') }#}
 
 
