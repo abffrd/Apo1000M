@@ -54,7 +54,7 @@ class AnimalType extends AbstractType
                 
                 'multiple' => false,
                 'expanded' => true,
-                'mapped' => false,
+                'mapped' => true,
 
                 'attr' => ['placeholder' => 'm/f ?'],
                 ])
@@ -89,9 +89,12 @@ class AnimalType extends AbstractType
                 'class' => FamilleAccueil::class,
                 'choice_label' => 'nom',
                 'label' => 'Accueilli par :',
+                'required' => false,
+                
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => false,
+                'required' => false,
             ])
             ->add('espece', EntityType::class, [
                 // looks for choices from this entity
