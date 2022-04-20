@@ -65,7 +65,6 @@ class FamilleAccueil
      */
     private $especes;
 
-    
     /**
      * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="familleAccueil")
      */
