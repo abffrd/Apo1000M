@@ -39,7 +39,17 @@
 
                     </form>
                 </div>
-                    <a class="btn mt-10" href="{{ path('app_adoption_index') }}">Retour à la liste</a> 
+{#                     <a class="btn mt-10" href="{{ path('app_adoption_index') }}">Retour à la liste</a>
+ #}                    
+                    <a href="{{ path('app_adoption_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+                        <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                            <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            </svg>
+                        </span>
+                        <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour à la liste</span>
+                        <span class="relative invisible">Retour à la liste</span>
+                    </a> 
                 
             </div>
 		</section>
