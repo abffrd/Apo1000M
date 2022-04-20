@@ -19,7 +19,9 @@ class AdoptionsFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $faker = Factory::create();
+        //$faker = Factory::create();
+        //fixtures en français
+        $faker = Factory::create('fr_FR');
 
 
         // créer une liste de genre et les stocker dans un tableau
@@ -27,7 +29,7 @@ class AdoptionsFixtures extends Fixture
             'chat',
             'chien',
             'lapin',
-            'chon',
+            'cochon d inde',
             'octodon',
             'poule',
         ];
@@ -96,7 +98,7 @@ class AdoptionsFixtures extends Fixture
             $date = new \DateTime('01/01/2018'),
             'datedenaissance' => $date,
             'statut' => 'adoptable' ,
-            'tests' => '' ,
+            'tests' => '-' ,
             'sexe' => 'masculin',
             'vaccins' => 'ok',
             'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2022/04/275607021_10166122831880634_1459553801026917215_n-300x300.jpg.webp',
@@ -171,7 +173,7 @@ class AdoptionsFixtures extends Fixture
             $date = new \DateTime('01/09/2020'),
             'datedenaissance' => $date,
             'statut' => 'adoptable' ,
-            'tests' => '' ,
+            'tests' => '-' ,
             'sexe' => 'féminin',
             'vaccins' => 'ok',
             'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2021/05/Hope-11.10-300x300.jpg.webp',
@@ -186,7 +188,7 @@ class AdoptionsFixtures extends Fixture
             $date = new \DateTime('01/08/2020'),
             'datedenaissance' => $date,
             'statut' => 'adoptable' ,
-            'tests' => '' ,
+            'tests' => '-' ,
             'sexe' => 'féminin',
             'vaccins' => 'pas besoin',
             'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2021/05/Penelope-3-620x550.jpg.webp',
@@ -210,7 +212,52 @@ class AdoptionsFixtures extends Fixture
             'sterilise' => '1', 
         ];
         $animaux[] = $rex;
-        
+ 
+        $fizzy = [
+            'nom' => 'Fizzy',
+            $date = new \DateTime('09/03/2021'),
+            'datedenaissance' => $date,
+            'statut' => 'adoptable' ,
+            'tests' => 'FELV - et FIV -' ,
+            'sexe' => 'masculin',
+            'vaccins' => 'ok',
+            'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2022/04/Fizzi-800x550.jpg.webp',
+            'commentaire' => "Bonjour, moi c’est Fizzi, digne papy Persan ! Malgré mon Pedigree de chat Persan, ma royale existence n’a pas été dorée. J’ai vécu à la Cendrillon pendant 12 ans, avec mes dignes compagnons d’infortune, avant qu’une bonne fée ne vienne nous sauver.",
+            'identification' => '250 26 85 02 08 14 01',
+            'sterilise' => '1', 
+        ];
+        $animaux[] = $fizzy; 
+  
+        $fizzy = [
+            'nom' => 'Fizzy',
+            $date = new \DateTime('09/03/2010'),
+            'datedenaissance' => $date,
+            'statut' => 'adoptable' ,
+            'tests' => '-' ,
+            'sexe' => 'masculin',
+            'vaccins' => 'ok',
+            'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2022/04/Fizzi-800x550.jpg.webp',
+            'commentaire' => "Bonjour, moi c’est Fizzi, digne papy Persan ! Malgré mon Pedigree de chat Persan, ma royale existence n’a pas été dorée. J’ai vécu à la Cendrillon pendant 12 ans, avec mes dignes compagnons d’infortune, avant qu’une bonne fée ne vienne nous sauver.",
+            'identification' => '250 26 85 02 08 14 01',
+            'sterilise' => '1', 
+        ];
+        $animaux[] = $fizzy;        
+ 
+        $lima = [
+            'nom' => 'Lima',
+            $date = new \DateTime('01/08/2020'),
+            'datedenaissance' => $date,
+            'statut' => 'adoptable' ,
+            'tests' => '-' ,
+            'sexe' => 'féminin',
+            'vaccins' => '-',
+            'photo' => 'https://www.1000moustaches.fr/wp-content/uploads/2021/05/Lima-3-562x550.jpg.webp',
+            'commentaire' => "Mignonne et maligne LIMA. ma coloc et moi avons décidé de nous séparer cause bagarre entre nanas. Le fait est que, j’ai décidé de me réorienter dans le renseignement des brins de foin où, mon prénom colle déjà parfaitement.",
+            'identification' => '250 26 85 02 08 14 01',
+            'sterilise' => '1', 
+        ];
+        $animaux[] = $lima;     
+
         foreach ($animaux as $currentanimal) {
             $animal = new Animal();
             $animal->setNom($currentanimal['nom']);
@@ -226,46 +273,8 @@ class AdoptionsFixtures extends Fixture
             //récupérer l'espèce fixturisée
             $randomIndex = array_rand($especeObjects);
             $animal->setEspece($especeObjects[$randomIndex]); 
-
-
             $manager->persist($animal);
         }
-        /*$nbAnimaux = 10;
-        $animauxObjects = [];
-        for ($i = 0; $i < $nbAnimaux; $i++) {
-            $animal = new Animal();
-            $animal->setNom($faker->lastName());
-            $animal->setDateNaissance($faker->dateTime());
-            $animal->setStatut($faker->word());
-            $animal->setTests($faker->word());
-
-                $sexe =[
-                    'inconnu', 'male','femelle',];
-                $sexeIndex = rand(0, 2);
-            $animal->setSexe($sexe[$sexeIndex]);
-                $vaccins =[
-                'ok', 'primo à faire' , 'rappel à faire'];
-                $vaccinIndex = rand(0, 2);
-            $animal->setVaccins($vaccins[$vaccinIndex]);
-            $animal->setPhoto('https://picsum.photos/id/' . ( $i + 1 ) . '/200/300');
-            $animal->setCommentaire($faker->sentence());         
-            $animal->setIdentification($faker->word());  
-                $sterilise=['oui', 'non'];
-                $sterIndex = rand(0, 1);
-            $animal->setSterilise($sterilise[$sterIndex]);
-
-            //récupérer la famille d'accueil fixturisée
-                $randomIndex = array_rand($familleObjects);
-            $animal->setFamilleAccueil($familleObjects[$randomIndex]);    
-
-            //récupérer l'espèce fixturisée
-                $randomIndex = array_rand($especeObjects);
-            $animal->setEspece($especeObjects[$randomIndex]);   
-
-            // dire à Doctrine de gérer le nouvel objet
-            $animauxObjects[] = $animal;
-            $manager->persist($animal);
-        }*/
 
         //création des fixtures pour les adoptants
         $nbAdoptants = 5;
@@ -279,17 +288,13 @@ class AdoptionsFixtures extends Fixture
             $adoptant->setEmail($faker->email());
             $adoptant->setVille($faker->city());
             $adoptant->setCodePostal($faker->numberBetween(44000,44999));
-            //TODO relation one to many --> à améliorer en many to many
-            /*$randomIndex = array_rand($adoptionObjects);
-            $adoptant->addAdoption($adoptionObjects[$randomIndex]);*/
 
-            // dire à Doctrine de gérer le nouvel objet
             $adoptantsObjects[] = $adoptant;
             $manager->persist($adoptant);
         }
 
         //Création des fixtures pour les adoptions
-        $nbAdptions = 5;
+        $nbAdptions = 10;
         $adoptionObjects = [];
         for ($i = 0; $i < $nbAdptions; $i++) {
             $adoption = new Adoption();
@@ -304,31 +309,22 @@ class AdoptionsFixtures extends Fixture
             $adoption->setDateAdoption(new DateTime());
             $adoption->setDateDepart(new DateTime());
             $adoption->setRemarque($faker->sentence());
-            //TODO : mettre le statut en liste
-            $adoption->setStatut('à prendre');
-
 
             $statutObjects  =['à prendre', 'CR appel à faire'];
             $randomIndex = array_rand($statutObjects);
             $adoption->setStatut($statutObjects[$randomIndex]);
 
-
             //récupérer l'adoptant fixturisé
-                $randomIndex = array_rand($adoptantsObjects);
-                $adoption->setAdoptant($adoptantsObjects[$randomIndex]);
-
+            $randomIndex = array_rand($adoptantsObjects);
+            $adoption->setAdoptant($adoptantsObjects[$randomIndex]);
 
             $adoption->setAnimauxProposes('les animaux proposes sont...');
 
-            /*$randomIndex = array_rand($animauxObjects);
-            $adoption->addAnimal($animauxObjects[$randomIndex]);*/
 
             // dire à Doctrine de gérer le nouvel objet
             $adoptionObjects[] = $adoption;
             $manager->persist($adoption);
         }
-
-
 
         //Création des fixtures pour les roles
         $roles = [
@@ -347,18 +343,13 @@ class AdoptionsFixtures extends Fixture
 
             $roleObjects[] = $role;
             $manager->persist($role);
-
         }
 
-
-
-
-
-         // crétion de l'utilsateur
+         // création de l'utilsateur
          $user = new User();
          $user->setEmail('admin@moustache.fr');
          $user->setNom('Admin');
-         $user->setPrenom('Moustaches');
+         $user->setPrenom('Alice');
          // password is moustache
          $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_ADMIN']);
@@ -368,7 +359,7 @@ class AdoptionsFixtures extends Fixture
          $user = new User();
          $user->setEmail('membre@moustache.fr');
          $user->setNom('Membre de bureau');
-         $user->setPrenom('Moustaches');
+         $user->setPrenom('Alaric');
          // password is moustache
          $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_MEMBRE_BUREAU']);
@@ -378,18 +369,17 @@ class AdoptionsFixtures extends Fixture
          $user = new User();
          $user->setEmail('responsable@moustache.fr');
          $user->setNom('Responsable Pôle');
-         $user->setPrenom('Moustaches');
+         $user->setPrenom('Muthu');
          // password is moustache
          $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_RESPONSABLE_POLE']);
          $user->setActif('1');
          $manager->persist($user);
  
- 
          $user = new User();
          $user->setEmail('benevole@moustache.fr');
          $user->setNom('Bénévole');
-         $user->setPrenom('Moustaches');
+         $user->setPrenom('Vincent');
          // password is moustache
          $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_BENEVOLE']);
@@ -399,14 +389,12 @@ class AdoptionsFixtures extends Fixture
          $user = new User();
          $user->setEmail('user@moustache.fr');
          $user->setNom('User');
-         $user->setPrenom('Moustaches');
+         $user->setPrenom('Denis');
          // password is moustache
          $user->setPassword('$2y$13$KospP1ZKp5NS8aIyftCu3.RhAfM7/hFv5jv4S85fTOVxgFuFm7qRq');
          $user->setRoles(['ROLE_USER']);
          $user->setActif('1');
          $manager->persist($user);
-
-         
 
         $manager->flush();
 
