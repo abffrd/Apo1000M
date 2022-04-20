@@ -13,69 +13,94 @@
 						<span class="material-icons">pets</span>
 					</p>
 				</div>
-    <div class="flex p-4">
-                <img class="drop-shadow-md rounded-md w-2/5 p-2 object-contain " src=" {{ animal.photo }} " alt="{{ animal.nom }}">
-                
-                <div class="w-3/5 p-2">
-                    <table class="table-auto text-left">
-                        <tbody>
-                            <tr>
-                                <th>Espèce</th>
-                                <td>{{ animal.espece.type}}</td>
+                {# Name of the animal #}
+           <div class="flex flex-col p-4 sm:flex-row">
+                    <figure class="flex flex-col max-w-xl p-4">
+                             <div class="rounded-md border-8 border-green-blue max-w-xl ">
+                                <img class="w-full" src=" {{ animal.photo }} " alt="{{ animal.nom }}">
+                            </div>
+                            <figcaption class="text-center text-xl m-4">
+                                <h2 class="text-center font-bold text-xl">Commentaire :</h2>
+                                <p>{{ animal.commentaire }}</p>
+                            </figcaption>
+                    </figure>
+
+                 {#image of the animal #}
+                <div class="flex flex-col p-4  items-center justify-center">
+                {#details and the button of the animal #}
+                    <div class="flex items-center justify-around">
+                        <table class="table-auto flex justify-around">
+                        <tbody  class="table-auto text-center text-xl">
+                            <tr >
+                                <th class="text-left">Espèce :</th>
+                                <td >{{ animal.espece.type}}</td>
+                            </tr>
+                            <tr >
+                                <th class="pt-2 m-1 text-left">Date de naissance :</th>
+                                <td class="">{{ animal.dateNaissance ? animal.dateNaissance|date('Y-m-d') : '' }}</td>
                             </tr>
                             <tr>
-                                <th>Date de naissance</th>
-                                <td>{{ animal.dateNaissance ? animal.dateNaissance|date('Y-m-d') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <th>Statut d'adoption</th>
+                                <th class=" pt-2 m-1 text-left">Statut d'adoption :</th>
                                 <td>{{ animal.statut }}</td>
                             </tr>
 
                             <tr>
-                                <th>Tests</th>
+                                <th class="pt-2 m-1 text-left">Tests :</th>
                                 <td>{{ animal.tests }}</td>
                             </tr>
                             <tr>
-                                <th>Sexe</th>
+                                <th class="pt-2 m-1 text-left">Sexe :</th>
                                 <td>{{ animal.sexe }}</td>
                             </tr>
                             <tr>
-                                <th>Vaccins</th>
+                                <th class="pt-2 m-1 text-left">Vaccins :</th>
                                 <td>{{ animal.vaccins }}</td>
                             </tr>
                             <tr>
-                                <th>Commentaire</th>
-                                <td>{{ animal.commentaire }}</td>
-                            </tr>
-                            <tr>
-                                <th>Identification</th>
+                                <th class="pt-2 m-1 text-left">Identification :</th>
                                 <td>{{ animal.identification }}</td>
                             </tr>
                             <tr>
-                                <th>Sterilise</th>
+                                <th class="pt-2 m-1 text-left">Sterilise :</th>
                                 <td>{{ animal.sterilise ? 'Yes' : 'No' }}</td>
                             </tr>
                             <tr>
-                                <th>Famille d'accueil</th>
+                                <th class="pt-2 m-1 text-left">Famille d'accueil :</th>
                                 <td>{{ animal.FamilleAccueil.prenom ?? "Personne"}} {{ animal.FamilleAccueil.nom ?? ""}} à {{ animal.FamilleAccueil.ville ?? ""}}</td>
                             </tr>
+                            
                         </tbody>
-                    </table>
-                </div>
-    </div>
-                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_animal_index') }}">
-                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Retour</button>
-                </a>
+                        </table>
+                    </div>
+             {#details of the animal #}
+                     <div class="flex flex-row p-4">
+                           <div class="flex flex-col p-4">
 
-                <a class="text-sm font-bold leading-none text-white " href="{{ path('app_animal_edit', {'id': animal.id}) }}">
-                <button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
-                </a>
-            </div>
+                                 <a href="{{ path('app_animal_index') }}" class="relative  shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+                                <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+                                <svg class=" h-8 w-8 text-black-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                                 </svg>
+                                </span>
+                                <span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+                                <span class="relative invisible">Retour</span>
+                                </a>
+                            </div>
+                         <div class="flex flex-col p-4">
+                        <a class="text-sm font-bold leading-none text-white " href="{{ path('app_animal_edit', {'id': animal.id}) }}">
+                        <button class="bg-white rounded-xl p-5 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+                        </a>
+                         </div>
+                  
+                    </div>
+              {#buttons #}
+             </div>
+         
+           </div> 
 
 
     {# {{ include('animal/_delete_form.html.twig') }} #}
-     </div >
+   
 </section >
 </main >
 {% endblock %}
