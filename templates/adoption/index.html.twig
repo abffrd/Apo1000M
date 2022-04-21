@@ -7,10 +7,10 @@
 	<main class="flex w-full ">
 
 		<section class="w-full p-4  ml-2">
-			<div class="flex justify-center">
-				<a class="btn trans m-10" href="{{ path('app_adoption_a_prendre') }}">Voir les adoptions à prendre</a>
-				<a class="btn trans m-10" href="{{ path('app_adoption_index') }}">Voir toutes les adoptions</a>
-				<a class="btn trans m-10" href="{{ path('app_adoption_a_moi') }}">Voir les adoptions qui me sont affectées</a>
+			<div class="flex flex-col sm:flex-row justify-center">
+				<a class="btn trans m-5" href="{{ path('app_adoption_a_prendre') }}">Voir les adoptions à prendre</a>
+				<a class="btn trans m-5" href="{{ path('app_adoption_index') }}">Voir toutes les adoptions</a>
+				<a class="btn trans m-5" href="{{ path('app_adoption_a_moi') }}">Voir les adoptions qui me sont affectées</a>
 			</div>
 			<!-- ************************header table*********************** -->
 
@@ -62,7 +62,7 @@
 					<tbody class="block md:table-row-group">
 						{% for adoption in adoptions %}
 							<tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
+								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Date d'appel</span>{{ adoption.dateAppel ? adoption.dateAppel|date('Y-m-d') : '' }}</td>
 								{#								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.compteRendu }}</td>
 																								 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.retourAnimauxProposes }}</td>
 																																<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateRencontre ? adoption.dateRencontre|date('Y-m-d') : '' }}</td>
@@ -72,9 +72,9 @@
 																																<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.retourVisite }}</td>
 																																<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateAdoption ? adoption.dateAdoption|date('Y-m-d') : '' }}</td>
 																																<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.dateDepart ? adoption.dateDepart|date('Y-m-d') : '' }}</td> #}
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.statut }}</td>
+								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Statut</span>{{ adoption.statut }}</td>
 								{#<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animal.nom ?? "" }}</td>#}
-								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.adoptant.prenom ?? "" }}
+								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell"><span class="inline-block w-1/3 md:hidden font-bold">Adoptant</span>{{ adoption.adoptant.prenom ?? "" }}
 									{{ adoption.adoptant.nom ?? "" }}</td>
 								{# 								<td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">{{ adoption.animauxProposes }}</td> #}
 
@@ -89,12 +89,8 @@
 									{# <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Archiver</button> #}
 								</td>
 							</tr>
-						</td>
-					</tbody>
-				</tr>
-			</td>
-		</tbody>
-	</tr>
+						
+		
 {% else %}
 	<tr>
 		<td colspan="15">Aucune donnée</td>

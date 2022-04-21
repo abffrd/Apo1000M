@@ -51,23 +51,23 @@
 
 							<tr>
 								<th class="pt-2 m-1 text-left">Adoptant :</th>
-								<td>{{ adoption.adoptant.prenom}} {{ adoption.adoptant.nom}}</td>
+								<td>{{ adoption.adoptant.prenom ?? ''}} {{ adoption.adoptant.nom ?? ''}}</td>
 							</tr>
 							<tr>
 								<th class="pt-2 m-1 text-left">Adresse de l'adoptant :</th>
-								<td>{{ adoption.adoptant.adresse}} {{ adoption.adoptant.nom}}</td>
+								<td>{{ adoption.adoptant.adresse ?? ''}} {{ adoption.adoptant.nom ?? ''}}</td>
 							</tr>
 							</tr>
 								<th class="pt-2 m-1 text-left"></th>
-								<td>{{ adoption.adoptant.codePostal}} {{ adoption.adoptant.ville}}</td>
+								<td>{{ adoption.adoptant.codePostal ?? ''}} {{ adoption.adoptant.ville ?? ''}}</td>
 							</tr>
 							<tr>
 								<th class="pt-2 m-1 text-left">Contact :</th>
-								<td>{{ adoption.adoptant.email}}</td>
+								<td>{{ adoption.adoptant.email ?? ''}}</td>
 							</tr>
 							</tr>
 								<th class="pt-2 m-1 text-left"></th>
-								<td>{{ adoption.adoptant.telephone}}</td>
+								<td>{{ adoption.adoptant.telephone ?? ''}}</td>
 							</tr>
 
 							<tr>
