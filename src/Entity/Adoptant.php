@@ -59,9 +59,15 @@ class Adoptant
      */
     private $adoptions;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Calendar::class, mappedBy="adoptant")
+     */
+    private $calendars;
+
     public function __construct()
     {
         $this->adoptions = new ArrayCollection();
+        $this->calendars = new ArrayCollection();
     }
 
     public function __toString()
@@ -192,5 +198,35 @@ class Adoptant
     public function getFullname()
     {
         return $this->prenom . ' ' . $this->nom;
+    }
+
+    /**
+     * @return Collection<int, Calendar>
+     */
+    public function getCalendars(): Collection
+    {
+        return $this->calendars;
+    }
+
+    public function addCalendar(Calendar $calendar): self
+    {
+        if (!$this->calendars->contains($calendar)) {
+            $this->calendars[] = $calendar;
+            $calendar->setAdoptant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCalendar(Calendar $calendar): self
+    {
+        if ($this->calendars->removeElement($calendar)) {
+            // set the owning side to null (unless already changed)
+            if ($calendar->getAdoptant() === $this) {
+                $calendar->setAdoptant(null);
+            }
+        }
+
+        return $this;
     }
 }
