@@ -51,7 +51,7 @@ class MainController extends AbstractController
     }
 
   /**
-     * @Route("/rdv", name="rdv")
+     * @Route("/rdv", name="app_rdv")
      */
     public function rdv(CalendarRepository $calendar )
     {
@@ -66,7 +66,7 @@ class MainController extends AbstractController
                 'id' => $event->getId(),
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
-                'title' => $event->getAdoptant()->getPrenom(),
+                'title' => $event->getAdoptant()->getNom(),
                 'description' => $event->getDescription(),
                 'backgroundColor' => $event->getBackgroundColor(),
                 'textColor' => $event->getTextColor(),

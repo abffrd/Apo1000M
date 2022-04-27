@@ -44,6 +44,7 @@
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
 							<span class="relative text-black group-hover:text-white">Liste des adoptants</span>
 						</a>
+						
 						{% endif %}
 					</div>
 					<div class="space-y-8 flex flex-col p-2 w-80 sm:flex">
@@ -52,6 +53,11 @@
 							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
 							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
 							<span class="relative text-black group-hover:text-white">Liste de mes adoptions</span>
+						</a>
+						<a href="{{ path('app_rdv') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">
+							<span class="absolute rounded-md inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-green-blue group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+							<span class="absolute rounded-md inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-green-blue"></span>
+							<span class="relative text-black group-hover:text-white">Rendez-vous</span>
 						</a>
 						{% if is_granted('ROLE_RESPONSABLE_POLE') %}
 						<a href="{{ path('app_new_dossier') }}" class="relative rounded trans px-6 py-3 font-bold text-white rounded-lg group">

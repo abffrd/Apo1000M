@@ -56,10 +56,17 @@ security:
         - { path: ^/adoption, roles: ROLE_BENEVOLE }
 
         - { path: ^/adoptant, roles: ROLE_BENEVOLE }
+        - { path: ^/rdv, roles: ROLE_BENEVOLE }
 
         - { path: ^/animal, roles: ROLE_BENEVOLE }
 
         - { path: ^/famille_accueil, roles: ROLE_RESPONSABLE_POLE }
+        - { path: ^/calendar/new, roles: ROLE_RESPONSABLE_POLE }
+        - { path: ^/calendar/.*/edit, roles: ROLE_RESPONSABLE_POLE }
+
+        - { path: ^/api, roles: ROLE_RESPONSABLE_POLE }
+        - { path: ^/calendar, roles: ROLE_BENEVOLE  }
+        
 
         - { path: ^/espece, roles: ROLE_RESPONSABLE_POLE }
 

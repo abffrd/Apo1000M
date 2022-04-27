@@ -36,21 +36,21 @@ class UserType extends AbstractType
                 'expanded' => true,
                
             ])
-            ->add('password', PasswordType::class,[
-                'label' => 'Mot de passe :',
-                'always_empty' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez saisir un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'votre mot de passe doit faire au moins {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
+            // ->add('password', PasswordType::class,[
+            //     'label' => 'Mot de passe :',
+            //     'always_empty' => false,
+            //     'constraints' => [
+            //         new NotBlank([
+            //             'message' => 'Veuillez saisir un mot de passe',
+            //         ]),
+            //         new Length([
+            //             'min' => 6,
+            //             'minMessage' => 'votre mot de passe doit faire au moins {{ limit }} caractères',
+            //             // max length allowed by Symfony for security reasons
+            //             'max' => 4096,
+            //         ]),
+            //     ],
+            // ])
             ->add('nom', TextType::class,[
                 'label' => 'Nom :',
                 

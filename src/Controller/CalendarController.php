@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
+use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +30,7 @@ class CalendarController extends AbstractController
     /**
      * @Route("/new", name="app_calendar_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, CalendarRepository $calendarRepository): Response
+    public function new(Request $request, CalendarRepository $calendarRepository, EntityManagerInterface $entityManager): Response
     {
         $calendar = new Calendar();
         $form = $this->createForm(CalendarType::class, $calendar);
@@ -36,7 +38,17 @@ class CalendarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $calendarRepository->add($calendar);
-            return $this->redirectToRoute('app_calendar_index', [], Response::HTTP_SEE_OTHER);
+             $adoptant = $calendar->getAdoptant()->getNom();
+             $calendar->setTitle($adoptant);
+             $startime = $calendar->getStart();
+             //var_dump($startime);die();
+
+             if($calendar->getAllDay() == true){
+                $calendar->setEnd($startime);
+            }
+            $entityManager->persist($calendar);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_rdv', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('calendar/new.html.twig', [

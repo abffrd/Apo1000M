@@ -3,38 +3,85 @@
 {% block title %}Calendar index{% endblock %}
 
 {% block body %}
-    <h1>Calendar index</h1>
+    
+    <main class="flex w-full ">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>BackgroundColor</th>
-                <th>TextColor</th>
-                <th>AllDay</th>
-                <th>Adoptant</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+		<section
+			class="w-full p-4  ml-2">
+			<!-- ************************header table*********************** -->
+
+			<div class="px-4 md:px-10 py-4 md:py-7">
+				<div class="flex items-center justify-center">
+					<p tabindex="0" class="focus:outline-none text-2xl sm:text-2xl md:text-2xl lg:text-4xl font-bold leading-normal text-gray-800">Liste des Calendrier
+						<span class="material-icons">pets</span>
+					</p>
+					
+				</div>
+			</div>
+			<div class=" py-4 md:py-7 px-4 md:px-8 xl:px-10">
+				<div class="sm:flex items-center justify-between mb-4 w-full">
+				{% if is_granted('ROLE_RESPONSABLE_POLE') %}
+					<p class="text-sm font-bold leading-none text-white ">
+						<a class="text-sm font-bold leading-none " href="{{ path('app_calendar_new') }}">
+							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Créer') }}</button>
+						</a>
+					</p>
+					{% endif %}
+				</div>
+                <div class="sm:flex items-center justify-between mb-4 w-full">
+					<p class="text-sm font-bold leading-none text-white ">
+						<a class="text-sm font-bold leading-none " href="{{ path('app_rdv') }}">
+							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">View Calendrier</button>
+						</a>
+					</p>
+				</div>
+				<!--************************************** table******************************* -->
+				<table class="min-w-full border-collapse block md:table">
+					<thead class="block md:table-header-group">
+						<tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Titre</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Description</th>
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Commence</th>
+                            <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Fin</th>
+                           
+                            <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">AllDay</th>
+                            <th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Adoptant</th>
+                           
+							<th class="bg-gray-600 p-2 text-white text-center font-bold md:border md:border-grey-500 text-left block md:table-cell">Actions</th>
+						</tr>
+					</thead>
+
+					{# //**************** #}
+
+    
+       <tbody class="block md:table-row-group">
         {% for calendar in calendars %}
-            <tr>
-                <td>{{ calendar.id }}</td>
-                <td>{{ calendar.title }}</td>
-                <td>{{ calendar.description }}</td>
-                <td>{{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ calendar.backgroundColor }}</td>
-                <td>{{ calendar.textColor }}</td>
-                <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
-                <td>{{ calendar.adoptant.prenom ?? "" }}</td>
-                <td>
+          <tr class="bg-gray-300 border border-grey-500 md:border-none block md:table-row">
+                <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+									<span class="inline-block w-1/3 md:hidden font-bold uppercase">Titre</span>{{ calendar.title }}</td>
+               
+                <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+									<span class="inline-block w-2/3 md:hidden font-bold uppercase">Description</span>{{ calendar.description }}</td>
+               
+                <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+									<span class="inline-block w-1/3 md:hidden font-bold uppercase">Commence</span>{{ calendar.start ? calendar.start|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ calendar.end ? calendar.end|date('d-m-Y H:i:s') : '' }}</td>
+                
+                
+                <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+									<span class="inline-block w-1/3 md:hidden font-bold uppercase">All day</span>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
+                <td>{{ calendar.adoptant.nom ?? "" }}</td>
+               
+                <td class="p-2 md:border md:border-grey-500 text-left block md:table-cell">
+									<span class="inline-block w-1/3 md:hidden font-bold uppercase">Action</span>
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">
                     <a href="{{ path('app_calendar_show', {'id': calendar.id}) }}">show</a>
+                    </button>
+									{% if is_granted('ROLE_RESPONSABLE_POLE') %}
+										<button class="bg-green-400 hover:bg-green-400 text-white font-bold py-1 px-2 border bord-bg-green-400 rounded">
                     <a href="{{ path('app_calendar_edit', {'id': calendar.id}) }}">edit</a>
+                     </button>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -44,6 +91,9 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+		</section>
+	</main>
 
-    <a href="{{ path('app_calendar_new') }}">Create new</a>
+    
 {% endblock %}

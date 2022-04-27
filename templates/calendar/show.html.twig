@@ -3,14 +3,40 @@
 {% block title %}Calendar{% endblock %}
 
 {% block body %}
-    <h1>Calendar</h1>
+    
+    <main class="flex ">
+
+		<section class="mx-auto">
+
+				<div class=" p-4 text-center text-2xl rounded cursor-pointer">
+					<p class="border-b-4 text-4xl mt-6 font-bold">
+						Calendrier du {{ calendar.title ?? ''}}
+					
+						<span class="material-icons">pets</span>
+					</p>
+				</div>
+                {# Name of the animal #}
+           <div class="flex flex-col p-4 sm:flex-row">
+                    <figure class="flex flex-col max-w-2xl p-4">
+                             <div class="rounded-md border-8 border-green-blue max-w-xl ">
+                                <img class="w-full"  src="https://images.pexels.com/photos/6864965/pexels-photo-6864965.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="dog-cat-home">
+                            </div>
+                            
+                    </figure>
+
+                 {#image of the animal #}
+				
+			
+
+			<div class="flex flex-col p-4  items-center justify-center">
+                {#details and the button of the animal #}
+                    <div class="flex items-center justify-around">
+                        <table class="table-auto flex justify-around">
+                        <tbody  class="table-auto text-center text-xl">
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ calendar.id }}</td>
-            </tr>
+           
             <tr>
                 <th>Title</th>
                 <td>{{ calendar.title }}</td>
@@ -27,24 +53,51 @@
                 <th>End</th>
                 <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
-            <tr>
-                <th>BackgroundColor</th>
-                <td>{{ calendar.backgroundColor }}</td>
-            </tr>
-            <tr>
-                <th>TextColor</th>
-                <td>{{ calendar.textColor }}</td>
-            </tr>
+           
             <tr>
                 <th>AllDay</th>
                 <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
             </tr>
+            <tr>
+                <th>Adoptant</th>
+                <td>{{ calendar.adoptant.nom }}</td>
+               
+            </tr>
         </tbody>
     </table>
+    </div >	
 
-    <a href="{{ path('app_calendar_index') }}">back to list</a>
+			<div class="flex flex-row p-4">
+                           <div class="flex flex-col p-4">
+                {% if is_granted('ROLE_RESPONSABLE_POLE') %}
+				<a class="text-sm font-bold leading-none text-white " href="{{ path('app_calendar_edit', {'id': calendar.id}) }}">
+					<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Modifier</button>
+				</a>
+                {% endif %}
+                 </div>
+                         <div class="flex flex-col p-4">
 
-    <a href="{{ path('app_calendar_edit', {'id': calendar.id}) }}">edit</a>
+				<a href="{{ path('app_calendar_index') }}" class="relative shadow-lg shadow-green-blue inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-black transition duration-300 ease-out border-2 border-black rounded-xl shadow-md group">
+					<span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-green-blue group-hover:translate-x-0 ease">
+						<svg class=" h-8 w-8 text-black-500" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+						</svg>
+					</span>
+					<span class="absolute flex items-center justify-center w-full h-full text-black transition-all duration-300 transform group-hover:translate-x-full ease">Retour</span>
+					<span class="relative invisible">Retour</span>
+				</a>
+			 </div>
+                  
+                    </div>
+              {#buttons #}
+			{#{ include('famille_accueil/_delete_form.html.twig') }#}
 
-    {{ include('calendar/_delete_form.html.twig') }}
+ </div> 
+		</div>
+	</section>
+</main>
+
+  
+
+    {# {{ include('calendar/_delete_form.html.twig') }} #}
 {% endblock %}

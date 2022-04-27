@@ -5,16 +5,48 @@
 
 
 {% block body %}
-<main class="flex justify-center  ">
+ <main class="flex w-full ">
+
+		<section
+			class="w-full p-4  ml-2">
+			<!-- ************************header table*********************** -->
+
+			<div class="px-4 md:px-10 py-4 md:py-7">
+				<div class="flex items-center justify-center">
+					<p tabindex="0" class="focus:outline-none text-2xl sm:text-2xl md:text-2xl lg:text-4xl font-bold leading-normal text-gray-800">Liste des Calendrier
+						<span class="material-icons">pets</span>
+					</p>
+					
+				</div>
+			</div>
+            {% if is_granted('ROLE_RESPONSABLE_POLE') %}
+			<div class=" py-4 md:py-7 px-4 md:px-8 xl:px-10">
+				<div class="sm:flex items-center justify-between mb-4 w-full">
+					<p class="text-sm font-bold leading-none text-white ">
+						<a class="text-sm font-bold leading-none " href="{{ path('app_calendar_new') }}">
+							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">{{ button_label|default('Créer') }}</button>
+						</a>
+					</p>
+				</div>
+                {% endif %}
+                <div class="sm:flex items-center justify-between mb-4 w-full">
+					<p class="text-sm font-bold leading-none text-white ">
+						<a class="text-sm font-bold leading-none " href="{{ path('app_calendar_index') }}">
+							<button class="bg-white rounded p-4 text-md font-normal leading-none text-black border-double border-2 border-black shadow-lg shadow-green-blue  hover:bg-green-blue  hover:-translate-y-1 hover:scale-110 hover:text-white font-bold">Liste et Détails</button>
+						</a>
+					</p>
+				</div>
 
 
 		
 		
     <div class="w-full" id="calendrier">
     </div>
-     
-		
+     </div>
+		</section>
 	</main>
+		
+	
 {% endblock %}
 
 {% block javascripts %}
@@ -40,6 +72,7 @@
 
         
         calendar.on('eventChange', (e) => {
+             // construction de l'url
             let url = `/api/${e.event.id}/edit`
             let donnees = {
                   // "adoptant": e.event.adoptant.prenom,
@@ -53,9 +86,32 @@
                 "allDay": e.event.allDay
             }
             
-            let xhr = new XMLHttpRequest
-            xhr.open("PUT", url)
-            xhr.send(JSON.stringify(donnees))
+          
+          const httpHeaders = new Headers();
+         httpHeaders.append('Content-Type', "application/json")
+
+        const ajaxOptions = {
+             method: 'PUT', // nous allons faire un appel "PUT" pour mettre à jour 
+            headers: httpHeaders,
+            //cache: 'no-cache'
+      // les data à envoyer à l'api
+            body: JSON.stringify(donnees)
+             };
+
+   
+         function transformJSONToJavascript(eventApiResponse) {
+       return eventApiResponse.json();
+        } 
+    
+    // STEP episode 6 season 7
+    // IMPORTANT envoie de données vers une api
+     fetch(url, ajaxOptions)
+      .then(transformJSONToJavascript())
+       .then(function (editedresponse) {
+        console.log(editedresponse);
+      });;
+      
+
         })
         calendar.render() 
     }
